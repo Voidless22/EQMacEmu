@@ -1,0 +1,5 @@
+﻿  Building Custom Rule C:/EQMacEmu/submodules/fmt/CMakeLists.txt
+  CMake does not need to re-run because C:/EQMacEmu/Build/submodules/fmt/CMakeFiles/generate.stamp is up-to-date.
+  format.cc
+  posix.cc
+  fmt.vcxproj -> C:\EQMacEmu\Build\submodules\fmt\RelWithDebInfo\fmt.lib

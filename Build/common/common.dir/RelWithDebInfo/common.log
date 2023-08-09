@@ -1,0 +1,649 @@
+﻿  Building Custom Rule C:/EQMacEmu/common/CMakeLists.txt
+  CMake does not need to re-run because C:/EQMacEmu/Build/common/CMakeFiles/generate.stamp is up-to-date.
+  base_packet.cpp
+  classes.cpp
+  eqemu_command_handler.cpp
+  condition.cpp
+  crash.cpp
+  crc16.cpp
+  crc32.cpp
+  database_dump_service.cpp
+  database.cpp
+  dbcore.cpp
+  emu_constants.cpp
+  emu_limits.cpp
+  emu_opcodes.cpp
+  emu_tcp_connection.cpp
+  emu_tcp_server.cpp
+C:\EQMacEmu\common\cli\eqemu_command_handler.cpp(152,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  emu_versions.cpp
+  eqdb.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\emu_tcp_connection.h(23,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\emu_tcp_connection.h(23,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\database.cpp)
+C:\EQMacEmu\common\dbcore.cpp(64,72): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+  eqdb_res.cpp
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(288,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(288,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(349,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(349,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(357,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(357,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(395,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(395,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(527,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(527,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(550,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(550,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(615,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(615,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(677,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(677,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(736,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(736,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(878,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(878,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(934,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(934,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(943,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(943,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(954,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(954,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(990,36): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(990,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1023,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1023,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1098,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1098,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1109,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1109,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_connection.cpp)
+C:\EQMacEmu\common\database.cpp(99,55): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\database.cpp(100,63): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\emu_tcp_connection.cpp(477,35): warning C4267: '+=': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\database.cpp(959,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(961,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(963,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(965,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1022,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1024,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1026,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1088,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1090,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1092,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1094,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1553,9): warning C4244: 'return': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\common\database.cpp(1571,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1572,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1573,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\database.cpp(1755,56): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+  eqemu_exception.cpp
+  eqemu_config.cpp
+C:\EQMacEmu\common\emu_tcp_connection.h(23,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\emu_tcp_server.cpp)
+C:\EQMacEmu\common\emu_tcp_connection.h(23,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\emu_tcp_server.cpp)
+  eqemu_logsys.cpp
+  eq_limits.cpp
+  eq_packet.cpp
+  eq_stream.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+  eq_stream_factory.cpp
+C:\EQMacEmu\common\eqdb_res.h(35,37): warning C4244: 'return': conversion from 'my_ulonglong' to 'unsigned long', possible loss of data (compiling source file C:\EQMacEmu\common\eqdb.cpp)
+C:\EQMacEmu\common\eqdb.cpp(34,28): warning C4244: 'return': conversion from 'my_ulonglong' to 'unsigned long', possible loss of data
+C:\EQMacEmu\common\eqdb.cpp(38,24): warning C4244: 'return': conversion from 'my_ulonglong' to 'unsigned long', possible loss of data
+C:\EQMacEmu\common\eqdb.cpp(50,5): warning C4267: 'argument': conversion from 'size_t' to 'unsigned long', possible loss of data
+C:\EQMacEmu\common\eqdb.cpp(65,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+C:\EQMacEmu\common\eqdb_res.h(35,37): warning C4244: 'return': conversion from 'my_ulonglong' to 'unsigned long', possible loss of data (compiling source file C:\EQMacEmu\common\eqdb_res.cpp)
+  eq_stream_ident.cpp
+  eq_stream_proxy.cpp
+C:\EQMacEmu\common\eq_packet.cpp(211,13): warning C4244: '=': conversion from 'const uint16' to 'unsigned char', possible loss of data
+C:\EQMacEmu\common\eq_packet.cpp(223,28): warning C4244: '=': conversion from 'uint16' to 'unsigned char', possible loss of data
+  eqtime.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqemu_logsys.cpp)
+C:\EQMacEmu\common\eq_stream.cpp(84,27): warning C4244: '=': conversion from 'double' to 'uint32', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(430,43): warning C4267: 'initializing': conversion from 'size_t' to 'uint16', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(467,1): warning C4244: 'argument': conversion from 'uint64' to 'u_long', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(482,8): warning C4244: '=': conversion from 'double' to 'uint32', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(484,59): warning C4244: '=': conversion from 'double' to 'uint32', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(672,35): warning C4244: 'argument': conversion from 'long' to 'uint16', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(672,22): warning C4244: 'argument': conversion from 'long' to 'uint16', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(673,11): warning C4244: 'argument': conversion from 'long' to 'uint16', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(741,20): warning C4244: 'initializing': conversion from 'long' to 'uint16', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(929,29): warning C4244: 'argument': conversion from 'time_t' to 'u_long', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(1635,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\EQMacEmu\common\eq_stream.cpp(1664,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  extprofile.cpp
+C:\EQMacEmu\common\eqemu_logsys.cpp(210,91): warning C4996: 'getpid': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getpid. See online help for details.
+C:\EQMacEmu\common\eqemu_logsys.cpp(448,3): warning C4996: 'getpid': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getpid. See online help for details.
+C:\EQMacEmu\common\eqemu_logsys.cpp(458,84): warning C4996: 'getpid': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getpid. See online help for details.
+C:\EQMacEmu\common\eqemu_logsys.cpp(467,3): warning C4996: 'getpid': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getpid. See online help for details.
+C:\EQMacEmu\common\eqemu_logsys.cpp(469,79): warning C4996: 'getpid': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getpid. See online help for details.
+C:\EQMacEmu\common\eq_stream.cpp(2639,9): warning C4101: 'data': unreferenced local variable
+C:\EQMacEmu\common\eq_stream.cpp(2638,9): warning C4101: 'size': unreferenced local variable
+  faction.cpp
+C:\EQMacEmu\common\eq_stream_factory.cpp(76,15): warning C4244: '=': conversion from 'SOCKET' to 'int', possible loss of data
+C:\EQMacEmu\common\eq_stream_factory.cpp(82,3): warning C4996: 'close': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _close. See online help for details.
+C:\EQMacEmu\common\eq_stream_factory.cpp(435,50): warning C4267: '=': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\extprofile.cpp)
+  fastmath.cpp
+C:\EQMacEmu\common\fastmath.cpp(17,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  file_util.cpp
+  guild_base.cpp
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\eqtime.cpp)
+C:\EQMacEmu\common\eqtime.cpp(76,21): warning C4244: 'initializing': conversion from 'time_t' to 'unsigned long', possible loss of data
+C:\EQMacEmu\common\eqtime.cpp(121,54): warning C4244: '=': conversion from 'unsigned long' to 'uint16', possible loss of data
+  inventory_profile.cpp
+  ipc_mutex.cpp
+  item_data.cpp
+  item_instance.cpp
+  json_config.cpp
+  light_source.cpp
+  md5.cpp
+C:\EQMacEmu\common\item_data.cpp(25,56): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+  memory_buffer.cpp
+  memory_mapped_file.cpp
+C:\EQMacEmu\common\md5.cpp(36,50): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+  misc.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\item_instance.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\guild_base.cpp)
+C:\EQMacEmu\common\guild_base.cpp(242,72): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(243,72): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(244,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(268,80): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(534,27): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(605,27): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(606,30): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(645,26): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(679,30): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(796,27): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\guild_base.cpp(891,31): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+  misc_functions.cpp
+  mutex.cpp
+  mysql_request_result.cpp
+  mysql_request_row.cpp
+  opcode_map.cpp
+C:\EQMacEmu\common\misc.cpp(124,23): warning C4244: '-=': conversion from '__int64' to 'int', possible loss of data
+C:\EQMacEmu\common\misc.cpp(148,23): warning C4244: '-=': conversion from '__int64' to 'int', possible loss of data
+  opcodemgr.cpp
+C:\EQMacEmu\common\misc.cpp(181,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\common\misc.cpp(296,33): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned long', possible loss of data
+C:\EQMacEmu\common\misc.cpp(361,14): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+  packet_dump.cpp
+C:\EQMacEmu\common\mysql_request_result.cpp(76,18): warning C4018: '>=': signed/unsigned mismatch
+C:\EQMacEmu\common\mysql_request_result.cpp(84,18): warning C4018: '>=': signed/unsigned mismatch
+C:\EQMacEmu\common\misc_functions.cpp(108,18): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  packet_dump_file.cpp
+C:\EQMacEmu\common\mutex.cpp(39,27): warning C4996: 'GetVersionExA': was declared deprecated
+C:\EQMacEmu\common\mutex.cpp(43,9): warning C4996: 'GetVersionExA': was declared deprecated
+  packet_functions.cpp
+  proc_launcher.cpp
+  ptimer.cpp
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(288,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(288,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(349,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(349,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(357,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(357,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(395,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(395,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(527,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(527,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(550,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(550,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(615,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(615,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(677,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(677,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(736,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(736,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(878,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(878,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(934,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(934,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(943,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(943,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(954,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(954,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(990,36): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(990,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1023,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1023,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1098,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1098,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1109,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+C:\EQMacEmu\common\../common/servertalk.h(1109,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\packet_dump.cpp)
+  races.cpp
+  rdtsc.cpp
+  rulesys.cpp
+  say_link.cpp
+  sha1.cpp
+  shareddb.cpp
+  skills.cpp
+  spdat.cpp
+  strings.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\ptimer.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\rulesys.cpp(174,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\ruletypes.h(43,1): warning C4305: '=': truncation from 'double' to 'float' (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\ruletypes.h(69,1): warning C4305: '=': truncation from 'double' to 'float' (compiling source file C:\EQMacEmu\common\rulesys.cpp)
+C:\EQMacEmu\common\rulesys.cpp(339,34): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\rulesys.cpp(364,30): warning C4267: 'initializing': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+  struct_strategy.cpp
+  textures.cpp
+  tcp_connection.cpp
+C:\EQMacEmu\common\../zone/zonedb.h(84,29): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\../zone/zonedb.h(84,29): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\../zone/zonedb.h(90,36): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\say_link.cpp)
+C:\EQMacEmu\common\../zone/zonedb.h(90,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\say_link.cpp)
+  tcp_server.cpp
+  timeoutmgr.cpp
+C:\EQMacEmu\common\strings.cpp(400,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\common\strings.cpp(427,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  timer.cpp
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\loottable.h(39,26): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\loottable.h(39,26): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\loottable.h(56,25): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\loottable.h(56,25): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\shareddb.cpp)
+C:\EQMacEmu\common\shareddb.cpp(261,49): warning C4244: 'argument': conversion from 'uint16' to 'int8', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(295,30): warning C4244: 'argument': conversion from 'uint16' to 'int8', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(500,27): warning C4244: '=': conversion from 'unsigned long' to 'uint8', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(590,29): warning C4244: '=': conversion from 'unsigned long' to 'int16', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(629,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(630,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(1249,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(1250,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(1675,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\common\shareddb.cpp(1676,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  unix.cpp
+  uuid.cpp
+C:\EQMacEmu\common\tcp_connection.cpp(589,16): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+C:\EQMacEmu\common\timer.cpp(94,16): warning C4018: '>': signed/unsigned mismatch
+C:\EQMacEmu\common\timer.cpp(198,116): warning C4244: '=': conversion from '_Rep' to 'uint32', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+C:\EQMacEmu\common\timer.cpp(262,17): warning C4244: '=': conversion from 'time_t' to 'long', possible loss of data
+  worldconn.cpp
+  xml_parser.cpp
+  platform.cpp
+  process.cpp
+  jsoncpp.cpp
+  patches.cpp
+  mac.cpp
+  mac_limits.cpp
+  Base64.cpp
+C:\EQMacEmu\common\../common/emu_tcp_connection.h(23,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/emu_tcp_connection.h(23,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+  File.cpp
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\../common/eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(288,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(288,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(349,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(349,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(357,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(357,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(395,9): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(395,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(527,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(527,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(550,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(550,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(615,8): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(615,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(677,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(677,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(736,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(736,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(878,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(878,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(934,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(934,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(943,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(943,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(954,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(954,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(990,36): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(990,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1023,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1023,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1098,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1098,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1109,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\servertalk.h(1109,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\worldconn.cpp)
+C:\EQMacEmu\common\worldconn.cpp(50,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+  MemFile.cpp
+  Parse.cpp
+  socket_include.cpp
+  Utility.cpp
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\../eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+  StackWalker.cpp
+C:\EQMacEmu\common\patches\mac_structs.h(199,15): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(199,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(213,17): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(213,17): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(350,42): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(350,42): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(393,44): warning C4200: nonstandard extension used: zero-sized array in struct/union (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac_structs.h(393,44): message : This member will be ignored by a defaulted constructor or copy/move assignment operator (compiling source file C:\EQMacEmu\common\patches\mac.cpp)
+C:\EQMacEmu\common\patches\mac.cpp(432,19): warning C4309: '=': truncation of constant value
+C:\EQMacEmu\common\patches\mac.cpp(589,73): warning C4267: 'initializing': conversion from 'size_t' to 'int16', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(628,131): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(629,24): warning C4244: '=': conversion from 'int16' to 'unsigned char', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(644,73): warning C4267: 'initializing': conversion from 'size_t' to 'int16', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(681,130): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(682,24): warning C4244: '=': conversion from 'int16' to 'unsigned char', possible loss of data
+C:\EQMacEmu\common\patches\mac.cpp(866,33): warning C4244: '=': conversion from 'int16' to 'uint8', possible loss of data
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+C:\EQMacEmu\common\StackWalker\StackWalker.cpp(1206,7): warning C4996: 'GetVersionExA': was declared deprecated
+  common.vcxproj -> C:\EQMacEmu\Build\bin\RelWithDebInfo\common.lib

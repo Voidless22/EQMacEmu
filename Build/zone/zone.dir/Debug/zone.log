@@ -1,0 +1,123 @@
+﻿  command.cpp
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(386,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(386,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(841,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(841,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1058,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1058,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1151,15): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1151,15): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1477,33): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1477,33): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1813,21): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(1813,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2157,21): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2157,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2213,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2213,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2237,35): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2237,35): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2379,19): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/eq_packet_structs.h(2379,19): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\zonedump.h(165,24): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\zonedump.h(165,24): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(288,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(288,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(349,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(349,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(357,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(357,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(395,9): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(395,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(527,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(527,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(550,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(550,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(615,8): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(615,8): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(677,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(677,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(736,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(736,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(878,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(878,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(934,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(934,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(943,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(943,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(954,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(954,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(990,36): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(990,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(1023,21): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(1023,21): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(1098,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(1098,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\../common/servertalk.h(1109,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\../common/servertalk.h(1109,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\zonedb.h(84,29): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\zonedb.h(84,29): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\zonedb.h(90,36): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\zone\zonedb.h(90,36): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\hate_list.h(85,21): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\zone\mob.h(743,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\zone\client.h(756,82): warning C4018: '>=': signed/unsigned mismatch
+C:\EQMacEmu\common\../common/emu_tcp_connection.h(23,9): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\EQMacEmu\common\../common/emu_tcp_connection.h(23,9): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+C:\EQMacEmu\zone\command.cpp(1929,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(1930,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(1932,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(1934,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(1936,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(1938,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(2687,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\EQMacEmu\zone\command.cpp(2729,108): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(2749,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(2836,34): warning C4244: 'argument': conversion from 'unsigned long' to 'int8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3151,28): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3156,15): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3161,15): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3214,12): warning C4244: '=': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3222,73): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3224,47): warning C4244: 'argument': conversion from 'uint16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3465,43): warning C4244: 'argument': conversion from 'int16' to 'uint8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(3542,68): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(4811,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(4825,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(4834,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(4835,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(4836,35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(5243,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(5243,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(5243,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(5857,78): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(6719,26): warning C4244: 'argument': conversion from 'int16' to 'int8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(6761,26): warning C4244: 'argument': conversion from 'int16' to 'int8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(7031,67): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(7213,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\zone\command.cpp(8079,10): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(8114,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(8115,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9556,105): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9614,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9618,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9625,22): warning C4018: '<': signed/unsigned mismatch
+C:\EQMacEmu\zone\command.cpp(9695,66): warning C4244: 'argument': conversion from 'int16' to 'int8', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9964,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9992,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(9996,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10045,19): warning C4244: 'initializing': conversion from 'uint32' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10046,24): warning C4244: 'initializing': conversion from 'uint32' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10047,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10051,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10053,14): warning C4244: 'initializing': conversion from 'uint32' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10055,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10087,17): warning C4018: '<': signed/unsigned mismatch
+C:\EQMacEmu\zone\command.cpp(10181,17): warning C4018: '<': signed/unsigned mismatch
+C:\EQMacEmu\zone\command.cpp(10271,3): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10330,70): warning C4267: 'argument': conversion from 'size_t' to 'uint32', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10449,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10713,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10726,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\EQMacEmu\zone\command.cpp(10736,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  zone.vcxproj -> C:\EQMacEmu\Build\bin\Debug\zone.exe

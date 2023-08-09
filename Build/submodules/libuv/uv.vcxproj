@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CEB71D1C-AA30-3A12-B57D-8C9BF4F697C2}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>uv</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EQMacEmu\Build\submodules\libuv\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">uv.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">uv</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EQMacEmu\Build\submodules\libuv\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">uv.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">uv</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EQMacEmu\Build\submodules\libuv\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">uv.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">uv</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EQMacEmu\Build\submodules\libuv\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">uv.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">uv</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="Debug";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"Debug\";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EQMacEmu/Build/submodules/libuv/Debug/uv.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EQMacEmu/Build/submodules/libuv/Debug/uv.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="Release";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"Release\";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EQMacEmu/Build/submodules/libuv/Release/uv.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EQMacEmu/Build/submodules/libuv/Release/uv.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="MinSizeRel";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"MinSizeRel\";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EQMacEmu/Build/submodules/libuv/MinSizeRel/uv.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EQMacEmu/Build/submodules/libuv/MinSizeRel/uv.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="RelWithDebInfo";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0600;BUILDING_UV_SHARED=1;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"RelWithDebInfo\";uv_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\submodules\libuv\src;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;user32.lib;userenv.lib;ws2_32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/EQMacEmu/Build/submodules/libuv/RelWithDebInfo/uv.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/EQMacEmu/Build/submodules/libuv/RelWithDebInfo/uv.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EQMacEmu\submodules\libuv\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/EQMacEmu/submodules/libuv/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/submodules/libuv/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EQMacEmu\Build\submodules\libuv\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/EQMacEmu/submodules/libuv/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/submodules/libuv/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EQMacEmu\Build\submodules\libuv\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/EQMacEmu/submodules/libuv/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/submodules/libuv/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EQMacEmu\Build\submodules\libuv\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/EQMacEmu/submodules/libuv/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/submodules/libuv/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EQMacEmu\Build\submodules\libuv\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\fs-poll.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\idna.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\inet.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\strscpy.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\threadpool.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\timer.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\uv-common.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\uv-data-getter-setters.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\version.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\async.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\core.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\detect-wakeup.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\dl.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\error.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\fs.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\fs-event.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\getaddrinfo.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\getnameinfo.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\handle.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\loop-watcher.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\pipe.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\thread.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\poll.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\process.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\process-stdio.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\signal.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\snprintf.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\stream.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\tcp.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\tty.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\udp.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\util.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\winapi.c" />
+    <ClCompile Include="C:\EQMacEmu\submodules\libuv\src\win\winsock.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\EQMacEmu\Build\ZERO_CHECK.vcxproj">
+      <Project>{93B3739E-5DE2-3D26-936D-D4538009B65A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

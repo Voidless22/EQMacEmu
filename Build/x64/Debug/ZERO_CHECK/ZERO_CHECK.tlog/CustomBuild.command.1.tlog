@@ -1,0 +1,10 @@
+^C:\EQMACEMU\BUILD\CMAKEFILES\45E163B8112C09639111C4985F775E17\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/EQMacEmu/Build/EQEmu.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

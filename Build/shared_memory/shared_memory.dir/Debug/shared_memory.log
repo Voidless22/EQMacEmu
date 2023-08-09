@@ -1,0 +1,9 @@
+﻿  Building Custom Rule C:/EQMacEmu/shared_memory/CMakeLists.txt
+  CMake does not need to re-run because C:/EQMacEmu/Build/shared_memory/CMakeFiles/generate.stamp is up-to-date.
+  base_data.cpp
+  items.cpp
+  loot.cpp
+  main.cpp
+  npc_faction.cpp
+  spells.cpp
+  skill_caps.cpp

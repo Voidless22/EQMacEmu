@@ -1,0 +1,10 @@
+﻿  Building Custom Rule C:/EQMacEmu/loginserver/CMakeLists.txt
+  CMake does not need to re-run because C:/EQMacEmu/Build/loginserver/CMakeFiles/generate.stamp is up-to-date.
+  client.cpp
+  client_manager.cpp
+  config.cpp
+  database.cpp
+  eq_crypto.cpp
+  main.cpp
+  server_manager.cpp
+  world_server.cpp

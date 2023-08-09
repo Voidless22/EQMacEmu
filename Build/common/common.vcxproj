@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2FBB48B6-64A4-3DFB-864A-F02B28D39B0B}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>common</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EQMacEmu\Build\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">common.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">common</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EQMacEmu\Build\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">common.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">common</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EQMacEmu\Build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">common.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">common</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EQMacEmu\Build\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">common.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">common</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CRASH_LOGGING;GLM_FORCE_RADIANS;GLM_FORCE_CTOR_INIT;GLM_ENABLE_EXPERIMENTAL;COMMANDS_LOGGING;EQEMU_USE_OPENSSL;BUILD_LOGGING;LUA_EQEMU;SANITIZE_LUA_LIBS;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\EQMacEmu\common\Patches;C:\EQMacEmu\common\SocketLib;C:\EQMacEmu\common\StackWalker;C:\EQMacEmu\common\TinyXML;C:\EQMacEmu\Build\libs\zlibng;C:\EQMacEmu\dependencies\mysql_x64\include;C:\EQMacEmu\libs\zlibng;C:\local\boost_1_81_0;C:\EQMacEmu\submodules\glm;C:\EQMacEmu\submodules\cereal\include;C:\EQMacEmu\submodules\fmt\include;C:\EQMacEmu\submodules\libuv\include;C:\EQMacEmu\submodules\recastnavigation\DebugUtils\Include;C:\EQMacEmu\submodules\recastnavigation\Detour\Include;C:\EQMacEmu\submodules\recastnavigation\DetourCrowd\Include;C:\EQMacEmu\submodules\recastnavigation\DetourTileCache\Include;C:\EQMacEmu\submodules\recastnavigation\Recast\Include;C:\EQMacEmu\submodules\websocketpp;C:\Strawberry\c\include;C:\EQMacEmu\dependencies\luaj_x64\src;C:\EQMacEmu\libs\luabind;C:\EQMacEmu\dependencies\curl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\EQMacEmu\common\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/EQMacEmu/common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\EQMacEmu\Build\common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/EQMacEmu/common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\EQMacEmu\Build\common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/EQMacEmu/common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\EQMacEmu\Build\common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/EQMacEmu/common/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/EQMacEmu -BC:/EQMacEmu/Build --check-stamp-file C:/EQMacEmu/Build/common/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\EQMacEmu\Build\common\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\EQMacEmu\common\base_packet.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\classes.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\cli\eqemu_command_handler.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\condition.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\crash.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\crc16.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\crc32.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\database\database_dump_service.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\database.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\dbcore.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_constants.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_limits.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_opcodes.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_tcp_connection.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_tcp_server.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\emu_versions.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqdb.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqdb_res.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqemu_exception.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqemu_config.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqemu_logsys.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_limits.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_packet.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_stream.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_stream_factory.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_stream_ident.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eq_stream_proxy.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\eqtime.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\extprofile.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\faction.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\fastmath.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\file_util.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\guild_base.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\inventory_profile.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\ipc_mutex.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\item_data.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\item_instance.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\json_config.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\light_source.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\md5.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\memory_buffer.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\memory_mapped_file.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\misc.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\misc_functions.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\mutex.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\mysql_request_result.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\mysql_request_row.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\opcode_map.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\opcodemgr.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\packet_dump.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\packet_dump_file.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\packet_functions.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\proc_launcher.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\ptimer.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\races.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\rdtsc.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\rulesys.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\say_link.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\sha1.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\shareddb.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\skills.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\spdat.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\strings.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\struct_strategy.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\textures.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tcp_connection.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tcp_server.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\timeoutmgr.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\timer.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\unix.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\uuid.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\worldconn.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\xml_parser.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\platform.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\process\process.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\json\jsoncpp.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\patches\patches.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\patches\mac.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\patches\mac_limits.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\Base64.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\File.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\MemFile.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\Parse.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\socket_include.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\SocketLib\Utility.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\StackWalker\StackWalker.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tinyxml\tinystr.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="C:\EQMacEmu\common\tinyxml\tinyxmlparser.cpp" />
+    <ClInclude Include="C:\EQMacEmu\common\additive_lagged_fibonacci_engine.h" />
+    <ClInclude Include="C:\EQMacEmu\common\any.h" />
+    <ClInclude Include="C:\EQMacEmu\common\base_packet.h" />
+    <ClInclude Include="C:\EQMacEmu\common\base_data.h" />
+    <ClInclude Include="C:\EQMacEmu\common\bodytypes.h" />
+    <ClInclude Include="C:\EQMacEmu\common\chat_oplist.h" />
+    <ClInclude Include="C:\EQMacEmu\common\classes.h" />
+    <ClInclude Include="C:\EQMacEmu\common\cli\argh.h" />
+    <ClInclude Include="C:\EQMacEmu\common\cli\eqemu_command_handler.h" />
+    <ClInclude Include="C:\EQMacEmu\common\cli\terminal_color.hpp" />
+    <ClInclude Include="C:\EQMacEmu\common\database\database_dump_service.h" />
+    <ClInclude Include="C:\EQMacEmu\common\condition.h" />
+    <ClInclude Include="C:\EQMacEmu\common\crash.h" />
+    <ClInclude Include="C:\EQMacEmu\common\crc16.h" />
+    <ClInclude Include="C:\EQMacEmu\common\crc32.h" />
+    <ClInclude Include="C:\EQMacEmu\common\data_verification.h" />
+    <ClInclude Include="C:\EQMacEmu\common\database.h" />
+    <ClInclude Include="C:\EQMacEmu\common\database_schema.h" />
+    <ClInclude Include="C:\EQMacEmu\common\dbcore.h" />
+    <ClInclude Include="C:\EQMacEmu\common\deity.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_constants.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_limits.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_opcodes.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_oplist.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_tcp_connection.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_tcp_server.h" />
+    <ClInclude Include="C:\EQMacEmu\common\emu_versions.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_constants.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_packet_structs.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqdb.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqdb_res.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqemu_exception.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqemu_config.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqemu_config_elements.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqemu_logsys.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqemu_logsys_log_aliases.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_limits.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_packet.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_factory.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_ident.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_intf.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_locator.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_proxy.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eq_stream_type.h" />
+    <ClInclude Include="C:\EQMacEmu\common\eqtime.h" />
+    <ClInclude Include="C:\EQMacEmu\common\errmsg.h" />
+    <ClInclude Include="C:\EQMacEmu\common\extprofile.h" />
+    <ClInclude Include="C:\EQMacEmu\common\faction.h" />
+    <ClInclude Include="C:\EQMacEmu\common\fastmath.h" />
+    <ClInclude Include="C:\EQMacEmu\common\features.h" />
+    <ClInclude Include="C:\EQMacEmu\common\file_util.h" />
+    <ClInclude Include="C:\EQMacEmu\common\fixed_memory_hash_set.h" />
+    <ClInclude Include="C:\EQMacEmu\common\fixed_memory_variable_hash_set.h" />
+    <ClInclude Include="C:\EQMacEmu\common\global_define.h" />
+    <ClInclude Include="C:\EQMacEmu\common\guild_base.h" />
+    <ClInclude Include="C:\EQMacEmu\common\guilds.h" />
+    <ClInclude Include="C:\EQMacEmu\common\inventory_profile.h" />
+    <ClInclude Include="C:\EQMacEmu\common\ipc_mutex.h" />
+    <ClInclude Include="C:\EQMacEmu\common\item_data.h" />
+    <ClInclude Include="C:\EQMacEmu\common\item_fieldlist.h" />
+    <ClInclude Include="C:\EQMacEmu\common\item_instance.h" />
+    <ClInclude Include="C:\EQMacEmu\common\json_config.h" />
+    <ClInclude Include="C:\EQMacEmu\common\languages.h" />
+    <ClInclude Include="C:\EQMacEmu\common\light_source.h" />
+    <ClInclude Include="C:\EQMacEmu\common\linked_list.h" />
+    <ClInclude Include="C:\EQMacEmu\common\loottable.h" />
+    <ClInclude Include="C:\EQMacEmu\common\md5.h" />
+    <ClInclude Include="C:\EQMacEmu\common\memory_buffer.h" />
+    <ClInclude Include="C:\EQMacEmu\common\memory_mapped_file.h" />
+    <ClInclude Include="C:\EQMacEmu\common\misc.h" />
+    <ClInclude Include="C:\EQMacEmu\common\misc_functions.h" />
+    <ClInclude Include="C:\EQMacEmu\common\mutex.h" />
+    <ClInclude Include="C:\EQMacEmu\common\mysql_request_result.h" />
+    <ClInclude Include="C:\EQMacEmu\common\mysql_request_row.h" />
+    <ClInclude Include="C:\EQMacEmu\common\op_codes.h" />
+    <ClInclude Include="C:\EQMacEmu\common\opcodemgr.h" />
+    <ClInclude Include="C:\EQMacEmu\common\packet_dump.h" />
+    <ClInclude Include="C:\EQMacEmu\common\packet_dump_file.h" />
+    <ClInclude Include="C:\EQMacEmu\common\packet_functions.h" />
+    <ClInclude Include="C:\EQMacEmu\common\platform.h" />
+    <ClInclude Include="C:\EQMacEmu\common\process\process.h" />
+    <ClInclude Include="C:\EQMacEmu\common\proc_launcher.h" />
+    <ClInclude Include="C:\EQMacEmu\common\profiler.h" />
+    <ClInclude Include="C:\EQMacEmu\common\ptimer.h" />
+    <ClInclude Include="C:\EQMacEmu\common\queue.h" />
+    <ClInclude Include="C:\EQMacEmu\common\races.h" />
+    <ClInclude Include="C:\EQMacEmu\common\random.h" />
+    <ClInclude Include="C:\EQMacEmu\common\rdtsc.h" />
+    <ClInclude Include="C:\EQMacEmu\common\rulesys.h" />
+    <ClInclude Include="C:\EQMacEmu\common\ruletypes.h" />
+    <ClInclude Include="C:\EQMacEmu\common\say_link.h" />
+    <ClInclude Include="C:\EQMacEmu\common\seperator.h" />
+    <ClInclude Include="C:\EQMacEmu\common\servertalk.h" />
+    <ClInclude Include="C:\EQMacEmu\common\sha1.h" />
+    <ClInclude Include="C:\EQMacEmu\common\shareddb.h" />
+    <ClInclude Include="C:\EQMacEmu\common\skills.h" />
+    <ClInclude Include="C:\EQMacEmu\common\spdat.h" />
+    <ClInclude Include="C:\EQMacEmu\common\strings.h" />
+    <ClInclude Include="C:\EQMacEmu\common\struct_strategy.h" />
+    <ClInclude Include="C:\EQMacEmu\common\textures.h" />
+    <ClInclude Include="C:\EQMacEmu\common\tcp_basic_server.h" />
+    <ClInclude Include="C:\EQMacEmu\common\tcp_connection.h" />
+    <ClInclude Include="C:\EQMacEmu\common\tcp_server.h" />
+    <ClInclude Include="C:\EQMacEmu\common\timeoutmgr.h" />
+    <ClInclude Include="C:\EQMacEmu\common\timer.h" />
+    <ClInclude Include="C:\EQMacEmu\common\types.h" />
+    <ClInclude Include="C:\EQMacEmu\common\unix.h" />
+    <ClInclude Include="C:\EQMacEmu\common\uuid.h" />
+    <ClInclude Include="C:\EQMacEmu\common\version.h" />
+    <ClInclude Include="C:\EQMacEmu\common\worldconn.h" />
+    <ClInclude Include="C:\EQMacEmu\common\xml_parser.h" />
+    <ClInclude Include="C:\EQMacEmu\common\zone_numbers.h" />
+    <ClInclude Include="C:\EQMacEmu\common\json\json.h" />
+    <ClInclude Include="C:\EQMacEmu\common\json\json-forwards.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\patches.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\mac.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\mac_limits.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\mac_ops.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\mac_structs.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\ss_declare.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\ss_define.h" />
+    <ClInclude Include="C:\EQMacEmu\common\patches\ss_register.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\Base64.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\File.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\IFile.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\MemFile.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\Parse.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\socket_include.h" />
+    <ClInclude Include="C:\EQMacEmu\common\SocketLib\Utility.h" />
+    <ClInclude Include="C:\EQMacEmu\common\StackWalker\StackWalker.h" />
+    <ClInclude Include="C:\EQMacEmu\common\tinyxml\tinystr.h" />
+    <ClInclude Include="C:\EQMacEmu\common\tinyxml\tinyxml.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_blocked_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_bug_reports_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_bugs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_char_create_combinations_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_char_create_point_allocations_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_alternate_abilities_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_bind_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_buffs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_corpse_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_corpses_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_currency_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_data_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_faction_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_inspect_messages_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_inventory_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_languages_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_material_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_memmed_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_pet_buffs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_pet_info_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_pet_inventory_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_skills_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_timers_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_character_zone_flags_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_damageshieldtypes_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_discovered_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_doors_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_faction_list_mod_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_faction_list_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_fishing_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_forage_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_friends_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_gm_ips_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_graveyard_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_grid_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_grid_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_ground_spawns_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_group_id_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_group_leaders_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_guild_members_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_guild_ranks_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_guilds_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_item_tick_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_level_exp_mods_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_logsys_categories_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_lootdrop_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_lootdrop_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_loottable_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_loottable_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_merchantlist_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_merchantlist_temp_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_emotes_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_faction_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_faction_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_spells_effects_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_spells_effects_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_spells_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_types_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_npc_types_tint_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_object_contents_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_object_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_petitions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_pets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_player_titlesets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_quest_globals_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_raid_details_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_raid_members_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_reports_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_respawn_times_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_rule_sets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_rule_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_saylink_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_skill_caps_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawn_condition_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawn_conditions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawn_events_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawn2_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawnentry_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spawngroup_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spell_globals_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_spells_new_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_start_zones_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_starting_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_titles_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_trader_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_tradeskill_recipe_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_tradeskill_recipe_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_traps_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_zone_points_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_zone_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_aa_actions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_aa_effects_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_aa_required_level_cost_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_account_flags_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_account_ip_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_account_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_account_rewards_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_altadv_vars_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base\base_base_data_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\bug_reports_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\bugs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\char_create_combinations_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\char_create_point_allocations_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_alternate_abilities_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_bind_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_buffs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_corpse_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_corpses_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_currency_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_data_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_faction_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_inspect_messages_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_inventory_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_languages_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_material_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_memmed_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_pet_buffs_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_pet_info_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_pet_inventory_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_skills_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_timers_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\character_zone_flags_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\damageshieldtypes_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\discovered_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\doors_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\faction_list_mod_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\faction_list_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\fishing_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\forage_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\friends_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\gm_ips_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\graveyard_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\grid_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\grid_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\ground_spawns_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\group_id_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\group_leaders_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\guild_members_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\guild_ranks_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\guilds_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\item_tick_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\level_exp_mods_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\logsys_categories_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\lootdrop_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\lootdrop_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\loottable_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\loottable_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\merchantlist_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\merchantlist_temp_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_emotes_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_faction_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_faction_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_spells_effects_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_spells_effects_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_spells_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_spells_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_types_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\npc_types_tint_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\object_contents_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\object_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\petitions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\pets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\player_titlesets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\quest_globals_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\raid_details_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\raid_members_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\reports_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\respawn_times_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\rule_sets_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\rule_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\saylink_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\skill_caps_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawn_condition_values_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawn_conditions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawn_events_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawn2_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawnentry_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spawngroup_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spell_globals_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\spells_new_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\start_zones_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\starting_items_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\titles_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\trader_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\tradeskill_recipe_entries_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\tradeskill_recipe_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\traps_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\zone_points_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\zone_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\aa_actions_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\aa_effects_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\aa_required_level_cost_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\account_flags_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\account_ip_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\account_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\account_rewards_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\altadv_vars_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\base_data_repository.h" />
+    <ClInclude Include="C:\EQMacEmu\common\repositories\blocked_spells_repository.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\EQMacEmu\Build\ZERO_CHECK.vcxproj">
+      <Project>{93B3739E-5DE2-3D26-936D-D4538009B65A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

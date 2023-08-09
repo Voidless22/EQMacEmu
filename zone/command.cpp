@@ -77,17 +77,17 @@ int commandcount;					// how many commands we have
 
 // this is the pointer to the dispatch function, updated once
 // init has been performed to point at the real function
-int(*command_dispatch)(Client *, char const *) = command_notavail;
+int(*command_dispatch)(Client*, char const*) = command_notavail;
 
 
-void command_bestz(Client *c, const Seperator *message);
-void command_pf(Client *c, const Seperator *message);
+void command_bestz(Client* c, const Seperator* message);
+void command_pf(Client* c, const Seperator* message);
 
-std::map<std::string, CommandRecord *> commandlist;
+std::map<std::string, CommandRecord*> commandlist;
 std::map<std::string, std::string> commandaliases;
 
 //All allocated CommandRecords get put in here so they get deleted on shutdown
-LinkedList<CommandRecord *> cleanup_commandlist;
+LinkedList<CommandRecord*> cleanup_commandlist;
 
 /*
 * command_notavail
@@ -97,7 +97,7 @@ LinkedList<CommandRecord *> cleanup_commandlist;
 *	not used
 *
 */
-int command_notavail(Client *c, const char *message)
+int command_notavail(Client* c, const char* message)
 {
 	c->Message(CC_Red, "Commands not available.");
 	return -1;
@@ -148,307 +148,308 @@ int command_init(void)
 
 	if
 		(
-		command_add("advnpcspawn", "[maketype|makegroup|addgroupentry|addgroupspawn][removegroupspawn|movespawn|editgroupbox|cleargroupbox].", AccountStatus::GMImpossible, command_advnpcspawn) ||
-		command_add("aggro", "(range) [-v] - Display aggro information for all mobs 'range' distance from your target. -v is verbose faction info.", AccountStatus::GMStaff, command_aggro) ||
-		command_add("aggrozone", "[aggro] [0/1: Enforce ignore distance. If 0 or not set, all will come] - Aggro every mob in the zone with X aggro. Default is 0. Not recommend if you're not invulnerable.", AccountStatus::GMImpossible, command_aggrozone) ||
-		command_add("ai", "[factionid/spellslist/con/guard/roambox/stop/start] - Modify AI on NPC target.", AccountStatus::GMImpossible, command_ai) ||
-		command_add("altactivate", "[argument] - activates alternate advancement abilities, use altactivate help for more information.", AccountStatus::GMAreas, command_altactivate) ||
-		command_add("appearance", "[type] [value] - Send an appearance packet for you or your target.", AccountStatus::GMImpossible, command_appearance) ||
-		command_add("apply_shared_memory", "[shared_memory_name] - Tells every zone and world to apply a specific shared memory segment by name.", AccountStatus::GMImpossible, command_apply_shared_memory) ||
-		command_add("attack", "[targetname] - Make your NPC target attack targetname.", AccountStatus::QuestMaster, command_attack) ||
-		command_add("attackentity", "[entityid] - Make your NPC target attack target entity.", AccountStatus::QuestMaster, command_attackentity) ||
+			command_add("betabuff", "Buffs player to Level 25, along with providing a basic set of gear, spells and abilities.", 100, command_betabuff) ||
+			command_add("advnpcspawn", "[maketype|makegroup|addgroupentry|addgroupspawn][removegroupspawn|movespawn|editgroupbox|cleargroupbox].", AccountStatus::GMImpossible, command_advnpcspawn) ||
+			command_add("aggro", "(range) [-v] - Display aggro information for all mobs 'range' distance from your target. -v is verbose faction info.", AccountStatus::GMStaff, command_aggro) ||
+			command_add("aggrozone", "[aggro] [0/1: Enforce ignore distance. If 0 or not set, all will come] - Aggro every mob in the zone with X aggro. Default is 0. Not recommend if you're not invulnerable.", AccountStatus::GMImpossible, command_aggrozone) ||
+			command_add("ai", "[factionid/spellslist/con/guard/roambox/stop/start] - Modify AI on NPC target.", AccountStatus::GMImpossible, command_ai) ||
+			command_add("altactivate", "[argument] - activates alternate advancement abilities, use altactivate help for more information.", AccountStatus::GMAreas, command_altactivate) ||
+			command_add("appearance", "[type] [value] - Send an appearance packet for you or your target.", AccountStatus::GMImpossible, command_appearance) ||
+			command_add("apply_shared_memory", "[shared_memory_name] - Tells every zone and world to apply a specific shared memory segment by name.", AccountStatus::GMImpossible, command_apply_shared_memory) ||
+			command_add("attack", "[targetname] - Make your NPC target attack targetname.", AccountStatus::QuestMaster, command_attack) ||
+			command_add("attackentity", "[entityid] - Make your NPC target attack target entity.", AccountStatus::QuestMaster, command_attackentity) ||
 
-		command_add("ban", "[name][reason] - Ban by character name.", AccountStatus::GMAdmin, command_ban) ||
-		command_add("beard", "- Change the beard of your target.", AccountStatus::GMImpossible, command_beard) ||
-		command_add("beardcolor", "- Change the beard color of your target.", AccountStatus::GMImpossible, command_beardcolor) ||
-		command_add("bestz", "- Ask map for a good Z coord for your x,y coords.", AccountStatus::ApprenticeGuide, command_bestz) ||
-		command_add("bind", "- Sets your targets bind spot to their current location.", AccountStatus::SeniorGuide, command_bind) ||
-		command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
-		command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
+			command_add("ban", "[name][reason] - Ban by character name.", AccountStatus::GMAdmin, command_ban) ||
+			command_add("beard", "- Change the beard of your target.", AccountStatus::GMImpossible, command_beard) ||
+			command_add("beardcolor", "- Change the beard color of your target.", AccountStatus::GMImpossible, command_beardcolor) ||
+			command_add("bestz", "- Ask map for a good Z coord for your x,y coords.", AccountStatus::ApprenticeGuide, command_bestz) ||
+			command_add("bind", "- Sets your targets bind spot to their current location.", AccountStatus::SeniorGuide, command_bind) ||
+			command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
+			command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
 
-		command_add("castspell", "[spellid] [gm_override] [entityid] - Cast a spell. GM override bypasses resist and stacking checks. If entityid is specified, that NPC will cast a spell on the target mob.", AccountStatus::QuestMaster, command_castspell) ||
-		command_add("chat", "[channel num] [message] - Send a channel message to all zones.", AccountStatus::EQSupport, command_chat) ||
-		command_add("chattest", "[color] [loops] - Sends a test message with the specified color to yourself.", AccountStatus::GMCoder, command_chattest) ||
-		command_add("checklos", "- Check for line of sight to your target.", AccountStatus::GMStaff, command_checklos) ||
-		command_add("cleartimers", "- [timer] Clears one or all persistant timers on target.", AccountStatus::GMMgmt, command_cleartimers) ||
-		command_add("connectworldserver", "- Make zone attempt to connect to worldserver.", AccountStatus::GMTester, command_connectworldserver) ||
+			command_add("castspell", "[spellid] [gm_override] [entityid] - Cast a spell. GM override bypasses resist and stacking checks. If entityid is specified, that NPC will cast a spell on the target mob.", AccountStatus::QuestMaster, command_castspell) ||
+			command_add("chat", "[channel num] [message] - Send a channel message to all zones.", AccountStatus::EQSupport, command_chat) ||
+			command_add("chattest", "[color] [loops] - Sends a test message with the specified color to yourself.", AccountStatus::GMCoder, command_chattest) ||
+			command_add("checklos", "- Check for line of sight to your target.", AccountStatus::GMStaff, command_checklos) ||
+			command_add("cleartimers", "- [timer] Clears one or all persistant timers on target.", AccountStatus::GMMgmt, command_cleartimers) ||
+			command_add("connectworldserver", "- Make zone attempt to connect to worldserver.", AccountStatus::GMTester, command_connectworldserver) ||
 #ifdef WIN32
 #else
-		command_add("coredump", "Dumps a core log of any existing cores to view on web page.", AccountStatus::GMCoder, command_coredump) ||
+			command_add("coredump", "Dumps a core log of any existing cores to view on web page.", AccountStatus::GMCoder, command_coredump) ||
 #endif
-		command_add("corpse", "- Manipulate corpses, use with no arguments for help.", AccountStatus::EQSupport, command_corpse) ||
-		command_add("crashtest", "- Crash the zoneserver.", AccountStatus::GMImpossible, command_crashtest) ||
-		command_add("cvs", "- Summary of client versions currently online.", AccountStatus::GMCoder, command_cvs) ||
+			command_add("corpse", "- Manipulate corpses, use with no arguments for help.", AccountStatus::EQSupport, command_corpse) ||
+			command_add("crashtest", "- Crash the zoneserver.", AccountStatus::GMImpossible, command_crashtest) ||
+			command_add("cvs", "- Summary of client versions currently online.", AccountStatus::GMCoder, command_cvs) ||
 
-		command_add("damage", "[amount] - Damage your target.", AccountStatus::QuestMaster, command_damage) ||
-		command_add("damagetotals", "Displays a list of what has damaged your NPC target.", AccountStatus::GMAdmin, command_damagetotals) ||
-		command_add("date", "[yyyy] [mm] [dd] [HH] [MM] - Set EQ time.", AccountStatus::GMImpossible, command_date) ||
-		command_add("dbspawn2", "[spawngroup] [respawn] [variance] - Spawn an NPC from a predefined row in the spawn2 table.", AccountStatus::QuestMaster, command_dbspawn2) ||
-		command_add("delacct", "[accountname] - Delete an account.", AccountStatus::GMImpossible, command_delacct) ||
-		command_add("deletegraveyard", "[zone name] - Deletes the graveyard for the specified zone.", AccountStatus::GMImpossible, command_deletegraveyard) ||
-		command_add("depop", "- Depop your NPC target.", AccountStatus::GMLeadAdmin, command_depop) ||
-		command_add("depopzone", "- Depop the zone.", AccountStatus::GMAreas, command_depopzone) ||
-		command_add("disablerecipe", "[recipe_id] - Disables a recipe using the recipe id.", AccountStatus::GMImpossible, command_disablerecipe) ||
-		command_add("distance", "- Reports the distance between you and your target.", AccountStatus::Steward, command_distance) ||
-		command_add("d1", "[type] [spell] [damage] - Send an OP_Action packet with the specified values.", AccountStatus::GMImpossible, command_d1) ||
-		command_add("doanim", "[animnum] [type] - Send an EmoteAnim for you or your target.", AccountStatus::GMStaff, command_doanim) ||
+			command_add("damage", "[amount] - Damage your target.", AccountStatus::QuestMaster, command_damage) ||
+			command_add("damagetotals", "Displays a list of what has damaged your NPC target.", AccountStatus::GMAdmin, command_damagetotals) ||
+			command_add("date", "[yyyy] [mm] [dd] [HH] [MM] - Set EQ time.", AccountStatus::GMImpossible, command_date) ||
+			command_add("dbspawn2", "[spawngroup] [respawn] [variance] - Spawn an NPC from a predefined row in the spawn2 table.", AccountStatus::QuestMaster, command_dbspawn2) ||
+			command_add("delacct", "[accountname] - Delete an account.", AccountStatus::GMImpossible, command_delacct) ||
+			command_add("deletegraveyard", "[zone name] - Deletes the graveyard for the specified zone.", AccountStatus::GMImpossible, command_deletegraveyard) ||
+			command_add("depop", "- Depop your NPC target.", AccountStatus::GMLeadAdmin, command_depop) ||
+			command_add("depopzone", "- Depop the zone.", AccountStatus::GMAreas, command_depopzone) ||
+			command_add("disablerecipe", "[recipe_id] - Disables a recipe using the recipe id.", AccountStatus::GMImpossible, command_disablerecipe) ||
+			command_add("distance", "- Reports the distance between you and your target.", AccountStatus::Steward, command_distance) ||
+			command_add("d1", "[type] [spell] [damage] - Send an OP_Action packet with the specified values.", AccountStatus::GMImpossible, command_d1) ||
+			command_add("doanim", "[animnum] [type] - Send an EmoteAnim for you or your target.", AccountStatus::GMStaff, command_doanim) ||
 
-		command_add("emote", "['name'/'world'/'zone'] [type] [message] - Send an emote message.", AccountStatus::GMStaff, command_emote) ||
-		command_add("emotesearch", "Searches NPC Emotes.", AccountStatus::GMStaff, command_emotesearch) ||
-		command_add("emoteview", "Lists all NPC Emotes.", AccountStatus::GMStaff, command_emoteview) ||
-		command_add("enablerecipe", "[recipe_id] - Enables a recipe using the recipe id.", AccountStatus::GMImpossible, command_enablerecipe) ||
-		command_add("equipitem", "[slotid(0-21)] - Equip the item on your cursor into the specified slot.", AccountStatus::GMLeadAdmin, command_equipitem) ||
-		command_add("expansion", "[accountname][expansion] - Sets the expansion value for the specified accounnt.", AccountStatus::GMLeadAdmin, command_expansion) ||
+			command_add("emote", "['name'/'world'/'zone'] [type] [message] - Send an emote message.", AccountStatus::GMStaff, command_emote) ||
+			command_add("emotesearch", "Searches NPC Emotes.", AccountStatus::GMStaff, command_emotesearch) ||
+			command_add("emoteview", "Lists all NPC Emotes.", AccountStatus::GMStaff, command_emoteview) ||
+			command_add("enablerecipe", "[recipe_id] - Enables a recipe using the recipe id.", AccountStatus::GMImpossible, command_enablerecipe) ||
+			command_add("equipitem", "[slotid(0-21)] - Equip the item on your cursor into the specified slot.", AccountStatus::GMLeadAdmin, command_equipitem) ||
+			command_add("expansion", "[accountname][expansion] - Sets the expansion value for the specified accounnt.", AccountStatus::GMLeadAdmin, command_expansion) ||
 
-		command_add("face", "- Change the face of your target.", AccountStatus::GMLeadAdmin, command_face) || 
-		command_add("falltest", "[+Z] sends you to your current loc plus the Z specified.", AccountStatus::GMImpossible, command_falltest) ||
-		command_add("fillbuffs", "Casts 15 buffs on the target for testing.", AccountStatus::QuestTroupe, command_fillbuffs) ||
-		command_add("findaliases", "[search term]- Searches for available command aliases, by alias or command", AccountStatus::ApprenticeGuide, command_findaliases) ||
-		command_add("findnpctype", "[search criteria] - Search database NPC types.", AccountStatus::GMStaff, command_findnpctype) ||
-		command_add("findspell", "[searchstring] - Search for a spell.", AccountStatus::Player, command_findspell) ||
-		command_add("findzone", "[search criteria] - Search database zones.", AccountStatus::QuestTroupe, command_findzone) ||
-		command_add("fixmob", "[race|gender|texture|helm|face|hair|haircolor|beard|beardcolor|heritage|tattoo|detail] [next|prev] - Manipulate appearance of your target.", AccountStatus::GMImpossible, command_fixmob) ||
-		command_add("flag", "[status] [acctname] - Refresh your admin status, or set an account's admin status if arguments provided.", AccountStatus::GMImpossible, command_flag) ||
-		command_add("flagedit", "- Edit zone flags on your target.", AccountStatus::GMMgmt, command_flagedit) ||
-		command_add("fleeinfo", "- Gives info about whether a NPC will flee or not, using the command issuer as top hate.", AccountStatus::QuestTroupe, command_fleeinfo) ||
-		command_add("flags", "- displays the flags of you or your target.", AccountStatus::EQSupport, command_flags) ||
-		command_add("flymode", "[0/1/2] - Set your or your player target's flymode to off/on/levitate.", AccountStatus::QuestTroupe, command_flymode) ||
-		command_add("fov", "- Check wether you're behind or in your target's field of view.", AccountStatus::QuestTroupe, command_fov) ||
-		command_add("freeze", "- Freeze your target.", AccountStatus::QuestMaster, command_freeze) ||
+			command_add("face", "- Change the face of your target.", AccountStatus::GMLeadAdmin, command_face) ||
+			command_add("falltest", "[+Z] sends you to your current loc plus the Z specified.", AccountStatus::GMImpossible, command_falltest) ||
+			command_add("fillbuffs", "Casts 15 buffs on the target for testing.", AccountStatus::QuestTroupe, command_fillbuffs) ||
+			command_add("findaliases", "[search term]- Searches for available command aliases, by alias or command", AccountStatus::ApprenticeGuide, command_findaliases) ||
+			command_add("findnpctype", "[search criteria] - Search database NPC types.", AccountStatus::GMStaff, command_findnpctype) ||
+			command_add("findspell", "[searchstring] - Search for a spell.", AccountStatus::Player, command_findspell) ||
+			command_add("findzone", "[search criteria] - Search database zones.", AccountStatus::QuestTroupe, command_findzone) ||
+			command_add("fixmob", "[race|gender|texture|helm|face|hair|haircolor|beard|beardcolor|heritage|tattoo|detail] [next|prev] - Manipulate appearance of your target.", AccountStatus::GMImpossible, command_fixmob) ||
+			command_add("flag", "[status] [acctname] - Refresh your admin status, or set an account's admin status if arguments provided.", AccountStatus::GMImpossible, command_flag) ||
+			command_add("flagedit", "- Edit zone flags on your target.", AccountStatus::GMMgmt, command_flagedit) ||
+			command_add("fleeinfo", "- Gives info about whether a NPC will flee or not, using the command issuer as top hate.", AccountStatus::QuestTroupe, command_fleeinfo) ||
+			command_add("flags", "- displays the flags of you or your target.", AccountStatus::EQSupport, command_flags) ||
+			command_add("flymode", "[0/1/2] - Set your or your player target's flymode to off/on/levitate.", AccountStatus::QuestTroupe, command_flymode) ||
+			command_add("fov", "- Check wether you're behind or in your target's field of view.", AccountStatus::QuestTroupe, command_fov) ||
+			command_add("freeze", "- Freeze your target.", AccountStatus::QuestMaster, command_freeze) ||
 
-		command_add("gassign", "[id] - Assign targetted NPC to predefined wandering grid id.", AccountStatus::GMImpossible, command_gassign) ||
-		command_add("gender", "[0/1/2] - Change your or your target's gender to male/female/neuter.", AccountStatus::QuestMaster, command_gender) ||
-		command_add("getvariable", "[varname] - Get the value of a variable from the database.", AccountStatus::GMCoder, command_getvariable) ||
-		command_add("ginfo", "- get group info on target.", AccountStatus::QuestTroupe, command_ginfo) ||
-		command_add("giveitem", "[itemid] [charges] - Summon an item onto your target's cursor. Charges are optional.", AccountStatus::GMLeadAdmin, command_giveitem) ||
-		command_add("givemoney", "[pp] [gp] [sp] [cp] - Gives specified amount of money to the target player.", AccountStatus::GMLeadAdmin, command_givemoney) ||
-		command_add("giveplayerfaction", "[factionid] [factionvalue] - Gives the target player faction with the given faction. (Acts as a hit).", AccountStatus::GMMgmt, command_giveplayerfaction) ||
-		command_add("globalview", "Lists all qglobals in cache if you were to do a quest with this target.", AccountStatus::GMStaff, command_globalview) ||
-		command_add("gm", "- Turn player target's or your GM flag on or off.", AccountStatus::GMStaff, command_gm) ||
-		command_add("gmdamage", "[amount] [skipaggro] - Damage your target. Skips most combat checks, including invul.", AccountStatus::QuestMaster, command_gmdamage) ||
-		command_add("gmspeed", "[on/off] - Turn GM speed hack on/off for you or your player target.", AccountStatus::GMLeadAdmin, command_gmspeed) ||
-		command_add("godmode", "[on/off] - Turns on/off hideme, gmspeed, invul, and flymode.", AccountStatus::GMMgmt, command_godmode) ||
-		command_add("goto", "[x] [y] [z] - Teleport to the provided coordinates or to your target.", AccountStatus::ApprenticeGuide, command_goto) ||
-		command_add("grid", "[add/delete] [grid_num] [wandertype] [pausetype] - Create/delete a wandering grid.", AccountStatus::GMImpossible, command_grid) ||
-		command_add("guild", "- Guild manipulation commands. Use argument help for more info.", AccountStatus::EQSupport, command_guild) ||
-		command_add("guildapprove", "[guildapproveid] - Approve a guild with specified ID (guild creator receives the id).", AccountStatus::EQSupport, command_guildapprove) ||
-		command_add("guildcreate", "[guildname] - Creates an approval setup for guild name specified.", AccountStatus::EQSupport, command_guildcreate) ||
-		command_add("guildlist", "[guildapproveid] - Lists character names who have approved the guild specified by the approve id.", AccountStatus::EQSupport, command_guildlist) ||
+			command_add("gassign", "[id] - Assign targetted NPC to predefined wandering grid id.", AccountStatus::GMImpossible, command_gassign) ||
+			command_add("gender", "[0/1/2] - Change your or your target's gender to male/female/neuter.", AccountStatus::QuestMaster, command_gender) ||
+			command_add("getvariable", "[varname] - Get the value of a variable from the database.", AccountStatus::GMCoder, command_getvariable) ||
+			command_add("ginfo", "- get group info on target.", AccountStatus::QuestTroupe, command_ginfo) ||
+			command_add("giveitem", "[itemid] [charges] - Summon an item onto your target's cursor. Charges are optional.", AccountStatus::GMLeadAdmin, command_giveitem) ||
+			command_add("givemoney", "[pp] [gp] [sp] [cp] - Gives specified amount of money to the target player.", AccountStatus::GMLeadAdmin, command_givemoney) ||
+			command_add("giveplayerfaction", "[factionid] [factionvalue] - Gives the target player faction with the given faction. (Acts as a hit).", AccountStatus::GMMgmt, command_giveplayerfaction) ||
+			command_add("globalview", "Lists all qglobals in cache if you were to do a quest with this target.", AccountStatus::GMStaff, command_globalview) ||
+			command_add("gm", "- Turn player target's or your GM flag on or off.", AccountStatus::GMStaff, command_gm) ||
+			command_add("gmdamage", "[amount] [skipaggro] - Damage your target. Skips most combat checks, including invul.", AccountStatus::QuestMaster, command_gmdamage) ||
+			command_add("gmspeed", "[on/off] - Turn GM speed hack on/off for you or your player target.", AccountStatus::GMLeadAdmin, command_gmspeed) ||
+			command_add("godmode", "[on/off] - Turns on/off hideme, gmspeed, invul, and flymode.", AccountStatus::GMMgmt, command_godmode) ||
+			command_add("goto", "[x] [y] [z] - Teleport to the provided coordinates or to your target.", AccountStatus::ApprenticeGuide, command_goto) ||
+			command_add("grid", "[add/delete] [grid_num] [wandertype] [pausetype] - Create/delete a wandering grid.", AccountStatus::GMImpossible, command_grid) ||
+			command_add("guild", "- Guild manipulation commands. Use argument help for more info.", AccountStatus::EQSupport, command_guild) ||
+			command_add("guildapprove", "[guildapproveid] - Approve a guild with specified ID (guild creator receives the id).", AccountStatus::EQSupport, command_guildapprove) ||
+			command_add("guildcreate", "[guildname] - Creates an approval setup for guild name specified.", AccountStatus::EQSupport, command_guildcreate) ||
+			command_add("guildlist", "[guildapproveid] - Lists character names who have approved the guild specified by the approve id.", AccountStatus::EQSupport, command_guildlist) ||
 
-		command_add("hair", "- Change the hair style of your target.", AccountStatus::GMImpossible, command_hair) ||
-		command_add("haircolor", "- Change the hair color of your target.", AccountStatus::GMImpossible, command_haircolor) ||
-		command_add("haste", "[percentage] - Set your haste percentage.", AccountStatus::GMLeadAdmin, command_haste) ||
-		command_add("hatelist", " - Display hate list for target.", AccountStatus::QuestTroupe, command_hatelist) ||
-		command_add("heal", "- Completely heal your target.", AccountStatus::GMMgmt, command_heal) ||
-		command_add("helm", "- Change the helm of your target.", AccountStatus::GMImpossible, command_helm) ||
-		command_add("help", "[search term] - List available commands and their description, specify partial command as argument to search.", AccountStatus::Player, command_help) ||
-		command_add("hideme", "[on/off] - Hide yourself from spawn lists.", AccountStatus::SeniorGuide, command_hideme) ||
-		command_add("hotfix", "[hotfix_name] - Reloads shared memory into a hotfix, equiv to load_shared_memory followed by apply_shared_memory", AccountStatus::GMImpossible, command_hotfix) ||
-		command_add("hp", "- Refresh your HP bar from the server.", AccountStatus::Max, command_hp) ||
+			command_add("hair", "- Change the hair style of your target.", AccountStatus::GMImpossible, command_hair) ||
+			command_add("haircolor", "- Change the hair color of your target.", AccountStatus::GMImpossible, command_haircolor) ||
+			command_add("haste", "[percentage] - Set your haste percentage.", AccountStatus::GMLeadAdmin, command_haste) ||
+			command_add("hatelist", " - Display hate list for target.", AccountStatus::QuestTroupe, command_hatelist) ||
+			command_add("heal", "- Completely heal your target.", AccountStatus::GMMgmt, command_heal) ||
+			command_add("helm", "- Change the helm of your target.", AccountStatus::GMImpossible, command_helm) ||
+			command_add("help", "[search term] - List available commands and their description, specify partial command as argument to search.", AccountStatus::Player, command_help) ||
+			command_add("hideme", "[on/off] - Hide yourself from spawn lists.", AccountStatus::SeniorGuide, command_hideme) ||
+			command_add("hotfix", "[hotfix_name] - Reloads shared memory into a hotfix, equiv to load_shared_memory followed by apply_shared_memory", AccountStatus::GMImpossible, command_hotfix) ||
+			command_add("hp", "- Refresh your HP bar from the server.", AccountStatus::Max, command_hp) ||
 
-		command_add("interrogateinv", "- use [help] argument for available options.", AccountStatus::GMLeadAdmin, command_interrogateinv) ||
-		command_add("interrupt", "[message id] [color] - Interrupt your casting. Arguments are optional.", AccountStatus::EQSupport, command_interrupt) ||
-		command_add("invul", "[on/off] - Turn player target's or your invulnerable flag on or off", AccountStatus::QuestTroupe, command_invul) ||
-		command_add("ipban", "[IP address] - Ban IP by character name.", AccountStatus::GMMgmt, command_ipban) ||
+			command_add("interrogateinv", "- use [help] argument for available options.", AccountStatus::GMLeadAdmin, command_interrogateinv) ||
+			command_add("interrupt", "[message id] [color] - Interrupt your casting. Arguments are optional.", AccountStatus::EQSupport, command_interrupt) ||
+			command_add("invul", "[on/off] - Turn player target's or your invulnerable flag on or off", AccountStatus::QuestTroupe, command_invul) ||
+			command_add("ipban", "[IP address] - Ban IP by character name.", AccountStatus::GMMgmt, command_ipban) ||
 #ifdef IPC
-		command_add("ipc", "- Toggle an NPC's interactive flag.", AccountStatus::GMImpossible, command_ipc) ||
+			command_add("ipc", "- Toggle an NPC's interactive flag.", AccountStatus::GMImpossible, command_ipc) ||
 #endif
-		command_add("iplookup", "[charname] - Look up IP address of charname.", AccountStatus::GMStaff, command_iplookup) ||
-		command_add("iteminfo", "- Get information about the item on your cursor.", AccountStatus::Guide, command_iteminfo) ||
-		command_add("itemsearch", "[search criteria] - Search for an item.", AccountStatus::GMAdmin, command_itemsearch) ||
+			command_add("iplookup", "[charname] - Look up IP address of charname.", AccountStatus::GMStaff, command_iplookup) ||
+			command_add("iteminfo", "- Get information about the item on your cursor.", AccountStatus::Guide, command_iteminfo) ||
+			command_add("itemsearch", "[search criteria] - Search for an item.", AccountStatus::GMAdmin, command_itemsearch) ||
 
-		command_add("keyring", "Displays target's keyring items.", AccountStatus::EQSupport, command_keyring) ||
-		command_add("kick", "[charname] - Disconnect charname.", AccountStatus::EQSupport, command_kick) ||
-		command_add("kill", "- Kill your target.", AccountStatus::GMLeadAdmin, command_kill) ||
+			command_add("keyring", "Displays target's keyring items.", AccountStatus::EQSupport, command_keyring) ||
+			command_add("kick", "[charname] - Disconnect charname.", AccountStatus::EQSupport, command_kick) ||
+			command_add("kill", "- Kill your target.", AccountStatus::GMLeadAdmin, command_kill) ||
 
-		command_add("lastname", "[new lastname] - Set your or your player target's lastname.", AccountStatus::EQSupport, command_lastname) ||
-		command_add("level", "[level] - Set your or your target's level.", AccountStatus::QuestTroupe, command_level) ||
-		command_add("listnpcs", "[name/range] - Search NPCs.", AccountStatus::EQSupport, command_listnpcs) ||
-		command_add("load_shared_memory", "[shared_memory_name] - Reloads shared memory and uses the input as output", AccountStatus::GMImpossible, command_load_shared_memory) ||
-		command_add("loc", "- Print out your or your target's current location and heading.", AccountStatus::Player, command_loc) ||
-		command_add("logs", "Manage anything to do with logs.", AccountStatus::GMCoder, command_logs) ||
-		command_add("logtest", "Performs log performance testing.", AccountStatus::GMImpossible, command_logtest) ||
+			command_add("lastname", "[new lastname] - Set your or your player target's lastname.", AccountStatus::EQSupport, command_lastname) ||
+			command_add("level", "[level] - Set your or your target's level.", AccountStatus::QuestTroupe, command_level) ||
+			command_add("listnpcs", "[name/range] - Search NPCs.", AccountStatus::EQSupport, command_listnpcs) ||
+			command_add("load_shared_memory", "[shared_memory_name] - Reloads shared memory and uses the input as output", AccountStatus::GMImpossible, command_load_shared_memory) ||
+			command_add("loc", "- Print out your or your target's current location and heading.", AccountStatus::Player, command_loc) ||
+			command_add("logs", "Manage anything to do with logs.", AccountStatus::GMCoder, command_logs) ||
+			command_add("logtest", "Performs log performance testing.", AccountStatus::GMImpossible, command_logtest) ||
 
-		command_add("makepet", "[level] [class] [race] [texture] - Make a pet.", AccountStatus::QuestMaster, command_makepet) ||
-		command_add("mana", "- Fill your or your target's mana.", AccountStatus::GMMgmt, command_mana) ||
-		command_add("manaburn", "- Use AA Wizard class skill manaburn on target.", AccountStatus::GMAreas, command_manaburn) ||
-		command_add("manastat", "- Report your or your target's cur/max mana.", AccountStatus::Guide, command_manastat) ||
-		command_add("maxskills", "Maxes skills for you.", AccountStatus::Guide, command_maxallskills) ||
-		command_add("memspell", "[slotid] [spellid] - Memorize spellid in the specified slot.", AccountStatus::GMAreas, command_memspell) ||
-		command_add("merchant_close_shop", "Closes a merchant shop.", AccountStatus::GMImpossible, command_merchantcloseshop) ||
-		command_add("merchant_open_shop", "Opens a merchants shop.", AccountStatus::GMImpossible, command_merchantopenshop) ||
-		command_add("modifynpcstat", "- Modifys a NPC's stats.", AccountStatus::GMImpossible, command_modifynpcstat) ||
-		command_add("motd", "[Message of the Day] - Set Message of the Day (leave empty to have no Message of the Day)", AccountStatus::GMAreas, command_motd) ||
-		command_add("movechar", "[charname] [zonename] - Move charname to zonename.", AccountStatus::GMStaff, command_movechar) ||
-		command_add("mule", "[account name] [0/1] - Toggles the mule status of the specified account ", AccountStatus::GMImpossible, command_mule) ||
-		command_add("mysql", "Mysql CLI, see 'help' for options.", AccountStatus::GMImpossible, command_mysql) ||
-		command_add("mysqltest", "Akkadius MySQL Bench Test.", AccountStatus::GMImpossible, command_mysqltest) ||
-		command_add("mystats", "- Show details about you or your pet.", AccountStatus::Guide, command_mystats) ||
+			command_add("makepet", "[level] [class] [race] [texture] - Make a pet.", AccountStatus::QuestMaster, command_makepet) ||
+			command_add("mana", "- Fill your or your target's mana.", AccountStatus::GMMgmt, command_mana) ||
+			command_add("manaburn", "- Use AA Wizard class skill manaburn on target.", AccountStatus::GMAreas, command_manaburn) ||
+			command_add("manastat", "- Report your or your target's cur/max mana.", AccountStatus::Guide, command_manastat) ||
+			command_add("maxskills", "Maxes skills for you.", AccountStatus::Guide, command_maxallskills) ||
+			command_add("memspell", "[slotid] [spellid] - Memorize spellid in the specified slot.", AccountStatus::GMAreas, command_memspell) ||
+			command_add("merchant_close_shop", "Closes a merchant shop.", AccountStatus::GMImpossible, command_merchantcloseshop) ||
+			command_add("merchant_open_shop", "Opens a merchants shop.", AccountStatus::GMImpossible, command_merchantopenshop) ||
+			command_add("modifynpcstat", "- Modifys a NPC's stats.", AccountStatus::GMImpossible, command_modifynpcstat) ||
+			command_add("motd", "[Message of the Day] - Set Message of the Day (leave empty to have no Message of the Day)", AccountStatus::GMAreas, command_motd) ||
+			command_add("movechar", "[charname] [zonename] - Move charname to zonename.", AccountStatus::GMStaff, command_movechar) ||
+			command_add("mule", "[account name] [0/1] - Toggles the mule status of the specified account ", AccountStatus::GMImpossible, command_mule) ||
+			command_add("mysql", "Mysql CLI, see 'help' for options.", AccountStatus::GMImpossible, command_mysql) ||
+			command_add("mysqltest", "Akkadius MySQL Bench Test.", AccountStatus::GMImpossible, command_mysqltest) ||
+			command_add("mystats", "- Show details about you or your pet.", AccountStatus::Guide, command_mystats) ||
 
-		command_add("name", "[newname] - Rename your player target.", AccountStatus::GMStaff, command_name) ||
-		command_add("netstats", "- Gets the network stats for a stream.", AccountStatus::GMCoder, command_netstats) ||
-		command_add("npccast", "[targetname/entityid] [spellid] - Causes NPC target to cast spellid on targetname/entityid.", AccountStatus::QuestMaster, command_npccast) ||
-		command_add("npcedit", "[column] [value] - Mega NPC editing command.", AccountStatus::GMImpossible, command_npcedit) ||
-		command_add("npcemote", "[message] - Make your NPC target emote a message.", AccountStatus::QuestMaster, command_npcemote) ||
-		command_add("npcloot", "[show/money/add/remove] [itemid/all/money: pp gp sp cp] - Manipulate the loot an NPC is carrying.", AccountStatus::QuestMaster, command_npcloot) ||
-		command_add("npcsay", "[message] - Make your NPC target say a message.", AccountStatus::QuestMaster, command_npcsay) ||
-		command_add("npcshout", "[message] - Make your NPC target shout a message.", AccountStatus::QuestMaster, command_npcshout) ||
-		command_add("npcspawn", "[create/add/update/remove/delete] - Manipulate spawn DB.", AccountStatus::GMImpossible, command_npcspawn) ||
-		command_add("npcstats", "- Show stats about target NPC.", AccountStatus::SeniorGuide, command_npcstats) ||
-		command_add("npctypecache", "[id] or all - Clears the npc type cache for either the id or all npcs.", AccountStatus::GMImpossible, command_npctypecache) ||
-		command_add("npctypespawn", "[npctypeid] [factionid] - Spawn an NPC from the db.", AccountStatus::QuestMaster, command_npctypespawn) ||
-		command_add("nukebuffs", "- Strip all buffs on you or your target.", AccountStatus::GMLeadAdmin, command_nukebuffs) ||
-		command_add("nukeitem", "[itemid] - Remove itemid from your player target's inventory.", AccountStatus::GMLeadAdmin, command_nukeitem) ||
-		command_add("numauths", "- TODO: describe this command.", AccountStatus::Max, command_numauths) ||
+			command_add("name", "[newname] - Rename your player target.", AccountStatus::GMStaff, command_name) ||
+			command_add("netstats", "- Gets the network stats for a stream.", AccountStatus::GMCoder, command_netstats) ||
+			command_add("npccast", "[targetname/entityid] [spellid] - Causes NPC target to cast spellid on targetname/entityid.", AccountStatus::QuestMaster, command_npccast) ||
+			command_add("npcedit", "[column] [value] - Mega NPC editing command.", AccountStatus::GMImpossible, command_npcedit) ||
+			command_add("npcemote", "[message] - Make your NPC target emote a message.", AccountStatus::QuestMaster, command_npcemote) ||
+			command_add("npcloot", "[show/money/add/remove] [itemid/all/money: pp gp sp cp] - Manipulate the loot an NPC is carrying.", AccountStatus::QuestMaster, command_npcloot) ||
+			command_add("npcsay", "[message] - Make your NPC target say a message.", AccountStatus::QuestMaster, command_npcsay) ||
+			command_add("npcshout", "[message] - Make your NPC target shout a message.", AccountStatus::QuestMaster, command_npcshout) ||
+			command_add("npcspawn", "[create/add/update/remove/delete] - Manipulate spawn DB.", AccountStatus::GMImpossible, command_npcspawn) ||
+			command_add("npcstats", "- Show stats about target NPC.", AccountStatus::SeniorGuide, command_npcstats) ||
+			command_add("npctypecache", "[id] or all - Clears the npc type cache for either the id or all npcs.", AccountStatus::GMImpossible, command_npctypecache) ||
+			command_add("npctypespawn", "[npctypeid] [factionid] - Spawn an NPC from the db.", AccountStatus::QuestMaster, command_npctypespawn) ||
+			command_add("nukebuffs", "- Strip all buffs on you or your target.", AccountStatus::GMLeadAdmin, command_nukebuffs) ||
+			command_add("nukeitem", "[itemid] - Remove itemid from your player target's inventory.", AccountStatus::GMLeadAdmin, command_nukeitem) ||
+			command_add("numauths", "- TODO: describe this command.", AccountStatus::Max, command_numauths) ||
 
-		command_add("oocmute", "[1/0] - Mutes OOC chat.", AccountStatus::GMStaff, command_oocmute) ||
-		command_add("opcode", "- opcode management.", AccountStatus::GMCoder, command_opcode) ||
-		command_add("optest", "- solar's private test command.", AccountStatus::GMCoder, command_optest) ||
+			command_add("oocmute", "[1/0] - Mutes OOC chat.", AccountStatus::GMStaff, command_oocmute) ||
+			command_add("opcode", "- opcode management.", AccountStatus::GMCoder, command_opcode) ||
+			command_add("optest", "- solar's private test command.", AccountStatus::GMCoder, command_optest) ||
 
 #ifdef PACKET_PROFILER
-		command_add("packetprofile", "- Dump packet profile for target or self.", AccountStatus::GMCoder, command_packetprofile) ||
+			command_add("packetprofile", "- Dump packet profile for target or self.", AccountStatus::GMCoder, command_packetprofile) ||
 #endif
-		command_add("path", "- view and edit pathing.", AccountStatus::GMImpossible, command_path) ||
-		command_add("peekinv", "[worn/inv/cursor/bank/trade/world/all] - Print out contents of your player target's inventory.", AccountStatus::EQSupport, command_peekinv) ||
-		command_add("permaclass", "[classnum] - Change your or your player target's class (target is disconnected).", AccountStatus::GMMgmt, command_permaclass) ||
-		command_add("permagender", "[gendernum] - Change your or your player target's gender (zone to take effect).", AccountStatus::GMMgmt, command_permagender) ||
-		command_add("permarace", "[racenum] - Change your or your player target's race (zone to take effect).", AccountStatus::GMMgmt, command_permarace) ||
-		command_add("petition", "Handles everything petition related. Use with no args or with 'help' for how to use.", AccountStatus::ApprenticeGuide, command_petition) ||
-		command_add("peqzone", "[zonename] - Go to specified zone, if you have > 75% health.", AccountStatus::Max, command_peqzone) ||
-		command_add("pf", "- Display additional mob coordinate and wandering data.", AccountStatus::GMStaff, command_pf) ||
+			command_add("path", "- view and edit pathing.", AccountStatus::GMImpossible, command_path) ||
+			command_add("peekinv", "[worn/inv/cursor/bank/trade/world/all] - Print out contents of your player target's inventory.", AccountStatus::EQSupport, command_peekinv) ||
+			command_add("permaclass", "[classnum] - Change your or your player target's class (target is disconnected).", AccountStatus::GMMgmt, command_permaclass) ||
+			command_add("permagender", "[gendernum] - Change your or your player target's gender (zone to take effect).", AccountStatus::GMMgmt, command_permagender) ||
+			command_add("permarace", "[racenum] - Change your or your player target's race (zone to take effect).", AccountStatus::GMMgmt, command_permarace) ||
+			command_add("petition", "Handles everything petition related. Use with no args or with 'help' for how to use.", AccountStatus::ApprenticeGuide, command_petition) ||
+			command_add("peqzone", "[zonename] - Go to specified zone, if you have > 75% health.", AccountStatus::Max, command_peqzone) ||
+			command_add("pf", "- Display additional mob coordinate and wandering data.", AccountStatus::GMStaff, command_pf) ||
 #ifdef EQPROFILE
-		command_add("profiledump", "- Dump profiling info to logs.", AccountStatus::GMImpossible, command_profiledump) ||
-		command_add("profilereset", "- Reset profiling info.", AccountStatus::GMImpossible, command_profilereset) ||
+			command_add("profiledump", "- Dump profiling info to logs.", AccountStatus::GMImpossible, command_profiledump) ||
+			command_add("profilereset", "- Reset profiling info.", AccountStatus::GMImpossible, command_profilereset) ||
 #endif
-		command_add("playsound", "[number] - Plays a sound in the client.  Valid range 0-3999", AccountStatus::ApprenticeGuide, command_playsound) ||
-		command_add("push", "[pushback] [pushup] - Pushes the target the specified amount.", AccountStatus::GMImpossible, command_push) ||
-		command_add("pvp", "[on/off] - Set your or your player target's PVP status.", AccountStatus::GMAdmin, command_pvp) ||
+			command_add("playsound", "[number] - Plays a sound in the client.  Valid range 0-3999", AccountStatus::ApprenticeGuide, command_playsound) ||
+			command_add("push", "[pushback] [pushup] - Pushes the target the specified amount.", AccountStatus::GMImpossible, command_push) ||
+			command_add("pvp", "[on/off] - Set your or your player target's PVP status.", AccountStatus::GMAdmin, command_pvp) ||
 
-		command_add("qglobal", "[on/off/view] - Toggles qglobal functionality on an NPC.", AccountStatus::GMImpossible, command_qglobal) ||
-		command_add("qtest", "- QueryServ testing command.", AccountStatus::GMTester, command_qtest) ||
-		command_add("questerrors", "Shows quest errors.",AccountStatus::Player, command_questerrors) ||
+			command_add("qglobal", "[on/off/view] - Toggles qglobal functionality on an NPC.", AccountStatus::GMImpossible, command_qglobal) ||
+			command_add("qtest", "- QueryServ testing command.", AccountStatus::GMTester, command_qtest) ||
+			command_add("questerrors", "Shows quest errors.", AccountStatus::Player, command_questerrors) ||
 
-		command_add("race", "[racenum] - Change your or your target's race. Use racenum 0 to return to normal.", AccountStatus::QuestMaster, command_race) ||
-		command_add("raidloot", "LEADER|GROUPLEADER|SELECTED|ALL - Sets your raid loot settings if you have permission to do so.", 1, command_raidloot) ||
-		command_add("randtest", "Perform a sampling of random number generation", AccountStatus::GMImpossible, command_randtest) ||
-		command_add("randomfeatures", "- Temporarily randomizes the Facial Features of your target.", AccountStatus::GMCoder, command_randomfeatures) ||
-		command_add("refreshgroup", "- Refreshes Group.", AccountStatus::EQSupport, command_refreshgroup) ||
-		command_add("reloadallrules", "Executes a reload of all rules.", AccountStatus::GMCoder, command_reloadallrules) ||
-		command_add("reloademote", "Reloads NPC Emotes.", AccountStatus::GMCoder, command_reloademote) ||
-		command_add("reloadlevelmods", nullptr, AccountStatus::Max, command_reloadlevelmods) ||
-		command_add("reloadmerchants", "Reloads NPC merchant list.", AccountStatus::Max, command_reloadmerchants) ||
-		command_add("reloadqst", " - Clear quest cache (any argument causes it to also stop all timers).", AccountStatus::QuestMaster, command_reloadqst) ||
-		command_add("reloadrulesworld", "Executes a reload of all rules in world specifically.", AccountStatus::GMCoder, command_reloadworldrules) ||
-		command_add("reloadstatic", "- Reload Static Zone Data.", AccountStatus::GMCoder, command_reloadstatic) ||
-		command_add("reloadtitles", "- Reload player titles from the database.", AccountStatus::GMCoder, command_reloadtitles) ||
-		command_add("reloadtraps", "- Repops all traps in the current zone.", AccountStatus::QuestTroupe, command_reloadtraps) ||
-		command_add("reloadworld", "[0|1] - Clear quest cache and reload all rules (0 - no repop, 1 - repop).", AccountStatus::GMImpossible, command_reloadworld) ||
-		command_add("reloadzps", "- Reload zone points from database", AccountStatus::GMLeadAdmin, command_reloadzps) ||
-		command_add("repop", "[delay] - Repop the zone with optional delay.", AccountStatus::GMLeadAdmin, command_repop) ||
-		command_add("repopclose", "[distance in units] Repops only NPC's nearby for fast development purposes", AccountStatus::GMAdmin, command_repopclose) ||
-		command_add("resetaa", "- Resets a Player's AA in their profile and refunds spent AA's to unspent, disconnects player.", AccountStatus::GMImpossible, command_resetaa) ||
-		command_add("resetboat", "- Sets player's boat to 0 in their profile.", AccountStatus::GMStaff, command_resetboat) ||
-		command_add("revoke", "[charname] [1/0] - Makes charname unable to talk on OOC.", AccountStatus::GMStaff, command_revoke) ||
-		command_add("rewind", nullptr,AccountStatus::Player, command_rewind) ||
-		command_add("rules", "(subcommand) - Manage server rules.", AccountStatus::GMImpossible, command_rules) ||
+			command_add("race", "[racenum] - Change your or your target's race. Use racenum 0 to return to normal.", AccountStatus::QuestMaster, command_race) ||
+			command_add("raidloot", "LEADER|GROUPLEADER|SELECTED|ALL - Sets your raid loot settings if you have permission to do so.", 1, command_raidloot) ||
+			command_add("randtest", "Perform a sampling of random number generation", AccountStatus::GMImpossible, command_randtest) ||
+			command_add("randomfeatures", "- Temporarily randomizes the Facial Features of your target.", AccountStatus::GMCoder, command_randomfeatures) ||
+			command_add("refreshgroup", "- Refreshes Group.", AccountStatus::EQSupport, command_refreshgroup) ||
+			command_add("reloadallrules", "Executes a reload of all rules.", AccountStatus::GMCoder, command_reloadallrules) ||
+			command_add("reloademote", "Reloads NPC Emotes.", AccountStatus::GMCoder, command_reloademote) ||
+			command_add("reloadlevelmods", nullptr, AccountStatus::Max, command_reloadlevelmods) ||
+			command_add("reloadmerchants", "Reloads NPC merchant list.", AccountStatus::Max, command_reloadmerchants) ||
+			command_add("reloadqst", " - Clear quest cache (any argument causes it to also stop all timers).", AccountStatus::QuestMaster, command_reloadqst) ||
+			command_add("reloadrulesworld", "Executes a reload of all rules in world specifically.", AccountStatus::GMCoder, command_reloadworldrules) ||
+			command_add("reloadstatic", "- Reload Static Zone Data.", AccountStatus::GMCoder, command_reloadstatic) ||
+			command_add("reloadtitles", "- Reload player titles from the database.", AccountStatus::GMCoder, command_reloadtitles) ||
+			command_add("reloadtraps", "- Repops all traps in the current zone.", AccountStatus::QuestTroupe, command_reloadtraps) ||
+			command_add("reloadworld", "[0|1] - Clear quest cache and reload all rules (0 - no repop, 1 - repop).", AccountStatus::GMImpossible, command_reloadworld) ||
+			command_add("reloadzps", "- Reload zone points from database", AccountStatus::GMLeadAdmin, command_reloadzps) ||
+			command_add("repop", "[delay] - Repop the zone with optional delay.", AccountStatus::GMLeadAdmin, command_repop) ||
+			command_add("repopclose", "[distance in units] Repops only NPC's nearby for fast development purposes", AccountStatus::GMAdmin, command_repopclose) ||
+			command_add("resetaa", "- Resets a Player's AA in their profile and refunds spent AA's to unspent, disconnects player.", AccountStatus::GMImpossible, command_resetaa) ||
+			command_add("resetboat", "- Sets player's boat to 0 in their profile.", AccountStatus::GMStaff, command_resetboat) ||
+			command_add("revoke", "[charname] [1/0] - Makes charname unable to talk on OOC.", AccountStatus::GMStaff, command_revoke) ||
+			command_add("rewind", nullptr, AccountStatus::Player, command_rewind) ||
+			command_add("rules", "(subcommand) - Manage server rules.", AccountStatus::GMImpossible, command_rules) ||
 
-		command_add("save", "- Force your player or player corpse target to be saved to the database.", AccountStatus::GMLeadAdmin, command_save) ||
-		command_add("scribespell", "[spellid] - Scribe specified spell in your target's spell book.", AccountStatus::GMAreas, command_scribespell) ||
-		command_add("scribespells", "[max level] [min level] - Scribe all spells for you or your player target that are usable by them, up to level specified. (may freeze client for a few seconds).", AccountStatus::GMAreas, command_scribespells) ||
-		command_add("sendop", "[opcode] - LE's Private test command, leave it alone.", AccountStatus::GMCoder, command_sendop) ||
-		command_add("sendzonespawns", "- Refresh spawn list for all clients in zone.", AccountStatus::GMAdmin, command_sendzonespawns) ||
-		command_add("serverlock", "[0|1] - Lock or Unlock the World Server (0 = Unlocked, 1 = Locked)", AccountStatus::GMLeadAdmin, command_serverlock) ||
-		command_add("serversidename", "- Prints target's server side name.", AccountStatus::GMAdmin, command_serversidename) ||
-		command_add("setaapts", "[value] - Set your or your player target's available AA points.", AccountStatus::GMImpossible, command_setaapts) ||
-		command_add("setaaxp", "[value] - Set your or your player target's AA experience.", AccountStatus::GMImpossible, command_setaaxp) ||
-		command_add("setanim", "[animnum] - Set target's appearance to animnum.", AccountStatus::GMImpossible, command_setanim) ||
-		command_add("setfaction", "[faction number] - Sets targeted NPC's faction in the database.", AccountStatus::GMImpossible, command_setfaction) ||
-		command_add("setgraveyard", "[zone name] - Creates a graveyard for the specified zone based on your target's LOC.", AccountStatus::GMImpossible, command_setgraveyard) ||
-		command_add("setgreed", "[greed] - Sets a merchant greed value.", AccountStatus::GMAdmin, command_setgreed) ||
-		command_add("setlanguage", "[language ID] [value] - Set your target's language skillnum to value.", AccountStatus::GMAreas, command_setlanguage) ||
-		command_add("setlsinfo", "[email] [password] - Set login server email address and password (if supported by login server).", AccountStatus::Max, command_setlsinfo) ||
-		command_add("setnpcexpansion", "[bitmask] - Restrict an NPC spawn2 by bitmask.", AccountStatus::GMAdmin, command_setnpcexpansion) ||
-		command_add("setpass", "[accountname] [password] - Set local password for accountname.", AccountStatus::Max, command_setpass) ||
-		command_add("setskill", "[skillnum] [value] - Set your target's skill skillnum to value.", AccountStatus::GMAreas, command_setskill) ||
-		command_add("setskillall", "[value] - Set all of your target's skills to value.", AccountStatus::GMAreas, command_setskillall) ||
-		command_add("setxp", "[value] - Set your or your player target's experience.", AccountStatus::GMAreas, command_setxp) ||
-		command_add("showbonusstats", "[item|spell|all] Shows bonus stats for target from items or spells. Shows both by default.", AccountStatus::Guide, command_showbonusstats) ||
-		command_add("showbuffs", "- List buffs active on your target or you if no target.", AccountStatus::Guide, command_showbuffs) ||
-		command_add("showfilters", "- list client serverfilter settings.", AccountStatus::GMCoder, command_showfilters) ||
-		command_add("showhelm", "on/off [all] Toggles displaying of player helms (including your own.) Specifying 'all' toggles every character currently on your account", AccountStatus::Player, command_showhelm) ||
-		command_add("showpetspell", "[spellid/searchstring] - search pet summoning spells.", AccountStatus::Guide, command_showpetspell) ||
-		command_add("showregen", "- Shows information about your target's regen.", AccountStatus::GMAdmin, command_showregen) ||
-		command_add("showskills", "- Show the values of your skills if no target, or your target's skills.", AccountStatus::Guide, command_showskills) ||
-		command_add("showspellslist", "Shows spell list of targeted NPC.", AccountStatus::GMStaff, command_showspellslist) ||
-		command_add("showstats", "[quick stats]- Show details about you or your target. Quick stats shows only key stats.", AccountStatus::Guide, command_showstats) ||
-		command_add("showtraderitems", "Displays the list of items a trader has up for sale.", AccountStatus::QuestTroupe, command_showtraderitems) ||
-		command_add("shutdown", "- Shut this zone process down.", AccountStatus::GMImpossible, command_shutdown) ||
-		command_add("size", "[size] - Change size of you or your target.", AccountStatus::GMAdmin, command_size) ||
-		command_add("skills", "List skill difficulty.", AccountStatus::GMAdmin, command_skilldifficulty) ||
-		command_add("spawn", "[name] [race] [level] [material] [hp] [gender] [class] [priweapon] [secweapon] [merchantid] - Spawn an NPC.", AccountStatus::GMImpossible, command_spawn) ||
-		command_add("spawnfix", "- Find targeted NPC in database based on its X/Y/heading and update the database to make it spawn at your current location/heading.", AccountStatus::GMImpossible, command_spawnfix) ||
-		command_add("spawnstatus", "[a|u|s|d|e|spawnid|help] - Show respawn timer status.", AccountStatus::GMStaff, command_spawnstatus) ||
-		command_add("spellinfo", "[spellid] - Get detailed info about a spell.", AccountStatus::Guide, command_spellinfo) ||
-		command_add("starve", "Sets hunger and thirst to 0.", AccountStatus::GMCoder, command_starve) ||
-		command_add("stun", "[duration] - Stuns you or your target for duration.", AccountStatus::QuestMaster, command_stun) ||
-		command_add("summon", "[charname] - Summons your player/npc/corpse target, or charname if specified.", AccountStatus::EQSupport, command_summon) ||
-		command_add("summonitem", "[itemid] [charges] - Summon an item onto your cursor. Charges are optional.", AccountStatus::QuestMaster, command_summonitem) ||
-		command_add("suspend", "[name][days][reason] - Suspend by character name and for specificed number of days.", AccountStatus::EQSupport, command_suspend) ||
-		command_add("synctod", "- Send a time of day update to every client in zone.", AccountStatus::GMAdmin, command_synctod) ||
+			command_add("save", "- Force your player or player corpse target to be saved to the database.", AccountStatus::GMLeadAdmin, command_save) ||
+			command_add("scribespell", "[spellid] - Scribe specified spell in your target's spell book.", AccountStatus::GMAreas, command_scribespell) ||
+			command_add("scribespells", "[max level] [min level] - Scribe all spells for you or your player target that are usable by them, up to level specified. (may freeze client for a few seconds).", AccountStatus::GMAreas, command_scribespells) ||
+			command_add("sendop", "[opcode] - LE's Private test command, leave it alone.", AccountStatus::GMCoder, command_sendop) ||
+			command_add("sendzonespawns", "- Refresh spawn list for all clients in zone.", AccountStatus::GMAdmin, command_sendzonespawns) ||
+			command_add("serverlock", "[0|1] - Lock or Unlock the World Server (0 = Unlocked, 1 = Locked)", AccountStatus::GMLeadAdmin, command_serverlock) ||
+			command_add("serversidename", "- Prints target's server side name.", AccountStatus::GMAdmin, command_serversidename) ||
+			command_add("setaapts", "[value] - Set your or your player target's available AA points.", AccountStatus::GMImpossible, command_setaapts) ||
+			command_add("setaaxp", "[value] - Set your or your player target's AA experience.", AccountStatus::GMImpossible, command_setaaxp) ||
+			command_add("setanim", "[animnum] - Set target's appearance to animnum.", AccountStatus::GMImpossible, command_setanim) ||
+			command_add("setfaction", "[faction number] - Sets targeted NPC's faction in the database.", AccountStatus::GMImpossible, command_setfaction) ||
+			command_add("setgraveyard", "[zone name] - Creates a graveyard for the specified zone based on your target's LOC.", AccountStatus::GMImpossible, command_setgraveyard) ||
+			command_add("setgreed", "[greed] - Sets a merchant greed value.", AccountStatus::GMAdmin, command_setgreed) ||
+			command_add("setlanguage", "[language ID] [value] - Set your target's language skillnum to value.", AccountStatus::GMAreas, command_setlanguage) ||
+			command_add("setlsinfo", "[email] [password] - Set login server email address and password (if supported by login server).", AccountStatus::Max, command_setlsinfo) ||
+			command_add("setnpcexpansion", "[bitmask] - Restrict an NPC spawn2 by bitmask.", AccountStatus::GMAdmin, command_setnpcexpansion) ||
+			command_add("setpass", "[accountname] [password] - Set local password for accountname.", AccountStatus::Max, command_setpass) ||
+			command_add("setskill", "[skillnum] [value] - Set your target's skill skillnum to value.", AccountStatus::GMAreas, command_setskill) ||
+			command_add("setskillall", "[value] - Set all of your target's skills to value.", AccountStatus::GMAreas, command_setskillall) ||
+			command_add("setxp", "[value] - Set your or your player target's experience.", AccountStatus::GMAreas, command_setxp) ||
+			command_add("showbonusstats", "[item|spell|all] Shows bonus stats for target from items or spells. Shows both by default.", AccountStatus::Guide, command_showbonusstats) ||
+			command_add("showbuffs", "- List buffs active on your target or you if no target.", AccountStatus::Guide, command_showbuffs) ||
+			command_add("showfilters", "- list client serverfilter settings.", AccountStatus::GMCoder, command_showfilters) ||
+			command_add("showhelm", "on/off [all] Toggles displaying of player helms (including your own.) Specifying 'all' toggles every character currently on your account", AccountStatus::Player, command_showhelm) ||
+			command_add("showpetspell", "[spellid/searchstring] - search pet summoning spells.", AccountStatus::Guide, command_showpetspell) ||
+			command_add("showregen", "- Shows information about your target's regen.", AccountStatus::GMAdmin, command_showregen) ||
+			command_add("showskills", "- Show the values of your skills if no target, or your target's skills.", AccountStatus::Guide, command_showskills) ||
+			command_add("showspellslist", "Shows spell list of targeted NPC.", AccountStatus::GMStaff, command_showspellslist) ||
+			command_add("showstats", "[quick stats]- Show details about you or your target. Quick stats shows only key stats.", AccountStatus::Guide, command_showstats) ||
+			command_add("showtraderitems", "Displays the list of items a trader has up for sale.", AccountStatus::QuestTroupe, command_showtraderitems) ||
+			command_add("shutdown", "- Shut this zone process down.", AccountStatus::GMImpossible, command_shutdown) ||
+			command_add("size", "[size] - Change size of you or your target.", AccountStatus::GMAdmin, command_size) ||
+			command_add("skills", "List skill difficulty.", AccountStatus::GMAdmin, command_skilldifficulty) ||
+			command_add("spawn", "[name] [race] [level] [material] [hp] [gender] [class] [priweapon] [secweapon] [merchantid] - Spawn an NPC.", AccountStatus::GMImpossible, command_spawn) ||
+			command_add("spawnfix", "- Find targeted NPC in database based on its X/Y/heading and update the database to make it spawn at your current location/heading.", AccountStatus::GMImpossible, command_spawnfix) ||
+			command_add("spawnstatus", "[a|u|s|d|e|spawnid|help] - Show respawn timer status.", AccountStatus::GMStaff, command_spawnstatus) ||
+			command_add("spellinfo", "[spellid] - Get detailed info about a spell.", AccountStatus::Guide, command_spellinfo) ||
+			command_add("starve", "Sets hunger and thirst to 0.", AccountStatus::GMCoder, command_starve) ||
+			command_add("stun", "[duration] - Stuns you or your target for duration.", AccountStatus::QuestMaster, command_stun) ||
+			command_add("summon", "[charname] - Summons your player/npc/corpse target, or charname if specified.", AccountStatus::EQSupport, command_summon) ||
+			command_add("summonitem", "[itemid] [charges] - Summon an item onto your cursor. Charges are optional.", AccountStatus::QuestMaster, command_summonitem) ||
+			command_add("suspend", "[name][days][reason] - Suspend by character name and for specificed number of days.", AccountStatus::EQSupport, command_suspend) ||
+			command_add("synctod", "- Send a time of day update to every client in zone.", AccountStatus::GMAdmin, command_synctod) ||
 
-		command_add("testcopy", "Sends a copy of the targets loginserver/game account/characters to a backup file.", AccountStatus::GMImpossible, command_testcopy) ||
-		command_add("testcommand", "Template for temporary commands as needed. Don't delete.", AccountStatus::GMImpossible, command_testcommand) ||
-		command_add("testspawn", "[memloc] [value] - spawns a NPC for you only, with the specified values set in the spawn struct.", AccountStatus::GMCoder, command_testspawn) ||
-		command_add("testspawnkill", "- Sends an OP_Death packet for spawn made with #testspawn.", AccountStatus::GMCoder, command_testspawnkill) ||
-		command_add("texture", "[texture] [helmtexture] - Change your or your target's appearance, use 255 to show equipment.", AccountStatus::GMImpossible, command_texture) ||
-		command_add("time", "[HH] [MM] - Set EQ time", AccountStatus::GMImpossible, command_time) ||
-		command_add("timers", "- Display persistent timers for target.", AccountStatus::GMAdmin, command_timers) ||
-		command_add("timezone", "[HH] [MM] - Set timezone. Minutes are optional.", AccountStatus::GMImpossible, command_timezone) ||
-		command_add("title", "[text] [1 = create title table row] - Set your or your player target's title.", AccountStatus::GMStaff, command_title) ||
-		command_add("titlesuffix", "[text] [1 = create title table row] - Set your or your player target's title suffix.", AccountStatus::Max, command_titlesuffix) ||
-		command_add("trapinfo", "- Gets infomation about the traps currently spawned in the zone.", AccountStatus::SeniorGuide, command_trapinfo) ||
+			command_add("testcopy", "Sends a copy of the targets loginserver/game account/characters to a backup file.", AccountStatus::GMImpossible, command_testcopy) ||
+			command_add("testcommand", "Template for temporary commands as needed. Don't delete.", AccountStatus::GMImpossible, command_testcommand) ||
+			command_add("testspawn", "[memloc] [value] - spawns a NPC for you only, with the specified values set in the spawn struct.", AccountStatus::GMCoder, command_testspawn) ||
+			command_add("testspawnkill", "- Sends an OP_Death packet for spawn made with #testspawn.", AccountStatus::GMCoder, command_testspawnkill) ||
+			command_add("texture", "[texture] [helmtexture] - Change your or your target's appearance, use 255 to show equipment.", AccountStatus::GMImpossible, command_texture) ||
+			command_add("time", "[HH] [MM] - Set EQ time", AccountStatus::GMImpossible, command_time) ||
+			command_add("timers", "- Display persistent timers for target.", AccountStatus::GMAdmin, command_timers) ||
+			command_add("timezone", "[HH] [MM] - Set timezone. Minutes are optional.", AccountStatus::GMImpossible, command_timezone) ||
+			command_add("title", "[text] [1 = create title table row] - Set your or your player target's title.", AccountStatus::GMStaff, command_title) ||
+			command_add("titlesuffix", "[text] [1 = create title table row] - Set your or your player target's title suffix.", AccountStatus::Max, command_titlesuffix) ||
+			command_add("trapinfo", "- Gets infomation about the traps currently spawned in the zone.", AccountStatus::SeniorGuide, command_trapinfo) ||
 
-		command_add("undeletechar", "- Undelete a character that was previously deleted.", AccountStatus::Max, command_undeletechar) ||
-		command_add("underworld", "[z] - Reports NPCs that are below the given Z or if not given, below the lowest spawn2/grid coord. If red, the NPC is below the underworld coord.", AccountStatus::QuestTroupe, command_underworld) ||
-		command_add("unfreeze", "- Unfreeze your target.", AccountStatus::QuestMaster, command_unfreeze) ||
-		command_add("unmemspell", "[spellid] - Unmem specified spell from your target's spell bar.", AccountStatus::GMAreas, command_unmemspell) ||
-		command_add("unmemspells", "- Clear out your or your player target's spell gems.", AccountStatus::GMAreas, command_unmemspells) ||
-		command_add("unscribespell", "[spellid] - Unscribe specified spell from your target's spell book.", AccountStatus::GMAreas, command_unscribespell) ||
-		command_add("unscribespells", "- Clear out your or your player target's spell book.", AccountStatus::GMAreas, command_unscribespells) ||
-		command_add("update", "Handles all server updates/reboots. Use with no args or 'help' for how to use.", AccountStatus::GMMgmt, command_update) ||
-		command_add("uptime", "[zone server id] - Get uptime of worldserver, or zone server if argument provided.", AccountStatus::GMStaff, command_uptime) ||
+			command_add("undeletechar", "- Undelete a character that was previously deleted.", AccountStatus::Max, command_undeletechar) ||
+			command_add("underworld", "[z] - Reports NPCs that are below the given Z or if not given, below the lowest spawn2/grid coord. If red, the NPC is below the underworld coord.", AccountStatus::QuestTroupe, command_underworld) ||
+			command_add("unfreeze", "- Unfreeze your target.", AccountStatus::QuestMaster, command_unfreeze) ||
+			command_add("unmemspell", "[spellid] - Unmem specified spell from your target's spell bar.", AccountStatus::GMAreas, command_unmemspell) ||
+			command_add("unmemspells", "- Clear out your or your player target's spell gems.", AccountStatus::GMAreas, command_unmemspells) ||
+			command_add("unscribespell", "[spellid] - Unscribe specified spell from your target's spell book.", AccountStatus::GMAreas, command_unscribespell) ||
+			command_add("unscribespells", "- Clear out your or your player target's spell book.", AccountStatus::GMAreas, command_unscribespells) ||
+			command_add("update", "Handles all server updates/reboots. Use with no args or 'help' for how to use.", AccountStatus::GMMgmt, command_update) ||
+			command_add("uptime", "[zone server id] - Get uptime of worldserver, or zone server if argument provided.", AccountStatus::GMStaff, command_uptime) ||
 
-		command_add("version", "- Display current version of EQEmu server.", AccountStatus::GMCoder, command_version) ||
-		command_add("viewnpctype", "[npctype id] - Show info about an npctype.", AccountStatus::GMStaff, command_viewnpctype) ||
-		command_add("viewplayerfaction", "[factionid] - Shows current personal and modified faction with the given ID.", AccountStatus::GMAdmin, command_viewplayerfaction) ||
-		command_add("viewzoneloot", "[item id] - Allows you to search a zone's loot for a specific item ID. (0 shows all loot in the zone)", AccountStatus::QuestTroupe, command_viewzoneloot) ||
-	
-		command_add("wc", "[wear slot] [material] - Sends an OP_WearChange for your target.", AccountStatus::GMImpossible, command_wc) ||
-		command_add("weather", "[0/1/2] (Off/Rain/Snow) [0/1] Serverwide [minutes] Duration - Change the weather.", AccountStatus::QuestMaster, command_weather) ||
-		command_add("worldshutdown", "- Shut down world and all zones.", AccountStatus::GMImpossible, command_worldshutdown) ||
-		command_add("wp", "[add/delete] [grid_num] [pause] [wp_num] [-h] - Add/delete a waypoint to/from a wandering grid.", AccountStatus::GMImpossible, command_wp) ||
-		command_add("wpadd", "[pause] [-h] - Add your current location as a waypoint to your NPC target's AI path.", AccountStatus::GMImpossible, command_wpadd) ||
-		command_add("wpinfo", "- Show waypoint info about your NPC target.", AccountStatus::GMImpossible, command_wpinfo) ||
+			command_add("version", "- Display current version of EQEmu server.", AccountStatus::GMCoder, command_version) ||
+			command_add("viewnpctype", "[npctype id] - Show info about an npctype.", AccountStatus::GMStaff, command_viewnpctype) ||
+			command_add("viewplayerfaction", "[factionid] - Shows current personal and modified faction with the given ID.", AccountStatus::GMAdmin, command_viewplayerfaction) ||
+			command_add("viewzoneloot", "[item id] - Allows you to search a zone's loot for a specific item ID. (0 shows all loot in the zone)", AccountStatus::QuestTroupe, command_viewzoneloot) ||
 
-		command_add("xpinfo", "- Show XP info about your current target.", AccountStatus::GMStaff, command_xpinfo) ||
+			command_add("wc", "[wear slot] [material] - Sends an OP_WearChange for your target.", AccountStatus::GMImpossible, command_wc) ||
+			command_add("weather", "[0/1/2] (Off/Rain/Snow) [0/1] Serverwide [minutes] Duration - Change the weather.", AccountStatus::QuestMaster, command_weather) ||
+			command_add("worldshutdown", "- Shut down world and all zones.", AccountStatus::GMImpossible, command_worldshutdown) ||
+			command_add("wp", "[add/delete] [grid_num] [pause] [wp_num] [-h] - Add/delete a waypoint to/from a wandering grid.", AccountStatus::GMImpossible, command_wp) ||
+			command_add("wpadd", "[pause] [-h] - Add your current location as a waypoint to your NPC target's AI path.", AccountStatus::GMImpossible, command_wpadd) ||
+			command_add("wpinfo", "- Show waypoint info about your NPC target.", AccountStatus::GMImpossible, command_wpinfo) ||
 
-		command_add("zclip", "[min] [max] - modifies and resends zhdr packet.", AccountStatus::GMImpossible, command_zclip) ||
-		command_add("zcolor", "[red] [green] [blue] - Change sky color.", AccountStatus::GMImpossible, command_zcolor) ||
-		command_add("zheader", "[zonename] - Load zheader for zonename from the database.", AccountStatus::GMImpossible, command_zheader) ||
-		command_add("zone", "[Zone ID|Zone Short Name] [X] [Y] [Z] - Teleport to specified Zone by ID or Short Name (coordinates are optional).", AccountStatus::QuestTroupe, command_zone) ||
-		command_add("zonebootup", "(shortname) (ZoneServerID) - Make a zone server boot a specific zone. If no arguments are given, it will find and boot any crashed zones.", AccountStatus::GMImpossible, command_zonebootup) ||
-		command_add("zonelock", "[list/lock/unlock] - Set/query lock flag for zoneservers.", AccountStatus::GMAreas, command_zonelock) ||
-		command_add("zoneshutdown", "[shortname] - Shut down a zone server.", AccountStatus::GMImpossible, command_zoneshutdown) ||
-		command_add("zonespawn", "- Not implemented.", AccountStatus::Max, command_zonespawn) ||
-		command_add("zonestatus", "- Show connected zoneservers, synonymous with /servers.", AccountStatus::GMStaff, command_zonestatus) ||
-		command_add("zopp", "Troubleshooting command - Sends a fake item packet to you. No server reference is created.", AccountStatus::GMCoder, command_zopp) ||
-		command_add("zsafecoords", "[x] [y] [z] - Set safe coords.", AccountStatus::GMImpossible, command_zsafecoords) ||
-		command_add("zsave", " - Saves zheader to the database.", AccountStatus::GMImpossible, command_zsave) ||
-		command_add("zsky", "[skytype] - Change zone sky type.", AccountStatus::GMImpossible, command_zsky) ||
-		command_add("zstats", "- Show info about zone header.", AccountStatus::QuestTroupe, command_zstats) ||
-		command_add("zunderworld", "[zcoord] - Sets the underworld using zcoord.", AccountStatus::GMImpossible, command_zunderworld) ||
-		command_add("zuwcoords", "[z coord] - Set underworld coord.", AccountStatus::GMImpossible, command_zuwcoords)
-		)
+			command_add("xpinfo", "- Show XP info about your current target.", AccountStatus::GMStaff, command_xpinfo) ||
+
+			command_add("zclip", "[min] [max] - modifies and resends zhdr packet.", AccountStatus::GMImpossible, command_zclip) ||
+			command_add("zcolor", "[red] [green] [blue] - Change sky color.", AccountStatus::GMImpossible, command_zcolor) ||
+			command_add("zheader", "[zonename] - Load zheader for zonename from the database.", AccountStatus::GMImpossible, command_zheader) ||
+			command_add("zone", "[Zone ID|Zone Short Name] [X] [Y] [Z] - Teleport to specified Zone by ID or Short Name (coordinates are optional).", AccountStatus::QuestTroupe, command_zone) ||
+			command_add("zonebootup", "(shortname) (ZoneServerID) - Make a zone server boot a specific zone. If no arguments are given, it will find and boot any crashed zones.", AccountStatus::GMImpossible, command_zonebootup) ||
+			command_add("zonelock", "[list/lock/unlock] - Set/query lock flag for zoneservers.", AccountStatus::GMAreas, command_zonelock) ||
+			command_add("zoneshutdown", "[shortname] - Shut down a zone server.", AccountStatus::GMImpossible, command_zoneshutdown) ||
+			command_add("zonespawn", "- Not implemented.", AccountStatus::Max, command_zonespawn) ||
+			command_add("zonestatus", "- Show connected zoneservers, synonymous with /servers.", AccountStatus::GMStaff, command_zonestatus) ||
+			command_add("zopp", "Troubleshooting command - Sends a fake item packet to you. No server reference is created.", AccountStatus::GMCoder, command_zopp) ||
+			command_add("zsafecoords", "[x] [y] [z] - Set safe coords.", AccountStatus::GMImpossible, command_zsafecoords) ||
+			command_add("zsave", " - Saves zheader to the database.", AccountStatus::GMImpossible, command_zsave) ||
+			command_add("zsky", "[skytype] - Change zone sky type.", AccountStatus::GMImpossible, command_zsky) ||
+			command_add("zstats", "- Show info about zone header.", AccountStatus::QuestTroupe, command_zstats) ||
+			command_add("zunderworld", "[zcoord] - Sets the underworld using zcoord.", AccountStatus::GMImpossible, command_zunderworld) ||
+			command_add("zuwcoords", "[z coord] - Set underworld coord.", AccountStatus::GMImpossible, command_zuwcoords)
+			)
 	{
 		command_deinit();
 		return -1;
@@ -549,7 +550,7 @@ int command_init(void)
 	return commandcount;
 }
 
-void command_deinit(void){
+void command_deinit(void) {
 	/*
 	* command_deinit
 	* clears the command list, freeing resources
@@ -565,7 +566,7 @@ void command_deinit(void){
 	commandcount = 0;
 }
 
-int command_add(std::string command_name, const char *desc, int access, CmdFuncPtr function){
+int command_add(std::string command_name, const char* desc, int access, CmdFuncPtr function) {
 	/*
 	* command_add
 	* adds a command to the command list; used by command_init
@@ -609,7 +610,7 @@ int command_add(std::string command_name, const char *desc, int access, CmdFuncP
 	return 0;
 }
 
-int command_realdispatch(Client *c, const char *message){
+int command_realdispatch(Client* c, const char* message) {
 	/*
 	*
 	* command_realdispatch
@@ -633,16 +634,16 @@ int command_realdispatch(Client *c, const char *message){
 		return(-2);
 	}
 
-	CommandRecord *cur = commandlist[cstr];
+	CommandRecord* cur = commandlist[cstr];
 	if (c->Admin() < cur->access)
 	{
 		c->Message(CC_Red, "Your access level is not high enough to use this command.");
 		return(-1);
 	}
 
-	if(cur->access >= COMMANDS_LOGGING_MIN_STATUS)
+	if (cur->access >= COMMANDS_LOGGING_MIN_STATUS)
 	{
-		QServ->QSLogCommands(c, sep.arg[0], (char *)sep.argplus[1]);
+		QServ->QSLogCommands(c, sep.arg[0], (char*)sep.argplus[1]);
 	}
 
 	if (cur->function == nullptr)
@@ -658,11 +659,11 @@ int command_realdispatch(Client *c, const char *message){
 	return 0;
 }
 
-void command_logcommand(Client *c, const char *message){
+void command_logcommand(Client* c, const char* message) {
 	int admin = c->Admin();
 
 	bool continueevents = false;
-	switch (zone->loglevelvar){ //catch failsafe
+	switch (zone->loglevelvar) { //catch failsafe
 	case 9: { // log only LeadGM
 		if ((admin >= AccountStatus::GMLeadAdmin) && (admin < AccountStatus::GMMgmt))
 			continueevents = true;
@@ -711,20 +712,20 @@ void command_logcommand(Client *c, const char *message){
 
 	if (continueevents)
 		database.logevents(
-		c->AccountName(),
-		c->AccountID(),
-		admin, c->GetName(),
-		c->GetTarget() ? c->GetTarget()->GetName() : "None",
-		"Command",
-		message,
-		1
+			c->AccountName(),
+			c->AccountID(),
+			admin, c->GetName(),
+			c->GetTarget() ? c->GetTarget()->GetName() : "None",
+			"Command",
+			message,
+			1
 		);
 }
 
 // commands go below here
 
-void command_resetaa(Client* c, const Seperator *sep){
-	if (c->GetTarget() != 0 && c->GetTarget()->IsClient()){
+void command_resetaa(Client* c, const Seperator* sep) {
+	if (c->GetTarget() != 0 && c->GetTarget()->IsClient()) {
 		c->GetTarget()->CastToClient()->ResetAA();
 		c->Message(CC_Red, "Successfully reset %s's AAs", c->GetTarget()->GetName());
 	}
@@ -732,8 +733,8 @@ void command_resetaa(Client* c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: Target a client and use #resetaa to reset the AA data in their Profile.");
 }
 
-void command_resetboat(Client* c, const Seperator *sep){
-	if (c->GetTarget() != 0 && c->GetTarget()->IsClient()){
+void command_resetboat(Client* c, const Seperator* sep) {
+	if (c->GetTarget() != 0 && c->GetTarget()->IsClient()) {
 		c->GetTarget()->CastToClient()->SetBoatID(0);
 		c->GetTarget()->CastToClient()->SetBoatName("");
 		c->Message(CC_Red, "Successfully removed %s from a boat in their PP.", c->GetTarget()->GetName());
@@ -742,7 +743,7 @@ void command_resetboat(Client* c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: Target a client and use #resetboat to remove any boat in their Profile.");
 }
 
-void command_sendop(Client *c, const Seperator *sep){
+void command_sendop(Client* c, const Seperator* sep) {
 
 	int RezSpell = 0;
 
@@ -751,7 +752,7 @@ void command_sendop(Client *c, const Seperator *sep){
 	}
 
 	auto outapp = new EQApplicationPacket(OP_RezzRequest, sizeof(Resurrect_Struct));
-	Resurrect_Struct *rs = (Resurrect_Struct*)outapp->pBuffer;
+	Resurrect_Struct* rs = (Resurrect_Struct*)outapp->pBuffer;
 
 	strcpy(rs->your_name, c->GetName());
 	strcpy(rs->rezzer_name, "A Cleric01");
@@ -762,29 +763,29 @@ void command_sendop(Client *c, const Seperator *sep){
 	return;
 }
 
-void command_optest(Client *c, const Seperator *sep){
+void command_optest(Client* c, const Seperator* sep) {
 
-	if(c)
+	if (c)
 	{
 		int arg = atoi(sep->arg[1]);
 		if (arg == 1)
 		{
 			auto app = new EQApplicationPacket(OP_FreezeClientControl, 65);
-			strcpy((char *)app->pBuffer, c->GetName());
+			strcpy((char*)app->pBuffer, c->GetName());
 			c->QueuePacket(app);
 			safe_delete(app);
 		}
 		else
 		{
 			auto app = new EQApplicationPacket(OP_UnfreezeClientControl, 65);
-			strcpy((char *)app->pBuffer, c->GetName());
+			strcpy((char*)app->pBuffer, c->GetName());
 			c->QueuePacket(app);
 			safe_delete(app);
 		}
 	}
 
 }
-void command_showfilters(Client *c, const Seperator *sep) {
+void command_showfilters(Client* c, const Seperator* sep) {
 
 	if (c)
 	{
@@ -795,12 +796,12 @@ void command_showfilters(Client *c, const Seperator *sep) {
 	}
 }
 
-void command_help(Client *c, const Seperator *sep){
+void command_help(Client* c, const Seperator* sep) {
 	int commands_shown = 0;
 
 	c->Message(CC_Default, "Available EQEMu commands:");
 
-	std::map<std::string, CommandRecord *>::iterator cur, end;
+	std::map<std::string, CommandRecord*>::iterator cur, end;
 	cur = commandlist.begin();
 	end = commandlist.end();
 
@@ -820,29 +821,29 @@ void command_help(Client *c, const Seperator *sep){
 
 }
 
-void command_version(Client *c, const Seperator *sep){
+void command_version(Client* c, const Seperator* sep) {
 	c->Message(CC_Default, "Current version information.");
 	c->Message(CC_Default, "	%s", CURRENT_VERSION);
 	c->Message(CC_Default, "	Compiled on: %s at %s", COMPILE_DATE, COMPILE_TIME);
 	c->Message(CC_Default, "	Last modified on: %s", LAST_MODIFIED);
 }
 
-void command_setfaction(Client *c, const Seperator *sep){
+void command_setfaction(Client* c, const Seperator* sep) {
 	if ((sep->arg[1][0] == 0 || strcasecmp(sep->arg[1], "*") == 0) || ((c->GetTarget() == 0) || (c->GetTarget()->IsClient()))) {
 		c->Message(CC_Default, "Usage: #setfaction [faction number]");
 		return;
 	}
-	
+
 	uint32 faction_id = atoi(sep->argplus[1]);
 	auto npcTypeID = c->GetTarget()->CastToNPC()->GetNPCTypeID();
 	c->Message(CC_Yellow, "Setting NPC %u to faction %i", npcTypeID, faction_id);
-	
+
 	std::string query = StringFormat("UPDATE npc_types SET npc_faction_id = %i WHERE id = %i",
 		faction_id, npcTypeID);
 	database.QueryDatabase(query);
 }
 
-void command_giveplayerfaction(Client *c, const Seperator *sep)
+void command_giveplayerfaction(Client* c, const Seperator* sep)
 {
 	if (!sep->IsNumber(1) || atoi(sep->arg[2]) == 0)
 	{
@@ -870,7 +871,7 @@ void command_giveplayerfaction(Client *c, const Seperator *sep)
 	c->Message(CC_Default, "%s was given %i points with %s.", t->GetName(), value, name);
 }
 
-void command_viewplayerfaction(Client *c, const Seperator *sep)
+void command_viewplayerfaction(Client* c, const Seperator* sep)
 {
 	NPC* npc = nullptr;
 	uint32 factionid = 0;
@@ -929,7 +930,7 @@ void command_viewplayerfaction(Client *c, const Seperator *sep)
 	int16 max_cap = database.MaxFactionCap(factionid);
 	int16 modified_min_cap = min_cap + (modified - personal);
 	int16 modified_max_cap = max_cap + (modified - personal);
-	
+
 	c->Message(CC_Default, "%s has %d personal and %d modified faction with '%s' (%d)  personal cap: %d to %d; modified cap: %d to %d",
 		t->GetName(), personal, modified, name, factionid, min_cap, max_cap, modified_min_cap, modified_max_cap);
 	if (illusioned != modified)
@@ -942,14 +943,14 @@ void command_viewplayerfaction(Client *c, const Seperator *sep)
 	}
 }
 
-void command_serversidename(Client *c, const Seperator *sep){
+void command_serversidename(Client* c, const Seperator* sep) {
 	if (c->GetTarget())
 		c->Message(CC_Default, c->GetTarget()->GetName());
 	else
 		c->Message(CC_Default, "Error: no target");
 }
 
-void command_testcopy(Client *c, const Seperator *sep)
+void command_testcopy(Client* c, const Seperator* sep)
 {
 	if (c->GetTarget() == nullptr)
 	{
@@ -979,7 +980,7 @@ void command_testcopy(Client *c, const Seperator *sep)
 	}
 }
 
-void command_testspawnkill(Client *c, const Seperator *sep){
+void command_testspawnkill(Client* c, const Seperator* sep) {
 	/*	auto outapp = new EQApplicationPacket(OP_Death, sizeof(Death_Struct));
 	Death_Struct* d = (Death_Struct*)outapp->pBuffer;
 	d->corpseid = 1000;
@@ -993,7 +994,7 @@ void command_testspawnkill(Client *c, const Seperator *sep){
 	c->FastQueuePacket(&outapp);*/
 }
 
-void command_testspawn(Client *c, const Seperator *sep){
+void command_testspawn(Client* c, const Seperator* sep) {
 	if (sep->IsNumber(1)) {
 		auto outapp = new EQApplicationPacket(OP_NewSpawn, sizeof(NewSpawn_Struct));
 		NewSpawn_Struct* ns = (NewSpawn_Struct*)outapp->pBuffer;
@@ -1021,7 +1022,7 @@ void command_testspawn(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #testspawn [memloc] [value] - spawns a NPC for you only, with the specified values set in the spawn struct");
 }
 
-void command_wc(Client *c, const Seperator *sep){
+void command_wc(Client* c, const Seperator* sep) {
 	if (sep->argnum < 2)
 	{
 		c->Message(CC_Default, "Usage: #wc slot material [color] [unknown06]");
@@ -1034,7 +1035,7 @@ void command_wc(Client *c, const Seperator *sep){
 		uint8 wearslot = atoi(sep->arg[1]);
 		uint16 texture = atoi(sep->arg[2]);
 		uint32 color = 0;
-		
+
 		if (sep->argnum > 2)
 		{
 			color = atoi(sep->arg[3]);
@@ -1044,12 +1045,12 @@ void command_wc(Client *c, const Seperator *sep){
 	}
 }
 
-void command_numauths(Client *c, const Seperator *sep){
+void command_numauths(Client* c, const Seperator* sep) {
 	c->Message(CC_Default, "NumAuths: %i", zone->CountAuth());
 	c->Message(CC_Default, "Your WID: %i", c->GetWID());
 }
 
-void command_setanim(Client *c, const Seperator *sep){
+void command_setanim(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && sep->IsNumber(1)) {
 		int num = atoi(sep->arg[1]);
 		if (num < 0 || num >= _eaMaxAppearance) {
@@ -1061,7 +1062,7 @@ void command_setanim(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #setanim [animnum]");
 }
 
-void command_connectworldserver(Client *c, const Seperator *sep){
+void command_connectworldserver(Client* c, const Seperator* sep) {
 	if (worldserver.Connected())
 		c->Message(CC_Default, "Error: Already connected to world server");
 	else
@@ -1071,15 +1072,15 @@ void command_connectworldserver(Client *c, const Seperator *sep){
 	}
 }
 
-void command_getvariable(Client *c, const Seperator *sep){
+void command_getvariable(Client* c, const Seperator* sep) {
 	std::string tmp;
 	if (database.GetVariable(sep->argplus[1], tmp))
-		c->Message(CC_Default, "%s = %s",  sep->argplus[1], tmp.c_str());
+		c->Message(CC_Default, "%s = %s", sep->argplus[1], tmp.c_str());
 	else
 		c->Message(CC_Default, "GetVariable(%s) returned false", sep->argplus[1]);
 }
 
-void command_chat(Client *c, const Seperator *sep){
+void command_chat(Client* c, const Seperator* sep) {
 	if (sep->arg[2][0] == 0)
 		c->Message(CC_Default, "Usage: #chat [channum] [message]");
 	else
@@ -1087,7 +1088,7 @@ void command_chat(Client *c, const Seperator *sep){
 			c->Message(CC_Default, "Error: World server disconnected");
 }
 
-void command_showpetspell(Client *c, const Seperator *sep){
+void command_showpetspell(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #ShowPetSpells [spellid | searchstring]");
 	else if (SPDAT_RECORDS <= 0)
@@ -1106,13 +1107,13 @@ void command_showpetspell(Client *c, const Seperator *sep){
 		std::string sName;
 		std::string sCriteria;
 		sCriteria = sep->argplus[1];
-		for (auto & c : sCriteria) c = toupper(c);
+		for (auto& c : sCriteria) c = toupper(c);
 		for (int i = 0; i < SPDAT_RECORDS; i++)
 		{
 			if (spells[i].name[0] != 0 && (spells[i].effectid[0] == SE_SummonPet || spells[i].effectid[0] == SE_NecPet))
 			{
 				sName = spells[i].teleport_zone;
-				for (auto & c : sName) c = toupper(c);
+				for (auto& c : sName) c = toupper(c);
 				if (sName.find(sCriteria) != std::string::npos && (count <= 20))
 				{
 					c->Message(CC_Default, "	%i: %s, %s", i, spells[i].teleport_zone, spells[i].name);
@@ -1130,7 +1131,7 @@ void command_showpetspell(Client *c, const Seperator *sep){
 }
 
 #ifdef IPC
-void command_ipc(Client *c, const Seperator *sep){
+void command_ipc(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC())
 	{
 		if (c->GetTarget()->CastToNPC()->IsInteractive())
@@ -1149,7 +1150,7 @@ void command_ipc(Client *c, const Seperator *sep){
 }
 #endif /* IPC */
 
-void command_npcloot(Client *c, const Seperator *sep){
+void command_npcloot(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "Error: No target");
 	// #npcloot show
@@ -1181,7 +1182,7 @@ void command_npcloot(Client *c, const Seperator *sep){
 					c->GetTarget()->CastToNPC()->AddItem(item, atoi(sep->arg[3]), !quest, quest);
 				else
 				{
-					if(database.ItemQuantityType(item) == EQ::item::Quantity_Charges)
+					if (database.ItemQuantityType(item) == EQ::item::Quantity_Charges)
 					{
 						int8 charges = dbitem->MaxCharges;
 						c->GetTarget()->CastToNPC()->AddItem(item, charges, !quest, quest);
@@ -1250,9 +1251,9 @@ void command_npcloot(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #npcloot [show/money/add/remove] [itemid/all/money: pp gp sp cp] [quantity] [quest]");
 }
 
-void command_gm(Client *c, const Seperator *sep){
+void command_gm(Client* c, const Seperator* sep) {
 	bool state = atobool(sep->arg[1]);
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -1265,8 +1266,8 @@ void command_gm(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #gm [on/off]");
 }
 
-void command_summon(Client *c, const Seperator *sep){
-	Mob *t;
+void command_summon(Client* c, const Seperator* sep) {
+	Mob* t;
 
 	if (sep->arg[1][0] != 0)		// arg specified
 	{
@@ -1327,7 +1328,7 @@ void command_summon(Client *c, const Seperator *sep){
 	else if (t->IsClient())
 	{
 		//If #hideme is on, prevent being summoned by a lower GM.
-		if(t->CastToClient()->GetAnon() == 1 && t->CastToClient()->Admin() > c->Admin())
+		if (t->CastToClient()->GetAnon() == 1 && t->CastToClient()->Admin() > c->Admin())
 		{
 			c->Message(CC_Red, "You cannot summon a GM with a higher status than you.");
 			return;
@@ -1338,7 +1339,7 @@ void command_summon(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zone(Client *c, const Seperator *sep)
+void command_zone(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (!arguments) {
@@ -1401,14 +1402,14 @@ void command_zone(Client *c, const Seperator *sep)
 	);
 }
 
-void command_showbuffs(Client *c, const Seperator *sep){
+void command_showbuffs(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->CastToMob()->ShowBuffs(c);
 	else
 		c->GetTarget()->CastToMob()->ShowBuffs(c);
 }
 
-void command_peqzone(Client *c, const Seperator *sep){
+void command_peqzone(Client* c, const Seperator* sep) {
 	uint32 timeleft = c->GetPTimers().GetRemainingTime(pTimerPeqzoneReuse) / 60;
 
 	if (!c->GetPTimers().Expired(&database, pTimerPeqzoneReuse, false)) {
@@ -1440,7 +1441,7 @@ void command_peqzone(Client *c, const Seperator *sep){
 	{
 		zoneid = atoi(sep->arg[1]);
 		destzone = database.GetPEQZone(zoneid);
-		if (destzone == 0){
+		if (destzone == 0) {
 			c->Message(CC_Red, "You cannot use this command to enter that zone!");
 			return;
 		}
@@ -1462,7 +1463,7 @@ void command_peqzone(Client *c, const Seperator *sep){
 			c->Message(CC_Default, "Unable to locate zone '%s'", sep->arg[1]);
 			return;
 		}
-		if (destzone == 0){
+		if (destzone == 0) {
 			c->Message(CC_Red, "You cannot use this command to enter that zone!");
 			return;
 		}
@@ -1472,7 +1473,7 @@ void command_peqzone(Client *c, const Seperator *sep){
 		}
 	}
 
-	if (RuleB(Zone, UsePEQZoneDebuffs)){
+	if (RuleB(Zone, UsePEQZoneDebuffs)) {
 		c->SpellOnTarget(RuleI(Zone, PEQZoneDebuff1), c);
 		c->SpellOnTarget(RuleI(Zone, PEQZoneDebuff2), c);
 	}
@@ -1482,7 +1483,7 @@ void command_peqzone(Client *c, const Seperator *sep){
 	c->MovePC(zoneid, 0.0f, 0.0f, 0.0f, 0.0f, 0, ZoneToSafeCoords);
 }
 
-void command_movechar(Client *c, const Seperator *sep){
+void command_movechar(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0 || sep->arg[2][0] == 0)
 		c->Message(CC_Default, "Usage: #movechar [charactername] [zonename]/bind");
 	else if (c->Admin() < commandMovecharToSpecials && strcasecmp(sep->arg[2], "cshome") == 0 || strcasecmp(sep->arg[2], "load") == 0 || strcasecmp(sep->arg[2], "load2") == 0)
@@ -1498,7 +1499,7 @@ void command_movechar(Client *c, const Seperator *sep){
 				{
 					uint32 charid = database.GetCharacterID((char*)sep->arg[1]);
 					uint16 zone_id = database.MoveCharacterToBind(charid);
-					if(zone_id == 0)
+					if (zone_id == 0)
 						c->Message(CC_Default, "Character Move Failed!");
 					else
 						c->Message(CC_Default, "%s has been moved to %s.", (char*)sep->arg[1], database.GetZoneName(zone_id));
@@ -1516,7 +1517,7 @@ void command_movechar(Client *c, const Seperator *sep){
 	}
 }
 
-void command_bug(Client *c, const Seperator *sep)
+void command_bug(Client* c, const Seperator* sep)
 {
 	int admin = c->Admin();
 	std::string help0 = "Bug commands usage:";
@@ -1607,7 +1608,7 @@ void command_bug(Client *c, const Seperator *sep)
 	}
 }
 
-void command_petition(Client *c, const Seperator *sep)
+void command_petition(Client* c, const Seperator* sep)
 {
 	int admin = c->Admin();
 	std::string help0 = "Petition commands usage:";
@@ -1642,9 +1643,9 @@ void command_petition(Client *c, const Seperator *sep)
 		c->Message(CC_Red, "ID : Character , Account , Time Sent");
 		for (auto row = results.begin(); row != results.end(); ++row)
 		{
-			char *pet_time = row[3];
+			char* pet_time = row[3];
 			time_t t = atoi(pet_time);
-			struct tm *tm = localtime(&t);
+			struct tm* tm = localtime(&t);
 			char date[80];
 			strftime(date, 80, "%m/%d %I:%M%p", tm);
 
@@ -1751,7 +1752,7 @@ void command_petition(Client *c, const Seperator *sep)
 	}
 }
 
-void command_listnpcs(Client *c, const Seperator *sep){
+void command_listnpcs(Client* c, const Seperator* sep) {
 	if (strcasecmp(sep->arg[1], "attacked") == 0)
 	{
 		entity_list.ListNPCs(c, "null", "null", 3);
@@ -1769,7 +1770,7 @@ void command_listnpcs(Client *c, const Seperator *sep){
 	}
 }
 
-void command_date(Client *c, const Seperator *sep){
+void command_date(Client* c, const Seperator* sep) {
 	//yyyy mm dd hh mm local
 	if (sep->arg[3][0] == 0 || !sep->IsNumber(1) || !sep->IsNumber(2) || !sep->IsNumber(3)) {
 		c->Message(CC_Red, "Usage: #date yyyy mm dd [HH MM]");
@@ -1791,7 +1792,7 @@ void command_date(Client *c, const Seperator *sep){
 	}
 }
 
-void command_timezone(Client *c, const Seperator *sep){
+void command_timezone(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0 && !sep->IsNumber(1)) {
 		c->Message(CC_Red, "Usage: #timezone HH [MM]");
 		c->Message(CC_Red, "Current timezone is: %ih %im", zone->zone_time.getEQTimeZoneHr(), zone->zone_time.getEQTimeZoneMin());
@@ -1815,7 +1816,7 @@ void command_timezone(Client *c, const Seperator *sep){
 	}
 }
 
-void command_synctod(Client *c, const Seperator *sep){
+void command_synctod(Client* c, const Seperator* sep) {
 	c->Message(CC_Red, "Updating Time/Date for all clients in zone...");
 	auto outapp = new EQApplicationPacket(OP_TimeOfDay, sizeof(TimeOfDay_Struct));
 	TimeOfDay_Struct* tod = (TimeOfDay_Struct*)outapp->pBuffer;
@@ -1824,7 +1825,7 @@ void command_synctod(Client *c, const Seperator *sep){
 	safe_delete(outapp);
 }
 
-void command_invul(Client *c, const Seperator *sep)
+void command_invul(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (!arguments) {
@@ -1852,7 +1853,7 @@ void command_invul(Client *c, const Seperator *sep)
 	);
 }
 
-void command_hideme(Client *c, const Seperator *sep){
+void command_hideme(Client* c, const Seperator* sep) {
 	bool state = atobool(sep->arg[1]);
 
 	if (sep->arg[1][0] == 0)
@@ -1864,15 +1865,15 @@ void command_hideme(Client *c, const Seperator *sep){
 	}
 }
 
-void command_emote(Client *c, const Seperator *sep){
+void command_emote(Client* c, const Seperator* sep) {
 	if (sep->arg[3][0] == 0)
 		c->Message(CC_Default, "Usage: #emote [name | world | zone] type# message");
 	else {
-		if (strcasecmp(sep->arg[1], "zone") == 0){
+		if (strcasecmp(sep->arg[1], "zone") == 0) {
 			char* newmessage = 0;
 			if (strstr(sep->arg[3], "^") == 0)
 				entity_list.Message(CC_Default, atoi(sep->arg[2]), sep->argplus[3]);
-			else{
+			else {
 				for (newmessage = strtok((char*)sep->arg[3], "^"); newmessage != nullptr; newmessage = strtok(nullptr, "^"))
 					entity_list.Message(CC_Default, atoi(sep->arg[2]), newmessage);
 			}
@@ -1886,7 +1887,7 @@ void command_emote(Client *c, const Seperator *sep){
 	}
 }
 
-void command_fov(Client *c, const Seperator *sep){
+void command_fov(Client* c, const Seperator* sep) {
 	if (c->GetTarget())
 		if (c->BehindMob(c->GetTarget(), c->GetX(), c->GetY()))
 			c->Message(CC_Default, "You are behind mob %s, it is looking to %d", c->GetTarget()->GetName(), c->GetTarget()->GetHeading());
@@ -1896,15 +1897,15 @@ void command_fov(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "I Need a target!");
 }
 
-void command_manastat(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget() ? c->GetTarget() : c;
+void command_manastat(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget() ? c->GetTarget() : c;
 
 	c->Message(CC_Default, "Mana for %s:", target->GetName());
 	c->Message(CC_Default, "  Current Mana: %d", target->GetMana());
 	c->Message(CC_Default, "  Max Mana: %d", target->GetMaxMana());
 }
 
-void command_npcstats(Client *c, const Seperator *sep){
+void command_npcstats(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "ERROR: No target!");
 	else if (!c->GetTarget()->IsNPC())
@@ -1914,7 +1915,7 @@ void command_npcstats(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zclip(Client *c, const Seperator *sep){
+void command_zclip(Client* c, const Seperator* sep) {
 	// modifys and resends zhdr packet
 	if (sep->arg[2][0] == 0)
 		c->Message(CC_Default, "Usage: #zclip <min clip> <max clip>");
@@ -1922,7 +1923,7 @@ void command_zclip(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "ERROR: Min clip can not be zero or less!");
 	else if (atoi(sep->arg[2]) <= 0)
 		c->Message(CC_Default, "ERROR: Max clip can not be zero or less!");
-	else if (atoi(sep->arg[1])>atoi(sep->arg[2]))
+	else if (atoi(sep->arg[1]) > atoi(sep->arg[2]))
 		c->Message(CC_Default, "ERROR: Min clip is greater than max clip!");
 	else {
 		zone->newzone_data.minclip = atof(sep->arg[1]);
@@ -1942,7 +1943,7 @@ void command_zclip(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npccast(Client *c, const Seperator *sep){
+void command_npccast(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && !sep->IsNumber(1) && sep->arg[1] != 0 && sep->IsNumber(2)) {
 		Mob* spelltar = entity_list.GetMob(sep->arg[1]);
 		if (spelltar)
@@ -1961,7 +1962,7 @@ void command_npccast(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: (needs NPC targeted) #npccast targetname/entityid spellid");
 }
 
-void command_zstats(Client *c, const Seperator *sep){
+void command_zstats(Client* c, const Seperator* sep) {
 	c->Message(CC_Default, "Zone Header Data:");
 	c->Message(CC_Default, "Sky Type: %i", zone->newzone_data.sky);
 	c->Message(CC_Default, "Fog Colour: Red: %i; Blue: %i; Green %i", zone->newzone_data.fog_red[0], zone->newzone_data.fog_green[0], zone->newzone_data.fog_blue[0]);
@@ -1970,8 +1971,8 @@ void command_zstats(Client *c, const Seperator *sep){
 	c->Message(CC_Default, "Clip Plane: %f - %f", zone->newzone_data.minclip, zone->newzone_data.maxclip);
 }
 
-void command_permaclass(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_permaclass(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -1983,15 +1984,15 @@ void command_permaclass(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Target is not a client.");
 	else {
 		c->Message(CC_Default, "Setting %s's class...Sending to char select.", t->GetName());
-		Log(Logs::General, Logs::Normal, "Class change request from %s for %s, requested class:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]) );
+		Log(Logs::General, Logs::Normal, "Class change request from %s for %s, requested class:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]));
 		t->SetBaseClass(atoi(sep->arg[1]));
 		t->Save();
 		t->Kick();
 	}
 }
 
-void command_permarace(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_permarace(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -2003,8 +2004,8 @@ void command_permarace(Client *c, const Seperator *sep){
 	else if (!t->IsClient())
 		c->Message(CC_Default, "Target is not a client.");
 	else {
-		c->Message(CC_Default, "Setting %s's race - zone to take effect",t->GetName());
-		Log(Logs::General, Logs::Normal, "Permanant race change request from %s for %s, requested race:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]) );
+		c->Message(CC_Default, "Setting %s's race - zone to take effect", t->GetName());
+		Log(Logs::General, Logs::Normal, "Permanant race change request from %s for %s, requested race:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]));
 		uint32 tmp = Mob::GetDefaultGender(atoi(sep->arg[1]), t->GetBaseGender());
 		t->SetBaseRace(atoi(sep->arg[1]));
 		t->SetBaseGender(tmp);
@@ -2013,8 +2014,8 @@ void command_permarace(Client *c, const Seperator *sep){
 	}
 }
 
-void command_permagender(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_permagender(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -2026,17 +2027,17 @@ void command_permagender(Client *c, const Seperator *sep){
 	else if (!t->IsClient())
 		c->Message(CC_Default, "Target is not a client.");
 	else {
-		c->Message(CC_Default, "Setting %s's gender - zone to take effect",t->GetName());
-		Log(Logs::General, Logs::Normal, "Permanant gender change request from %s for %s, requested gender:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]) );
+		c->Message(CC_Default, "Setting %s's gender - zone to take effect", t->GetName());
+		Log(Logs::General, Logs::Normal, "Permanant gender change request from %s for %s, requested gender:%i", c->GetName(), t->GetName(), atoi(sep->arg[1]));
 		t->SetBaseGender(atoi(sep->arg[1]));
 		t->Save();
 		t->SendIllusionPacket(atoi(sep->arg[1]));
 	}
 }
 
-void command_weather(Client *c, const Seperator *sep)
+void command_weather(Client* c, const Seperator* sep)
 {
-	if (!(sep->arg[1][0] == '0' || sep->arg[1][0] == '1' || sep->arg[1][0] == '2')) 
+	if (!(sep->arg[1][0] == '0' || sep->arg[1][0] == '1' || sep->arg[1][0] == '2'))
 	{
 		c->Message(CC_Default, "Usage: #weather <0/1/2> - Off/Rain/Snow <0/1> - Serverwide <minutes> - Duration");
 		return;
@@ -2051,7 +2052,7 @@ void command_weather(Client *c, const Seperator *sep)
 		serverwide = atoi(sep->arg[2]);
 
 	//Turn off weather
-	if(weather_type == 0)
+	if (weather_type == 0)
 	{
 		c->Message(CC_Yellow, "Turning off weather.");
 		zone->zone_weather = 0;
@@ -2072,7 +2073,7 @@ void command_weather(Client *c, const Seperator *sep)
 			zone->weatherSend();
 		}
 	}
-	if(zone->zone_weather == 0)
+	if (zone->zone_weather == 0)
 	{
 		uint8 intensity = 3;
 		uint16 timer = 0;
@@ -2082,7 +2083,7 @@ void command_weather(Client *c, const Seperator *sep)
 		// Snow
 		if (weather_type == 2)
 		{
-			if(timer > 0)
+			if (timer > 0)
 				c->Message(CC_Yellow, "Changing weather to snow for %d seconds.", timer);
 			else
 				c->Message(CC_Yellow, "Changing weather to snow until the next cycle.");
@@ -2102,7 +2103,7 @@ void command_weather(Client *c, const Seperator *sep)
 			else
 			{
 
-				zone->weatherSend(timer*1000);
+				zone->weatherSend(timer * 1000);
 			}
 
 			return;
@@ -2110,7 +2111,7 @@ void command_weather(Client *c, const Seperator *sep)
 		// Rain
 		else if (weather_type == 1)
 		{
-			if(timer > 0)
+			if (timer > 0)
 				c->Message(CC_Yellow, "Changing weather to rain for %d seconds.", timer);
 			else
 				c->Message(CC_Yellow, "Changing weather to rain until the next cycle.");
@@ -2129,7 +2130,7 @@ void command_weather(Client *c, const Seperator *sep)
 			}
 			else
 			{
-				zone->weatherSend(timer*1000);
+				zone->weatherSend(timer * 1000);
 			}
 
 			return;
@@ -2137,7 +2138,7 @@ void command_weather(Client *c, const Seperator *sep)
 	}
 	else
 	{
-		if(weather_type != 0)
+		if (weather_type != 0)
 		{
 			c->Message(CC_Yellow, "You cannot change from one type of weather to another without first stopping it.");
 			return;
@@ -2145,7 +2146,7 @@ void command_weather(Client *c, const Seperator *sep)
 	}
 }
 
-void command_zheader(Client *c, const Seperator *sep){
+void command_zheader(Client* c, const Seperator* sep) {
 	// sends zhdr packet
 	if (sep->arg[1][0] == 0) {
 		c->Message(CC_Default, "Usage: #zheader <zone name>");
@@ -2165,11 +2166,11 @@ void command_zheader(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zsky(Client *c, const Seperator *sep){
+void command_zsky(Client* c, const Seperator* sep) {
 	// modifys and resends zhdr packet
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #zsky <sky type>");
-	else if (atoi(sep->arg[1])<0 || atoi(sep->arg[1])>255)
+	else if (atoi(sep->arg[1]) < 0 || atoi(sep->arg[1]) > 255)
 		c->Message(CC_Default, "ERROR: Sky type can not be less than 0 or greater than 255!");
 	else {
 		zone->newzone_data.sky = atoi(sep->arg[1]);
@@ -2180,18 +2181,18 @@ void command_zsky(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zcolor(Client *c, const Seperator *sep){
+void command_zcolor(Client* c, const Seperator* sep) {
 	// modifys and resends zhdr packet
 	if (sep->arg[3][0] == 0)
 		c->Message(CC_Default, "Usage: #zcolor <red> <green> <blue>");
-	else if (atoi(sep->arg[1])<0 || atoi(sep->arg[1])>255)
+	else if (atoi(sep->arg[1]) < 0 || atoi(sep->arg[1]) > 255)
 		c->Message(CC_Default, "ERROR: Red can not be less than 0 or greater than 255!");
-	else if (atoi(sep->arg[2])<0 || atoi(sep->arg[2])>255)
+	else if (atoi(sep->arg[2]) < 0 || atoi(sep->arg[2]) > 255)
 		c->Message(CC_Default, "ERROR: Green can not be less than 0 or greater than 255!");
-	else if (atoi(sep->arg[3])<0 || atoi(sep->arg[3])>255)
+	else if (atoi(sep->arg[3]) < 0 || atoi(sep->arg[3]) > 255)
 		c->Message(CC_Default, "ERROR: Blue can not be less than 0 or greater than 255!");
 	else {
-		for (int z = 0; z<4; z++) {
+		for (int z = 0; z < 4; z++) {
 			zone->newzone_data.fog_red[z] = atoi(sep->arg[1]);
 			zone->newzone_data.fog_green[z] = atoi(sep->arg[2]);
 			zone->newzone_data.fog_blue[z] = atoi(sep->arg[3]);
@@ -2203,7 +2204,7 @@ void command_zcolor(Client *c, const Seperator *sep){
 	}
 }
 
-void command_gassign(Client *c, const Seperator *sep){
+void command_gassign(Client* c, const Seperator* sep) {
 	if (sep->IsNumber(1) && c->GetTarget() && c->GetTarget()->IsNPC() && c->GetTarget()->CastToNPC()->GetSpawnPointID() > 0) {
 		int spawn2id = c->GetTarget()->CastToNPC()->GetSpawnPointID();
 		database.AssignGrid(c, atoi(sep->arg[1]), spawn2id);
@@ -2212,7 +2213,7 @@ void command_gassign(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #gassign [num] - must have an npc target!");
 }
 
-void command_ai(Client *c, const Seperator *sep)
+void command_ai(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (!arguments) {
@@ -2420,7 +2421,7 @@ void command_ai(Client *c, const Seperator *sep)
 	}
 }
 
-void command_worldshutdown(Client *c, const Seperator *sep){
+void command_worldshutdown(Client* c, const Seperator* sep) {
 	// GM command to shutdown world server and all zone servers
 	uint32 time = 0;
 	uint32 interval = 0;
@@ -2454,7 +2455,7 @@ void command_worldshutdown(Client *c, const Seperator *sep){
 			worldserver.SendPacket(pack);
 			safe_delete(pack);
 		}
-		else if (!strcasecmp(sep->arg[1], "now")){
+		else if (!strcasecmp(sep->arg[1], "now")) {
 			worldserver.SendEmoteMessage(0, AccountStatus::Player, CC_Yellow, "[SYSTEM] World is shutting down now.");
 			c->Message(CC_Default, "World is shutting down now.");
 			auto pack = new ServerPacket;
@@ -2463,7 +2464,7 @@ void command_worldshutdown(Client *c, const Seperator *sep){
 			worldserver.SendPacket(pack);
 			safe_delete(pack);
 		}
-		else if (!strcasecmp(sep->arg[1], "disable")){
+		else if (!strcasecmp(sep->arg[1], "disable")) {
 			c->Message(CC_Default, "World shutdown has been aborted.");
 			auto pack = new ServerPacket(ServerOP_ShutdownAll, sizeof(WorldShutDown_Struct));
 			WorldShutDown_Struct* wsd = (WorldShutDown_Struct*)pack->pBuffer;
@@ -2472,7 +2473,7 @@ void command_worldshutdown(Client *c, const Seperator *sep){
 			worldserver.SendPacket(pack);
 			safe_delete(pack);
 		}
-		else{
+		else {
 			c->Message(CC_Default, "#worldshutdown - Shuts down the server and all zones.");
 			c->Message(CC_Default, "Usage: #worldshutdown now - Shuts down the server and all zones immediately.");
 			c->Message(CC_Default, "Usage: #worldshutdown disable - Stops the server from a previously scheduled shut down.");
@@ -2483,18 +2484,18 @@ void command_worldshutdown(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Error: World server disconnected");
 }
 
-void command_sendzonespawns(Client *c, const Seperator *sep){
+void command_sendzonespawns(Client* c, const Seperator* sep) {
 	entity_list.SendZoneSpawns(c);
 }
 
-void command_zsave(Client *c, const Seperator *sep){
+void command_zsave(Client* c, const Seperator* sep) {
 	if (zone->SaveZoneCFG())
 		c->Message(CC_Red, "Zone header saved successfully.");
 	else
 		c->Message(CC_Red, "ERROR: Zone header data was NOT saved.");
 }
 
-void command_dbspawn2(Client *c, const Seperator *sep){
+void command_dbspawn2(Client* c, const Seperator* sep) {
 
 	if (sep->IsNumber(1) && sep->IsNumber(2) && sep->IsNumber(3)) {
 		Log(Logs::General, Logs::Normal, "Spawning database spawn");
@@ -2512,11 +2513,11 @@ void command_dbspawn2(Client *c, const Seperator *sep){
 	}
 }
 
-void command_shutdown(Client *c, const Seperator *sep){
+void command_shutdown(Client* c, const Seperator* sep) {
 	CatchSignal(2);
 }
 
-void command_delacct(Client *c, const Seperator *sep){
+void command_delacct(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Format: #delacct accountname");
 	else
@@ -2557,7 +2558,7 @@ void command_setnpcexpansion(Client* c, const Seperator* sep)
 	}
 }
 
-void command_setpass(Client *c, const Seperator *sep){
+void command_setpass(Client* c, const Seperator* sep) {
 	int arguments = sep->argnum;
 	if (arguments < 2) {
 		c->Message(CC_Default, "Usage: #setpass [Account Name] [Password]");
@@ -2633,18 +2634,18 @@ void command_grid(Client* c, const Seperator* sep) {
 	{
 		database.ModifyGrid(c, false, atoi(sep->arg[2]), atoi(sep->arg[3]), atoi(sep->arg[4]), zone->GetZoneID());
 	}
-	else if (strcasecmp("show", sep->arg[1]) == 0) 
+	else if (strcasecmp("show", sep->arg[1]) == 0)
 	{
 
 		Mob* target = c->GetTarget();
 
-		if (!target || !target->IsNPC()) 
+		if (!target || !target->IsNPC())
 		{
 			c->Message(0, "You need a NPC target!");
 			return;
 		}
 
-		std::string query = StringFormat (
+		std::string query = StringFormat(
 			"SELECT `x`, `y`, `z`, `heading`, `number` "
 			"FROM `grid_entries` "
 			"WHERE `zoneid` = %u and `gridid` = %i "
@@ -2702,19 +2703,19 @@ void command_grid(Client* c, const Seperator* sep) {
 	}
 }
 
-void command_wp(Client *c, const Seperator *sep){
+void command_wp(Client* c, const Seperator* sep) {
 	int wp = atoi(sep->arg[4]);
 
 	if (strcasecmp("add", sep->arg[1]) == 0) {
 		if (wp == 0) //default to highest if it's left blank, or we enter 0
 			wp = database.GetHighestWaypoint(zone->GetZoneID(), atoi(sep->arg[2])) + 1;
-		if (strcasecmp("-h",sep->arg[5]) == 0) {
-			database.AddWP(c, atoi(sep->arg[2]),wp, c->GetPosition(), atoi(sep->arg[3]),zone->GetZoneID());
+		if (strcasecmp("-h", sep->arg[5]) == 0) {
+			database.AddWP(c, atoi(sep->arg[2]), wp, c->GetPosition(), atoi(sep->arg[3]), zone->GetZoneID());
 		}
 		else {
-            auto position = c->GetPosition();
-            position.w = -1;
-			database.AddWP(c, atoi(sep->arg[2]),wp, position, atoi(sep->arg[3]),zone->GetZoneID());
+			auto position = c->GetPosition();
+			position.w = -1;
+			database.AddWP(c, atoi(sep->arg[2]), wp, position, atoi(sep->arg[3]), zone->GetZoneID());
 		}
 	}
 	else if (strcasecmp("delete", sep->arg[1]) == 0)
@@ -2723,10 +2724,10 @@ void command_wp(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #wp add/delete grid_num pause wp_num [-h]");
 }
 
-void command_iplookup(Client *c, const Seperator *sep){
+void command_iplookup(Client* c, const Seperator* sep) {
 	auto pack =
-	    new ServerPacket(ServerOP_IPLookup, sizeof(ServerGenericWorldQuery_Struct) + strlen(sep->argplus[1]) + 1);
-	ServerGenericWorldQuery_Struct* s = (ServerGenericWorldQuery_Struct *)pack->pBuffer;
+		new ServerPacket(ServerOP_IPLookup, sizeof(ServerGenericWorldQuery_Struct) + strlen(sep->argplus[1]) + 1);
+	ServerGenericWorldQuery_Struct* s = (ServerGenericWorldQuery_Struct*)pack->pBuffer;
 	strcpy(s->from, c->GetName());
 	s->admin = c->Admin();
 	if (sep->argplus[1][0] != 0)
@@ -2735,15 +2736,15 @@ void command_iplookup(Client *c, const Seperator *sep){
 	safe_delete(pack);
 }
 
-void command_size(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_size(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 	{
 		// ChangeSize just sends the AT_Size apperance packet, which doesn't support float.
 		// All attempts to workaround this using the illusion packet have failed. 
 		c->Message(CC_Default, "Usage: #size [0 - 255] This command does not support decimals.");
 	}
-	else 
+	else
 	{
 		float newsize = atof(sep->arg[1]);
 		if (newsize > 255)
@@ -2760,7 +2761,7 @@ void command_size(Client *c, const Seperator *sep){
 		{
 			target = c;
 		}
-		else 
+		else
 		{
 			target->ChangeSize(newsize);
 			c->Message(CC_Default, "%s is now size %0.1f", target->GetName(), atof(sep->arg[1]));
@@ -2768,7 +2769,7 @@ void command_size(Client *c, const Seperator *sep){
 	}
 }
 
-void command_mana(Client *c, const Seperator *sep)
+void command_mana(Client* c, const Seperator* sep)
 {
 	auto target = c->GetTarget() ? c->GetTarget() : c;
 	if (target->IsClient()) {
@@ -2793,7 +2794,7 @@ void command_mana(Client *c, const Seperator *sep)
 	}
 }
 
-void command_flymode(Client *c, const Seperator *sep)
+void command_flymode(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (!arguments || !sep->IsNumber(1)) {
@@ -2838,8 +2839,8 @@ void command_flymode(Client *c, const Seperator *sep)
 	);
 }
 
-void command_showskills(Client *c, const Seperator *sep){
-	Mob *t = c;
+void command_showskills(Client* c, const Seperator* sep) {
+	Mob* t = c;
 
 	if (c->GetTarget())
 		t = c->GetTarget();
@@ -2849,7 +2850,7 @@ void command_showskills(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Skill [%d] is at [%d]", i, t->GetSkill(i));
 }
 
-void command_findspell(Client *c, const Seperator *sep){
+void command_findspell(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #FindSpell [spellname]");
 	else if (SPDAT_RECORDS <= 0)
@@ -2869,12 +2870,12 @@ void command_findspell(Client *c, const Seperator *sep){
 		std::string sName;
 		std::string sCriteria;
 		sCriteria = sep->argplus[1];
-		for (auto & c : sCriteria) c = toupper(c);
-		for (int i = 0; i<SPDAT_RECORDS; i++) {
+		for (auto& c : sCriteria) c = toupper(c);
+		for (int i = 0; i < SPDAT_RECORDS; i++) {
 			if (spells[i].name[0] != 0) {
 				sName = spells[i].name;
 
-				for (auto & c : sName) c = toupper(c);
+				for (auto& c : sName) c = toupper(c);
 				if (sName.find(sCriteria) != std::string::npos && (count <= 20)) {
 					c->Message(CC_Default, "  %i: %s", i, spells[i].name);
 					count++;
@@ -2890,20 +2891,20 @@ void command_findspell(Client *c, const Seperator *sep){
 	}
 }
 
-void command_castspell(Client *c, const Seperator *sep){
+void command_castspell(Client* c, const Seperator* sep) {
 	if (!sep->IsNumber(1))
 	{
 		c->Message(CC_Default, "Usage: #CastSpell spellid gm_override entityid");
 		c->Message(CC_Default, "gm_override 0: Cast Normally. 1: Skip stacking and resist checks. 2: Normal, but don't send buff fade when a spell overwrites.");
 	}
-	else 
+	else
 	{
 		uint16 spellid = atoi(sep->arg[1]);
 		uint8 gm_override = atoi(sep->arg[2]);
 		uint16 entityid = atoi(sep->arg[3]);
 
-		if(entityid > 0)
-		{ 
+		if (entityid > 0)
+		{
 			Mob* caster = entity_list.GetMob(entityid);
 			if (caster && caster->IsNPC())
 			{
@@ -2963,14 +2964,14 @@ void command_castspell(Client *c, const Seperator *sep){
 				else
 					c->CastSpell(spellid, c->GetTarget()->GetID(), EQ::spells::CastingSlot::Item, 0);
 
-				if(c->GetTarget())
+				if (c->GetTarget())
 					c->GetTarget()->SetGMSpellException(0);
 			}
 		}
 	}
 }
 
-void command_setlanguage(Client *c, const Seperator *sep){
+void command_setlanguage(Client* c, const Seperator* sep) {
 	Client* target = c;
 	if (c->GetTarget() && c->GetTarget()->IsClient()) {
 		target = c->GetTarget()->CastToClient();
@@ -3027,7 +3028,7 @@ void command_setlanguage(Client *c, const Seperator *sep){
 	}
 }
 
-void command_setskill(Client *c, const Seperator *sep){
+void command_setskill(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == nullptr) {
 		c->Message(CC_Default, "Error: #setskill: No target.");
 	}
@@ -3044,7 +3045,7 @@ void command_setskill(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "       x = 0 to %d", HARD_SKILL_CAP);
 	}
 	else {
-		Log(Logs::General, Logs::Normal, "Set skill request from %s, target:%s skill_id:%i value:%i", c->GetName(), c->GetTarget()->GetName(), atoi(sep->arg[1]), atoi(sep->arg[2]) );
+		Log(Logs::General, Logs::Normal, "Set skill request from %s, target:%s skill_id:%i value:%i", c->GetName(), c->GetTarget()->GetName(), atoi(sep->arg[1]), atoi(sep->arg[2]));
 		int skill_num = atoi(sep->arg[1]);
 		uint16 skill_value = atoi(sep->arg[2]) > HARD_SKILL_CAP ? HARD_SKILL_CAP : atoi(sep->arg[2]);
 		if (skill_num < EQ::skills::HIGHEST_SKILL)
@@ -3062,7 +3063,7 @@ void command_setskill(Client *c, const Seperator *sep){
 	}
 }
 
-void command_setskillall(Client *c, const Seperator *sep){
+void command_setskillall(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "Error: #setallskill: No target.");
 	else if (!c->GetTarget()->IsClient())
@@ -3098,8 +3099,8 @@ void command_setskillall(Client *c, const Seperator *sep){
 	}
 }
 
-void command_race(Client *c, const Seperator *sep){
-	Mob *t = c->CastToMob();
+void command_race(Client* c, const Seperator* sep) {
+	Mob* t = c->CastToMob();
 
 	// Need to figure out max race for LoY/LDoN: going with upper bound of 500 now for testing
 	if (sep->IsNumber(1) && atoi(sep->arg[1]) >= 0 && atoi(sep->arg[1]) <= 724) {
@@ -3111,8 +3112,8 @@ void command_race(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #race [0-724] (0 for back to normal)");
 }
 
-void command_gender(Client *c, const Seperator *sep){
-	Mob *t = c->CastToMob();
+void command_gender(Client* c, const Seperator* sep) {
+	Mob* t = c->CastToMob();
 
 	if (sep->IsNumber(1) && atoi(sep->arg[1]) >= 0 && atoi(sep->arg[1]) <= 500) {
 		if ((c->GetTarget()) && c->Admin() >= commandGenderOthers)
@@ -3123,14 +3124,14 @@ void command_gender(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #gender [0/1/2]");
 }
 
-void command_makepet(Client *c, const Seperator *sep){
+void command_makepet(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == '\0')
 		c->Message(CC_Default, "Usage: #makepet pet_type_name (will not survive across zones)");
 	else
 		c->MakePet(0, sep->arg[1]);
 }
 
-void command_level(Client *c, const Seperator *sep)
+void command_level(Client* c, const Seperator* sep)
 {
 	uint16 level = atoi(sep->arg[1]);
 	uint16 current_level = c->GetLevel();
@@ -3168,10 +3169,10 @@ void command_level(Client *c, const Seperator *sep)
 	}
 }
 
-void command_spawn(Client *c, const Seperator *sep){
-	if (sep->arg[1][0] != 0){
+void command_spawn(Client* c, const Seperator* sep) {
+	if (sep->arg[1][0] != 0) {
 		Client* client = entity_list.GetClientByName(sep->arg[1]);
-		if (client){
+		if (client) {
 			c->Message(CC_Default, "You cannot spawn a mob with the same name as a character!");
 			return;
 		}
@@ -3185,7 +3186,7 @@ void command_spawn(Client *c, const Seperator *sep){
 	}
 }
 
-void command_texture(Client *c, const Seperator *sep){
+void command_texture(Client* c, const Seperator* sep) {
 
 	uint16 texture;
 	if (sep->IsNumber(1) && atoi(sep->arg[1]) >= 0 && atoi(sep->arg[1]) <= 255) {
@@ -3197,7 +3198,7 @@ void command_texture(Client *c, const Seperator *sep){
 		if (!c->GetTarget())
 			for (i = EQ::textures::textureBegin; i <= EQ::textures::LastTintableTexture; i++)
 			{
-			c->WearChange(i, texture, 0);
+				c->WearChange(i, texture, 0);
 			}
 		else if (c->GetTarget()->IsPlayableRace(c->GetTarget()->GetRace())) {
 			for (i = EQ::textures::textureBegin; i <= EQ::textures::LastTintableTexture; i++)
@@ -3227,7 +3228,7 @@ void command_texture(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #texture [texture] [helmtexture] (0-255, 255 for show equipment)");
 }
 
-void command_npctypespawn(Client *c, const Seperator *sep){
+void command_npctypespawn(Client* c, const Seperator* sep) {
 	if (sep->IsNumber(1)) {
 		const NPCType* tmp = 0;
 		if ((tmp = database.GetNPCType(atoi(sep->arg[1])))) {
@@ -3247,7 +3248,7 @@ void command_npctypespawn(Client *c, const Seperator *sep){
 
 }
 
-void command_heal(Client *c, const Seperator *sep)
+void command_heal(Client* c, const Seperator* sep)
 {
 	auto target = c->GetTarget() ? c->GetTarget() : c;
 	target->Heal();
@@ -3266,8 +3267,8 @@ void command_heal(Client *c, const Seperator *sep)
 	}
 }
 
-void command_appearance(Client *c, const Seperator *sep){
-	Mob *t = c->CastToMob();
+void command_appearance(Client* c, const Seperator* sep) {
+	Mob* t = c->CastToMob();
 
 	// sends any appearance packet
 	// Dev debug command, for appearance types
@@ -3281,7 +3282,7 @@ void command_appearance(Client *c, const Seperator *sep){
 	}
 }
 
-void command_nukeitem(Client *c, const Seperator *sep){
+void command_nukeitem(Client* c, const Seperator* sep) {
 	int numitems, itemid;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && (sep->IsNumber(1) || sep->IsHexNumber(1))) {
@@ -3293,7 +3294,7 @@ void command_nukeitem(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: (targted) #nukeitem itemnum - removes the item from the player's inventory");
 }
 
-void command_peekinv(Client *c, const Seperator *sep)
+void command_peekinv(Client* c, const Seperator* sep)
 {
 	enum {
 		peekNone = 0x00,
@@ -3332,19 +3333,19 @@ void command_peekinv(Client *c, const Seperator *sep)
 	const EQ::ItemInstance* inst_main = nullptr;
 	const EQ::ItemInstance* inst_sub = nullptr;
 	const EQ::ItemData* item_data = nullptr;
-	
+
 	EQ::SayLinkEngine linker;
 	linker.SetLinkType(EQ::saylink::SayLinkItemInst);
 
 	c->Message(CC_Default, fmt::format("Displaying inventory for {}...", targetClient->GetName()).c_str());
-	
+
 	// worn
 	for (int16 indexMain = EQ::invslot::EQUIPMENT_BEGIN; (scopeWhere & peekWorn) && (indexMain <= EQ::invslot::EQUIPMENT_END); ++indexMain) {
 		inst_main = targetClient->GetInv().GetItem(indexMain);
 		item_data = (inst_main == nullptr) ? nullptr : inst_main->GetItem();
 		linker.SetItemInst(inst_main);
 
-				c->Message((item_data == nullptr), "WornSlot: %i, Item: %i (%s), Charges: %i",
+		c->Message((item_data == nullptr), "WornSlot: %i, Item: %i (%s), Charges: %i",
 			indexMain, ((item_data == nullptr) ? 0 : item_data->ID), linker.GenerateLink().c_str(), ((item_data == nullptr) ? 0 : inst_main->GetCharges()));
 	}
 
@@ -3354,7 +3355,7 @@ void command_peekinv(Client *c, const Seperator *sep)
 		item_data = (inst_main == nullptr) ? nullptr : inst_main->GetItem();
 		linker.SetItemInst(inst_main);
 
-				c->Message((item_data == 0), fmt::format("InvSlot: {}, Item: {} ({}), Charges: {}",
+		c->Message((item_data == 0), fmt::format("InvSlot: {}, Item: {} ({}), Charges: {}",
 			indexMain, ((item_data == 0) ? 0 : item_data->ID), linker.GenerateLink().c_str(), ((item_data == 0) ? 0 : inst_main->GetCharges())).c_str());
 
 		for (uint8 indexSub = EQ::invbag::SLOT_BEGIN; inst_main && inst_main->IsClassBag() && (indexSub <= EQ::invbag::SLOT_END); ++indexSub) {
@@ -3387,7 +3388,7 @@ void command_peekinv(Client *c, const Seperator *sep)
 				linker.SetItemInst(inst_main);
 
 				int16 SlotCursor = cursorDepth;
-				if(SlotCursor > 0)
+				if (SlotCursor > 0)
 					SlotCursor += EQ::invslot::CURSOR_QUEUE_BEGIN;
 
 				c->Message((item_data == 0), fmt::format("CursorSlot: {}, Depth: {}, Item: {} ({}), Charges: {}",
@@ -3427,7 +3428,7 @@ void command_peekinv(Client *c, const Seperator *sep)
 		}
 	}
 	// money
-	if (scopeWhere & peekBank) 
+	if (scopeWhere & peekBank)
 		c->Message(CC_Default, fmt::format("Bank Money: {} pp {} gp {} sp {} cp", targetClient->GetPP().platinum_bank, targetClient->GetPP().gold_bank, targetClient->GetPP().silver_bank, targetClient->GetPP().copper_bank).c_str());
 
 
@@ -3482,7 +3483,7 @@ void command_peekinv(Client *c, const Seperator *sep)
 	}
 }
 
-void command_findnpctype(Client *c, const Seperator *sep)
+void command_findnpctype(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] == 0) {
 		c->Message(CC_Default, "Usage: #findnpctype [search criteria]");
@@ -3491,7 +3492,7 @@ void command_findnpctype(Client *c, const Seperator *sep)
 
 	std::string query;
 
-	int id = atoi((const char *)sep->arg[1]);
+	int id = atoi((const char*)sep->arg[1]);
 	if (id == 0) // If id evaluates to 0, then search as if user entered a string.
 		query = StringFormat("SELECT id, name FROM npc_types WHERE name LIKE '%%%s%%' ORDER by id", sep->arg[1]);
 	else // Otherwise, look for just that npc id.
@@ -3527,7 +3528,7 @@ void command_findnpctype(Client *c, const Seperator *sep)
 
 }
 
-void command_findzone(Client *c, const Seperator *sep)
+void command_findzone(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] == 0) {
 		c->Message(CC_Default, "Usage: #findzone [search criteria]");
@@ -3535,7 +3536,7 @@ void command_findzone(Client *c, const Seperator *sep)
 	}
 
 	std::string query;
-	int id = atoi((const char *)sep->arg[1]);
+	int id = atoi((const char*)sep->arg[1]);
 	if (id == 0) { // If id evaluates to 0, then search as if user entered a string.
 		auto escName = new char[strlen(sep->arg[1]) * 2 + 1];
 		database.DoEscapeString(escName, sep->arg[1], strlen(sep->arg[1]));
@@ -3546,7 +3547,7 @@ void command_findzone(Client *c, const Seperator *sep)
 	}
 	else // Otherwise, look for just that zoneidnumber.
 		query = StringFormat("SELECT zoneidnumber, short_name, long_name FROM zone "
-		"WHERE zoneidnumber = %i", id);
+			"WHERE zoneidnumber = %i", id);
 
 	auto results = database.QueryDatabase(query);
 	if (!results.Success()) {
@@ -3573,7 +3574,7 @@ void command_findzone(Client *c, const Seperator *sep)
 		c->Message(CC_Default, "No matches found for %s.", sep->arg[1]);
 }
 
-void command_viewnpctype(Client *c, const Seperator *sep){
+void command_viewnpctype(Client* c, const Seperator* sep) {
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #viewnpctype [npctype id]");
 	else
@@ -3599,7 +3600,7 @@ void command_viewnpctype(Client *c, const Seperator *sep){
 	}
 }
 
-void command_reloadqst(Client *c, const Seperator *sep)
+void command_reloadqst(Client* c, const Seperator* sep)
 {
 	bool stop_timers = false;
 
@@ -3619,10 +3620,10 @@ void command_reloadqst(Client *c, const Seperator *sep)
 	parse->ReloadQuests(stop_timers);
 }
 
-void command_reloadworld(Client *c, const Seperator *sep){
+void command_reloadworld(Client* c, const Seperator* sep) {
 	//c->Message(CC_Default, "Reloading quest cache, reloading rules, and repopping zones worldwide.");
 	auto pack = new ServerPacket(ServerOP_ReloadWorld, sizeof(ReloadWorld_Struct));
-	ReloadWorld_Struct* RW = (ReloadWorld_Struct*) pack->pBuffer;
+	ReloadWorld_Struct* RW = (ReloadWorld_Struct*)pack->pBuffer;
 	RW->Option = 0; //Keep it, maybe we'll use it in the future.
 	worldserver.SendPacket(pack);
 	safe_delete(pack);
@@ -3632,32 +3633,32 @@ void command_reloadworld(Client *c, const Seperator *sep){
 	c->Message(CC_Yellow, "You broadcast, Reloading quest cache, reloading rules, merchants, emotes, and repopping zones worldwide.");
 }
 
-void command_reloadlevelmods(Client *c, const Seperator *sep){
+void command_reloadlevelmods(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 	{
-		if (RuleB(Zone, LevelBasedEXPMods)){
+		if (RuleB(Zone, LevelBasedEXPMods)) {
 			zone->LoadLevelEXPMods();
 			c->Message(CC_Yellow, "Level based EXP Mods have been reloaded zonewide");
 		}
-		else{
+		else {
 			c->Message(CC_Yellow, "Level based EXP Mods are disabled in rules!");
 		}
 	}
 }
 
-void command_reloadzps(Client *c, const Seperator *sep){
+void command_reloadzps(Client* c, const Seperator* sep) {
 	database.LoadStaticZonePoints(&zone->zone_point_list, zone->GetShortName());
 	c->Message(CC_Default, "Reloading server zone_points.");
 }
 
-void command_zoneshutdown(Client *c, const Seperator *sep){
+void command_zoneshutdown(Client* c, const Seperator* sep) {
 	if (!worldserver.Connected())
 		c->Message(CC_Default, "Error: World server disconnected");
 	else if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #zoneshutdown zoneshortname");
 	else {
 		auto pack = new ServerPacket(ServerOP_ZoneShutdown, sizeof(ServerZoneStateChange_struct));
-		ServerZoneStateChange_struct* s = (ServerZoneStateChange_struct *)pack->pBuffer;
+		ServerZoneStateChange_struct* s = (ServerZoneStateChange_struct*)pack->pBuffer;
 		strcpy(s->adminname, c->GetName());
 		if (sep->arg[1][0] >= '0' && sep->arg[1][0] <= '9')
 			s->ZoneServerID = atoi(sep->arg[1]);
@@ -3668,7 +3669,7 @@ void command_zoneshutdown(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zonebootup(Client *c, const Seperator *sep)
+void command_zonebootup(Client* c, const Seperator* sep)
 {
 	if (!worldserver.Connected())
 	{
@@ -3677,16 +3678,16 @@ void command_zonebootup(Client *c, const Seperator *sep)
 	else if (sep->arg[1][0] == 0)
 	{
 		auto pack = new ServerPacket(ServerOP_BootDownZones, sizeof(ServerDownZoneBoot_struct));
-		ServerDownZoneBoot_struct* s = (ServerDownZoneBoot_struct *)pack->pBuffer;
+		ServerDownZoneBoot_struct* s = (ServerDownZoneBoot_struct*)pack->pBuffer;
 		strcpy(s->adminname, c->GetName());
 		worldserver.SendPacket(pack);
 		safe_delete(pack);
 		c->Message(CC_Default, "Zonebootup completed.");
 	}
-	else 
+	else
 	{
 		auto pack = new ServerPacket(ServerOP_ZoneBootup, sizeof(ServerZoneStateChange_struct));
-		ServerZoneStateChange_struct* s = (ServerZoneStateChange_struct *)pack->pBuffer;
+		ServerZoneStateChange_struct* s = (ServerZoneStateChange_struct*)pack->pBuffer;
 		s->ZoneServerID = atoi(sep->arg[2]);
 		strcpy(s->adminname, c->GetName());
 		s->zoneid = database.GetZoneID(sep->arg[1]);
@@ -3697,7 +3698,7 @@ void command_zonebootup(Client *c, const Seperator *sep)
 	}
 }
 
-void command_kick(Client *c, const Seperator *sep){
+void command_kick(Client* c, const Seperator* sep) {
 	int arguments = sep->argnum;
 	if (!arguments) {
 		c->Message(CC_Default, "Usage: #kick [Character Name]");
@@ -3720,17 +3721,17 @@ void command_kick(Client *c, const Seperator *sep){
 		}
 		if (client) {
 			if (client->Admin() <= c->Admin()) {
-				client->Message(CC_Default, 
+				client->Message(CC_Default,
 					fmt::format(
-						"You have been kicked by {} ", 
+						"You have been kicked by {} ",
 						c->GetName()
 					).c_str()
 				);
 				client->WorldKick();
-				c->Message(CC_Default, 
+				c->Message(CC_Default,
 					fmt::format(
-					"{} has been kicked from the server.",
-					character_name
+						"{} has been kicked from the server.",
+						character_name
 					).c_str()
 				);
 			}
@@ -3738,7 +3739,7 @@ void command_kick(Client *c, const Seperator *sep){
 	}
 }
 
-void command_attack(Client *c, const Seperator *sep){
+void command_attack(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && sep->arg[1] != 0) {
 		Mob* sictar = entity_list.GetMob(sep->argplus[1]);
 		if (sictar)
@@ -3750,7 +3751,7 @@ void command_attack(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: (needs NPC targeted) #attack targetname");
 }
 
-void command_attackentity(Client *c, const Seperator *sep) {
+void command_attackentity(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && atoi(sep->arg[1]) > 0) {
 		Mob* sictar = entity_list.GetMob(atoi(sep->arg[1]));
 		if (sictar)
@@ -3779,7 +3780,7 @@ void command_serverlock(Client* c, const Seperator* sep)
 	safe_delete(pack);
 }
 
-void command_motd(Client *c, const Seperator *sep)
+void command_motd(Client* c, const Seperator* sep)
 {
 	auto pack = new ServerPacket(ServerOP_Motd, sizeof(ServerMotd_Struct));
 	auto mss = (ServerMotd_Struct*)pack->pBuffer;
@@ -3790,7 +3791,7 @@ void command_motd(Client *c, const Seperator *sep)
 	safe_delete(pack);
 }
 
-void command_equipitem(Client *c, const Seperator *sep){
+void command_equipitem(Client* c, const Seperator* sep) {
 	uint32 slot_id = atoi(sep->arg[1]);
 	if (sep->IsNumber(1) && ((slot_id >= EQ::invslot::EQUIPMENT_BEGIN) && (slot_id <= EQ::invslot::EQUIPMENT_END))) {
 		const EQ::ItemInstance* from_inst = c->GetInv().GetItem(EQ::invslot::slotCursor);
@@ -3846,7 +3847,7 @@ void command_equipitem(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #equipitem slotid[0-21] - equips the item on your cursor to the position");
 }
 
-void command_zonelock(Client *c, const Seperator *sep){
+void command_zonelock(Client* c, const Seperator* sep) {
 	auto pack = new ServerPacket(ServerOP_LockZone, sizeof(ServerLockZone_Struct));
 	ServerLockZone_Struct* lock_zone = (ServerLockZone_Struct*)pack->pBuffer;
 	strn0cpy(lock_zone->adminname, c->GetName(), sizeof(lock_zone->adminname));
@@ -3886,7 +3887,7 @@ void command_zonelock(Client *c, const Seperator *sep){
 	safe_delete(pack);
 }
 
-void command_corpse(Client *c, const Seperator *sep)
+void command_corpse(Client* c, const Seperator* sep)
 {
 	std::string help0 = "#Corpse commands usage:";
 	std::string help1 = "  #corpse buriedcount - Get the target's total number of buried player corpses.";
@@ -3911,7 +3912,7 @@ void command_corpse(Client *c, const Seperator *sep)
 
 	std::string help[] = { help0, help1, help2, help3, help4, help5, help6, help7, help8, help9, help10, help11, help12, help13, help14, help15, help16, help17, help18, help19 };
 
-	Mob *target = c->GetTarget();
+	Mob* target = c->GetTarget();
 
 	if (strcasecmp(sep->arg[1], "help") == 0)
 	{
@@ -3923,7 +3924,7 @@ void command_corpse(Client *c, const Seperator *sep)
 	}
 	else if (strcasecmp(sep->arg[1], "buriedcount") == 0)
 	{
-		Client *t = c;
+		Client* t = c;
 
 		if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 			t = c->GetTarget()->CastToClient();
@@ -3946,7 +3947,7 @@ void command_corpse(Client *c, const Seperator *sep)
 	{
 		if (c->Admin() >= commandEditPlayerCorpses)
 		{
-			Client *t = c;
+			Client* t = c;
 
 			if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 				t = c->GetTarget()->CastToClient();
@@ -4055,17 +4056,17 @@ void command_corpse(Client *c, const Seperator *sep)
 	}
 	else if (strcasecmp(sep->arg[1], "list") == 0)
 	{
-		if(!target || (target && target->IsNPC()))
+		if (!target || (target && target->IsNPC()))
 		{
 			entity_list.ListNPCCorpses(c);
 		}
-		else if(target && target->IsClient())
+		else if (target && target->IsClient())
 		{
 			entity_list.ListPlayerCorpses(c);
 		}
 		else
 			c->Message(CC_Yellow, "Please select a NPC or Client to list corpses of that type.");
-			
+
 	}
 	else if (strcasecmp(sep->arg[1], "locate") == 0)
 	{
@@ -4158,7 +4159,7 @@ void command_corpse(Client *c, const Seperator *sep)
 		if (c->Admin() >= commandEditPlayerCorpses)
 		{
 			uint32 corpseid;
-			Client *t = c;
+			Client* t = c;
 
 			if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 				t = c->GetTarget()->CastToClient();
@@ -4176,24 +4177,24 @@ void command_corpse(Client *c, const Seperator *sep)
 			else
 				corpseid = atoi(sep->arg[2]);
 
-			if(!database.IsValidCorpseBackup(corpseid))
+			if (!database.IsValidCorpseBackup(corpseid))
 			{
 				c->Message(CC_Red, "Backup corpse %i not found.", corpseid);
 				return;
 			}
-			else if(database.IsValidCorpse(corpseid))
+			else if (database.IsValidCorpse(corpseid))
 			{
 				c->Message(CC_Red, "Corpse %i has been found! Please summon or delete it before attempting to restore from a backup.", atoi(sep->arg[2]));
 				return;
 			}
-			else if(!database.IsCorpseBackupOwner(corpseid, t->CharacterID()))
+			else if (!database.IsCorpseBackupOwner(corpseid, t->CharacterID()))
 			{
 				c->Message(CC_Red, "Targetted player is not the owner of the specified corpse!");
 				return;
 			}
 			else
 			{
-				if(database.CopyBackupCorpse(corpseid))
+				if (database.CopyBackupCorpse(corpseid))
 				{
 					Corpse* PlayerCorpse = database.SummonCharacterCorpse(corpseid, t->CharacterID(), t->GetZoneID(), t->GetPosition());
 
@@ -4224,8 +4225,8 @@ void command_corpse(Client *c, const Seperator *sep)
 	}
 }
 
-void command_fixmob(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_fixmob(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	const char* Usage = "Usage: #fixmob [race|gender|texture|helm|face|hair|haircolor|beard|beardcolor|heritage|tattoo|detail] [next|prev]";
 
 	if (!sep->arg[1])
@@ -4404,7 +4405,7 @@ void command_fixmob(Client *c, const Seperator *sep){
 	}
 }
 
-void command_gmspeed(Client *c, const Seperator *sep)
+void command_gmspeed(Client* c, const Seperator* sep)
 {
 	bool   state = atobool(sep->arg[1]);
 	Client* t = c;
@@ -4422,20 +4423,20 @@ void command_gmspeed(Client *c, const Seperator *sep)
 	}
 }
 
-void command_title(Client *c, const Seperator *sep){
+void command_title(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #title [remove|text] [1 = Create row in title table] - remove or set title to 'text'");
 	else {
 		bool Save = (atoi(sep->arg[2]) == 1);
 
-		Mob *target_mob = c->GetTarget();
+		Mob* target_mob = c->GetTarget();
 		if (!target_mob)
 			target_mob = c;
 		if (!target_mob->IsClient()) {
 			c->Message(CC_Red, "#title only works on players.");
 			return;
 		}
-		Client *t = target_mob->CastToClient();
+		Client* t = target_mob->CastToClient();
 
 		if (strlen(sep->arg[1]) > 31) {
 			c->Message(CC_Red, "Title must be 31 characters or less.");
@@ -4448,7 +4449,7 @@ void command_title(Client *c, const Seperator *sep){
 			removed = true;
 		}
 		else {
-			for (unsigned int i = 0; i<strlen(sep->arg[1]); i++)
+			for (unsigned int i = 0; i < strlen(sep->arg[1]); i++)
 				if (sep->arg[1][i] == '_')
 					sep->arg[1][i] = ' ';
 			if (!Save)
@@ -4472,20 +4473,20 @@ void command_title(Client *c, const Seperator *sep){
 	}
 }
 
-void command_titlesuffix(Client *c, const Seperator *sep){
+void command_titlesuffix(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #titlesuffix [remove|text] [1 = create row in title table] - remove or set title suffix to 'text'");
 	else {
 		bool Save = (atoi(sep->arg[2]) == 1);
 
-		Mob *target_mob = c->GetTarget();
+		Mob* target_mob = c->GetTarget();
 		if (!target_mob)
 			target_mob = c;
 		if (!target_mob->IsClient()) {
 			c->Message(CC_Red, "#titlesuffix only works on players.");
 			return;
 		}
-		Client *t = target_mob->CastToClient();
+		Client* t = target_mob->CastToClient();
 
 		if (strlen(sep->arg[1]) > 31) {
 			c->Message(CC_Red, "Title suffix must be 31 characters or less.");
@@ -4498,7 +4499,7 @@ void command_titlesuffix(Client *c, const Seperator *sep){
 			removed = true;
 		}
 		else {
-			for (unsigned int i = 0; i<strlen(sep->arg[1]); i++)
+			for (unsigned int i = 0; i < strlen(sep->arg[1]); i++)
 				if (sep->arg[1][i] == '_')
 					sep->arg[1][i] = ' ';
 
@@ -4523,12 +4524,12 @@ void command_titlesuffix(Client *c, const Seperator *sep){
 	}
 }
 
-void command_spellinfo(Client *c, const Seperator *sep){
+void command_spellinfo(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #spellinfo [spell_id]");
 	else {
 		short int spell_id = atoi(sep->arg[1]);
-		const struct SPDat_Spell_Struct *s = &spells[spell_id];
+		const struct SPDat_Spell_Struct* s = &spells[spell_id];
 		c->Message(CC_Default, "Spell info for spell #%d:", spell_id);
 		c->Message(CC_Default, "  name: %s", s->name);
 		c->Message(CC_Default, "  player_1: %s", s->player_1);
@@ -4575,11 +4576,11 @@ void command_spellinfo(Client *c, const Seperator *sep){
 	}
 }
 
-void command_lastname(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_lastname(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
-		t=c->GetTarget()->CastToClient();
+		t = c->GetTarget()->CastToClient();
 	Log(Logs::General, Logs::Normal, "#lastname request from %s for %s", c->GetName(), t->GetName());
 
 	if (strlen(sep->arg[1]) <= 70)
@@ -4588,7 +4589,7 @@ void command_lastname(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #lastname <lastname> where <lastname> is less than 70 chars long");
 }
 
-void command_memspell(Client *c, const Seperator *sep){
+void command_memspell(Client* c, const Seperator* sep) {
 	uint32 slot;
 	uint16 spell_id;
 
@@ -4612,7 +4613,7 @@ void command_memspell(Client *c, const Seperator *sep){
 	}
 }
 
-void command_save(Client *c, const Seperator *sep)
+void command_save(Client* c, const Seperator* sep)
 {
 	if (
 		!c->GetTarget() ||
@@ -4628,7 +4629,7 @@ void command_save(Client *c, const Seperator *sep)
 
 	auto target = c->GetTarget();
 
-	if (target->IsClient()) 
+	if (target->IsClient())
 	{
 		if (target->CastToClient()->Save(2))
 		{
@@ -4648,15 +4649,15 @@ void command_save(Client *c, const Seperator *sep)
 		c->Message(CC_Default, "Error: target not a Client/PlayerCorpse");
 }
 
-void command_showstats(Client *c, const Seperator *sep)
+void command_showstats(Client* c, const Seperator* sep)
 {
-	if (sep->IsNumber(1) && atoi(sep->arg[1]) == 1) 
+	if (sep->IsNumber(1) && atoi(sep->arg[1]) == 1)
 	{
 		if (c->GetTarget() != 0 && c->GetTarget()->IsClient())
 		{
 			c->GetTarget()->CastToClient()->SendQuickStats(c);
 		}
-		else if(c->GetTarget() != 0 && c->GetTarget()->IsNPC())
+		else if (c->GetTarget() != 0 && c->GetTarget()->IsNPC())
 		{
 			c->GetTarget()->CastToNPC()->ShowQuickStats(c);
 		}
@@ -4675,7 +4676,7 @@ void command_showstats(Client *c, const Seperator *sep)
 	}
 }
 
-void command_mystats(Client *c, const Seperator *sep){
+void command_mystats(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetPet()) {
 		if (c->GetTarget()->IsPet() && c->GetTarget() == c->GetPet())
 			c->GetTarget()->ShowStats(c);
@@ -4686,7 +4687,7 @@ void command_mystats(Client *c, const Seperator *sep){
 		c->ShowStats(c);
 }
 
-void command_bind(Client *c, const Seperator *sep){
+void command_bind(Client* c, const Seperator* sep) {
 	if (c->GetTarget() != 0) {
 		if (c->GetTarget()->IsClient())
 			c->GetTarget()->CastToClient()->SetBindPoint();
@@ -4697,7 +4698,7 @@ void command_bind(Client *c, const Seperator *sep){
 		c->SetBindPoint();
 }
 
-void command_depop(Client *c, const Seperator *sep){
+void command_depop(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0 || !(c->GetTarget()->IsNPC() || c->GetTarget()->IsNPCCorpse()))
 		c->Message(CC_Default, "You must have a NPC target for this command. (maybe you meant #depopzone?)");
 	else {
@@ -4706,12 +4707,12 @@ void command_depop(Client *c, const Seperator *sep){
 	}
 }
 
-void command_depopzone(Client *c, const Seperator *sep){
+void command_depopzone(Client* c, const Seperator* sep) {
 	zone->Depop();
 	c->Message(CC_Default, "Zone depoped.");
 }
 
-void command_repop(Client *c, const Seperator *sep)
+void command_repop(Client* c, const Seperator* sep)
 {
 	bool force = false;
 	if (sep->arg[1] && strcasecmp(sep->arg[1], "force") == 0) {
@@ -4748,7 +4749,7 @@ void command_repop(Client *c, const Seperator *sep)
 	}
 }
 
-void command_repopclose(Client *c, const Seperator *sep)
+void command_repopclose(Client* c, const Seperator* sep)
 {
 	int repop_distance = 500;
 
@@ -4774,12 +4775,12 @@ void command_repopclose(Client *c, const Seperator *sep)
 	zone->RepopClose(c->GetPosition(), repop_distance);
 }
 
-void command_rewind(Client *c, const Seperator *sep){
+void command_rewind(Client* c, const Seperator* sep) {
 	c->RewindCommand();
 	return;
 }
 
-void command_spawnstatus(Client *c, const Seperator *sep)
+void command_spawnstatus(Client* c, const Seperator* sep)
 {
 	if (sep->IsNumber(1))
 	{
@@ -4795,14 +4796,14 @@ void command_spawnstatus(Client *c, const Seperator *sep)
 	}
 }
 
-void command_nukebuffs(Client *c, const Seperator *sep){
+void command_nukebuffs(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->BuffFadeAll(false, true);
 	else
 		c->GetTarget()->BuffFadeAll(false, true);
 }
 
-void command_zuwcoords(Client *c, const Seperator *sep){
+void command_zuwcoords(Client* c, const Seperator* sep) {
 	// modifys and resends zhdr packet
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #zuwcoords <under world coords>");
@@ -4817,7 +4818,7 @@ void command_zuwcoords(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zunderworld(Client *c, const Seperator *sep){
+void command_zunderworld(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #zunderworld <zcoord>");
 	else {
@@ -4825,7 +4826,7 @@ void command_zunderworld(Client *c, const Seperator *sep){
 	}
 }
 
-void command_zsafecoords(Client *c, const Seperator *sep){
+void command_zsafecoords(Client* c, const Seperator* sep) {
 	// modifys and resends zhdr packet
 	if (sep->arg[3][0] == 0)
 		c->Message(CC_Default, "Usage: #zsafecoords <safe x> <safe y> <safe z>");
@@ -4847,23 +4848,23 @@ void command_zsafecoords(Client *c, const Seperator *sep){
 	}
 }
 
-void command_freeze(Client *c, const Seperator *sep){
+void command_freeze(Client* c, const Seperator* sep) {
 	if (c->GetTarget() != 0)
 		c->GetTarget()->SendAppearancePacket(AT_Anim, ANIM_FREEZE);
 	else
 		c->Message(CC_Default, "ERROR: Freeze requires a target.");
 }
 
-void command_unfreeze(Client *c, const Seperator *sep){
+void command_unfreeze(Client* c, const Seperator* sep) {
 	if (c->GetTarget() != 0)
 		c->GetTarget()->SendAppearancePacket(AT_Anim, ANIM_STAND);
 	else
 		c->Message(CC_Default, "ERROR: Unfreeze requires a target.");
 }
 
-void command_pvp(Client *c, const Seperator *sep){
+void command_pvp(Client* c, const Seperator* sep) {
 	bool state = atobool(sep->arg[1]);
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -4876,38 +4877,38 @@ void command_pvp(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #pvp [on/off]");
 }
 
-void command_setxp(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_setxp(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
 
 	if (sep->IsNumber(1)) {
 		int exploss;
-		t->GetExpLoss(nullptr,0,exploss);
+		t->GetExpLoss(nullptr, 0, exploss);
 		uint32 currentXP = t->GetEXP();
 		uint32 currentaaXP = t->GetAAXP();
 		int input = atoi(sep->arg[1]);
 
 		if (input > 9999999)
 			c->Message(CC_Default, "Error: Value too high.");
-		else if(input == -1)
+		else if (input == -1)
 		{
 			uint32 newxp = currentXP - exploss;
-			if(newxp < 1000)
+			if (newxp < 1000)
 				newxp = 1000;
 			t->SetEXP(newxp, currentaaXP);
 		}
-		else if(input == 0)
+		else if (input == 0)
 		{
 			uint32 newxp = currentXP + exploss;
 			t->SetEXP(newxp, currentaaXP);
 		}
-		else if(input <= 100)
+		else if (input <= 100)
 		{
-			float percent = input/100.0f;
-			uint32 requiredxp = t->GetEXPForLevel(t->GetLevel()+1) - t->GetEXPForLevel(t->GetLevel());
-			float final_ = requiredxp*percent;
+			float percent = input / 100.0f;
+			uint32 requiredxp = t->GetEXPForLevel(t->GetLevel() + 1) - t->GetEXPForLevel(t->GetLevel());
+			float final_ = requiredxp * percent;
 			uint32 newxp = (uint32)final_ + currentXP;
 			t->SetEXP(newxp, currentaaXP);
 		}
@@ -4921,8 +4922,8 @@ void command_setxp(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #setxp number or percentage. If 0, will 'rez' a single death. If -1 will subtract a single death.");
 }
 
-void command_name(Client *c, const Seperator *sep){
-	Client *target;
+void command_name(Client* c, const Seperator* sep) {
+	Client* target;
 
 	if ((strlen(sep->arg[1]) == 0) || (!(c->GetTarget() && c->GetTarget()->IsClient())))
 		c->Message(CC_Default, "Usage: #name newname (requires player target)");
@@ -4944,10 +4945,10 @@ void command_name(Client *c, const Seperator *sep){
 	}
 }
 
-void command_kill(Client *c, const Seperator *sep)
+void command_kill(Client* c, const Seperator* sep)
 {
 	auto target = c->GetTarget();
-	if (!target) 
+	if (!target)
 	{
 		c->Message(CC_Default, "You must have a target to use this command.");
 		return;
@@ -4964,7 +4965,7 @@ void command_kill(Client *c, const Seperator *sep)
 	}
 }
 
-void command_haste(Client *c, const Seperator *sep){
+void command_haste(Client* c, const Seperator* sep) {
 	// #haste command to set client attack speed. Takes a percentage (100 = twice normal attack speed)
 	if (sep->arg[1][0] != 0) {
 		uint16 Haste = atoi(sep->arg[1]);
@@ -4979,14 +4980,14 @@ void command_haste(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #haste [percentage]");
 }
 
-void command_damage(Client *c, const Seperator *sep)
+void command_damage(Client* c, const Seperator* sep)
 {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "Error: #Damage: No Target.");
 	else if (!sep->IsNumber(1)) {
 		c->Message(CC_Default, "Usage: #damage [dmg]");
 	}
-	else {			
+	else {
 		int32 nkdmg = atoi(sep->arg[1]);
 		if (nkdmg > 2100000000)
 			c->Message(CC_Default, "Enter a value less then 2,100,000,000.");
@@ -4997,7 +4998,7 @@ void command_damage(Client *c, const Seperator *sep)
 	}
 }
 
-void command_gmdamage(Client *c, const Seperator *sep)
+void command_gmdamage(Client* c, const Seperator* sep)
 {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "Error: #gmamage: No Target.");
@@ -5029,7 +5030,7 @@ void command_gmdamage(Client *c, const Seperator *sep)
 	}
 }
 
-void command_zonespawn(Client *c, const Seperator *sep){
+void command_zonespawn(Client* c, const Seperator* sep) {
 	c->Message(CC_Default, "This command is not yet implemented.");
 	return;
 
@@ -5066,7 +5067,7 @@ void command_zonespawn(Client *c, const Seperator *sep){
 	//		Message(CC_Default, "Usage: #zonespawn [add|edit|remove|remove all]");
 }
 
-void command_npcspawn(Client *c, const Seperator *sep){
+void command_npcspawn(Client* c, const Seperator* sep) {
 	int arguments = sep->argnum;
 	if (!arguments) {
 		c->Message(CC_Default, "Command Syntax: #npcspawn [Add|Create|Delete|Remove|Update]");
@@ -5106,9 +5107,9 @@ void command_npcspawn(Client *c, const Seperator *sep){
 	}
 }
 
-void command_spawnfix(Client *c, const Seperator *sep)
+void command_spawnfix(Client* c, const Seperator* sep)
 {
-	Mob *targetMob = c->GetTarget();
+	Mob* targetMob = c->GetTarget();
 	if (!targetMob || !targetMob->IsNPC()) {
 		c->Message(CC_Default, "Error: #spawnfix: Need an NPC target.");
 		return;
@@ -5130,11 +5131,11 @@ void command_spawnfix(Client *c, const Seperator *sep)
 		return;
 	}
 
-    c->Message(CC_Default, "Updating coordinates successful.");
-    targetMob->Depop(false);
+	c->Message(CC_Default, "Updating coordinates successful.");
+	targetMob->Depop(false);
 }
 
-void command_loc(Client *c, const Seperator *sep)
+void command_loc(Client* c, const Seperator* sep)
 {
 	Mob* target = c;
 	if (c->GetTarget()) {
@@ -5144,7 +5145,7 @@ void command_loc(Client *c, const Seperator *sep)
 	auto target_position = target->GetPosition();
 
 	c->Message(CC_Default, fmt::format(" {} Location | XYZ: {:.2f}, {:.2f}, {:.2f} Heading: {:.2f} ", (c == target ? "Your" : fmt::format(" {} ({}) ", target->GetCleanName(), target->GetID())), target_position.x, target_position.y, target_position.z, target_position.w).c_str());
-		
+
 	float newz = 0;
 	if (!zone->zonemap)
 	{
@@ -5179,49 +5180,49 @@ void command_loc(Client *c, const Seperator *sep)
 		auto position = glm::vec3(target->GetX(), target->GetY(), target->GetZ());
 		auto region_type = zone->watermap->ReturnRegionType(position);
 		auto position_string = fmt::format(" {} is", target->GetCleanName());
-		
+
 		switch (region_type) {
-			case RegionTypeIce: {
-				c->Message(CC_Default, fmt::format("{} in Ice.", position_string).c_str());
-				break;
-			}
-			case RegionTypeLava: {
-				c->Message(CC_Default, fmt::format("{} in Lava.", position_string).c_str());
-				break;
-			}
-			case RegionTypeNormal: {
-				c->Message(CC_Default, fmt::format("{} in a Normal Region.", position_string).c_str());
-				break;
-			}
-			case RegionTypePVP: {
-				c->Message(CC_Default, fmt::format("{} in a PvP Area.", position_string).c_str());
-				break;
-			}
-			case RegionTypeSlime: {
-				c->Message(CC_Default, fmt::format("{} in Slime.", position_string).c_str());
-				break;
-			}
-			case RegionTypeVWater: {
-				c->Message(CC_Default, fmt::format("{} in VWater (Icy Water?).", position_string).c_str());
-				break;
-			}
-			case RegionTypeWater: {
-				c->Message(CC_Default, fmt::format("{} in Water.", position_string).c_str());
-				break;
-			}
-			default: {
-				c->Message(CC_Default, fmt::format("{} in an Unknown Region.", position_string).c_str());
-				break;
-			}
+		case RegionTypeIce: {
+			c->Message(CC_Default, fmt::format("{} in Ice.", position_string).c_str());
+			break;
+		}
+		case RegionTypeLava: {
+			c->Message(CC_Default, fmt::format("{} in Lava.", position_string).c_str());
+			break;
+		}
+		case RegionTypeNormal: {
+			c->Message(CC_Default, fmt::format("{} in a Normal Region.", position_string).c_str());
+			break;
+		}
+		case RegionTypePVP: {
+			c->Message(CC_Default, fmt::format("{} in a PvP Area.", position_string).c_str());
+			break;
+		}
+		case RegionTypeSlime: {
+			c->Message(CC_Default, fmt::format("{} in Slime.", position_string).c_str());
+			break;
+		}
+		case RegionTypeVWater: {
+			c->Message(CC_Default, fmt::format("{} in VWater (Icy Water?).", position_string).c_str());
+			break;
+		}
+		case RegionTypeWater: {
+			c->Message(CC_Default, fmt::format("{} in Water.", position_string).c_str());
+			break;
+		}
+		default: {
+			c->Message(CC_Default, fmt::format("{} in an Unknown Region.", position_string).c_str());
+			break;
+		}
 		}
 
 	}
 
-	if(target->CanCastBindAffinity() && (zone->CanBind() || zone->IsCity() || zone->CanBindOthers()))
+	if (target->CanCastBindAffinity() && (zone->CanBind() || zone->IsCity() || zone->CanBindOthers()))
 	{
 		c->Message(CC_Default, fmt::format(" {} can bind here.", target->GetCleanName()).c_str());
 	}
-	else if(!target->CanCastBindAffinity() && (zone->IsCity() || zone->IsBindArea(target->GetX(), target->GetY(), target->GetZ())))
+	else if (!target->CanCastBindAffinity() && (zone->IsCity() || zone->IsBindArea(target->GetX(), target->GetY(), target->GetZ())))
 	{
 		c->Message(CC_Default, fmt::format(" {} can be bound here.", target->GetCleanName()).c_str());
 	}
@@ -5231,7 +5232,7 @@ void command_loc(Client *c, const Seperator *sep)
 	}
 }
 
-void command_goto(Client *c, const Seperator *sep)
+void command_goto(Client* c, const Seperator* sep)
 {
 	// goto function
 	if (sep->arg[1][0] == '\0' && c->GetTarget())
@@ -5242,7 +5243,7 @@ void command_goto(Client *c, const Seperator *sep)
 		c->MovePC(zone->GetZoneID(), atof(sep->arg[1]), atof(sep->arg[2]), atof(sep->arg[3]), 0.0f, 0, SummonPC);
 }
 
-void command_iteminfo(Client *c, const Seperator *sep)
+void command_iteminfo(Client* c, const Seperator* sep)
 {
 	auto inst = c->GetInv()[EQ::invslot::slotCursor];
 	if (!inst) { c->Message(13, "Error: You need an item on your cursor for this command"); }
@@ -5278,7 +5279,7 @@ void command_iteminfo(Client *c, const Seperator *sep)
 	}
 }
 
-void command_uptime(Client *c, const Seperator *sep){
+void command_uptime(Client* c, const Seperator* sep) {
 	if (!worldserver.Connected())
 		c->Message(CC_Default, "Error: World server disconnected");
 	else
@@ -5293,7 +5294,7 @@ void command_uptime(Client *c, const Seperator *sep){
 	}
 }
 
-void command_flag(Client *c, const Seperator *sep){
+void command_flag(Client* c, const Seperator* sep) {
 	int arguments = sep->argnum;
 	if (!arguments) {
 		auto target = c->GetTarget() && c->GetTarget()->IsClient() ? c->GetTarget()->CastToClient() : c;
@@ -5378,7 +5379,7 @@ void command_flag(Client *c, const Seperator *sep){
 	}
 }
 
-void command_time(Client *c, const Seperator *sep){
+void command_time(Client* c, const Seperator* sep) {
 	char timeMessage[255];
 	int minutes = 0;
 	if (sep->IsNumber(1)) {
@@ -5400,15 +5401,15 @@ void command_time(Client *c, const Seperator *sep){
 			(eqTime.hour >= 13) ? "pm" : "am",
 			zone->zone_time.getEQTimeZoneHr(),
 			zone->zone_time.getEQTimeZoneMin()
-			);
+		);
 		c->Message(CC_Red, "It is now %s.", timeMessage);
 		LogInfo("Current Time is: {} ", timeMessage);
 	}
 }
 
-void command_guild(Client *c, const Seperator *sep){
+void command_guild(Client* c, const Seperator* sep) {
 	int admin = c->Admin();
-	Mob *target = c->GetTarget();
+	Mob* target = c->GetTarget();
 
 	if (strcasecmp(sep->arg[1], "help") == 0) {
 		/*
@@ -5849,19 +5850,19 @@ c->Message(CC_Default, "Error: database.EditGuild() failed");
 return true;
 }*/
 
-void command_zonestatus(Client *c, const Seperator *sep){
+void command_zonestatus(Client* c, const Seperator* sep) {
 	if (!worldserver.Connected())
 		c->Message(CC_Default, "Error: World server disconnected");
 	else {
 		auto pack = new ServerPacket(ServerOP_ZoneStatus, strlen(c->GetName()) + 2);
 		memset(pack->pBuffer, (uint8)c->Admin(), 1);
-		strcpy((char *)&pack->pBuffer[1], c->GetName());
+		strcpy((char*)&pack->pBuffer[1], c->GetName());
 		worldserver.SendPacket(pack);
 		delete pack;
 	}
 }
 
-void command_manaburn(Client *c, const Seperator *sep){
+void command_manaburn(Client* c, const Seperator* sep) {
 	Mob* target = c->GetTarget();
 
 	if (c->GetTarget() == 0)
@@ -5876,7 +5877,7 @@ void command_manaburn(Client *c, const Seperator *sep){
 				{
 					c->SetMana(0);
 					int nukedmg = (c->GetMana()) * 2;
-					if (nukedmg>0)
+					if (nukedmg > 0)
 					{
 						target->Damage(c, nukedmg, 2751, EQ::skills::SkillAbjuration/*hackish*/);
 						c->Message(CC_Blue, "You unleash an enormous blast of magical energies.");
@@ -5890,7 +5891,7 @@ void command_manaburn(Client *c, const Seperator *sep){
 	}
 }
 
-void command_doanim(Client *c, const Seperator *sep){
+void command_doanim(Client* c, const Seperator* sep) {
 	Animation animation = static_cast<Animation>(atoi(sep->arg[1]));
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #DoAnim [number]");
@@ -5904,8 +5905,8 @@ void command_doanim(Client *c, const Seperator *sep){
 			c->DoAnim(animation, atoi(sep->arg[2]));
 }
 
-void command_randomfeatures(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_randomfeatures(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!target)
 		c->Message(CC_Default, "Error: This command requires a target");
 	else
@@ -6075,8 +6076,8 @@ void command_randomfeatures(Client *c, const Seperator *sep){
 	}
 }
 
-void command_randtest(Client *c, const Seperator *sep) {
-	
+void command_randtest(Client* c, const Seperator* sep) {
+
 	if (!sep->IsNumber(1)) {
 		c->Message(CC_Default, "Usage: #randtest [iterations]");
 		return;
@@ -6119,8 +6120,8 @@ void command_randtest(Client *c, const Seperator *sep) {
 	c->Message(CC_Default, "Same number happened %i times in a row, %i times", maxtimes + 1, maxcount);
 }
 
-void command_face(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_face(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #face [number of face]");
 	else if (!target)
@@ -6177,8 +6178,8 @@ void command_findaliases(Client* c, const Seperator* sep)
 	c->Message(0, "%d command alias%s listed.", commandaliasesshown, commandaliasesshown != 1 ? "es" : "");
 }
 
-void command_helm(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_helm(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #helm [number of helm texture]");
 	else if (!target)
@@ -6203,8 +6204,8 @@ void command_helm(Client *c, const Seperator *sep){
 	}
 }
 
-void command_hair(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_hair(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #hair [number of hair style]");
 	else if (!target)
@@ -6229,8 +6230,8 @@ void command_hair(Client *c, const Seperator *sep){
 	}
 }
 
-void command_haircolor(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_haircolor(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #haircolor [number of hair color]");
 	else if (!target)
@@ -6255,8 +6256,8 @@ void command_haircolor(Client *c, const Seperator *sep){
 	}
 }
 
-void command_beard(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_beard(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #beard [number of beard style]");
 	else if (!target)
@@ -6281,8 +6282,8 @@ void command_beard(Client *c, const Seperator *sep){
 	}
 }
 
-void command_beardcolor(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_beardcolor(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (!sep->IsNumber(1))
 		c->Message(CC_Default, "Usage: #beardcolor [number of beard color]");
 	else if (!target)
@@ -6307,10 +6308,10 @@ void command_beardcolor(Client *c, const Seperator *sep){
 	}
 }
 
-void command_scribespells(Client *c, const Seperator *sep){
+void command_scribespells(Client* c, const Seperator* sep) {
 	uint8 max_level, min_level;
 	uint16 book_slot, curspell, count;
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6348,12 +6349,12 @@ void command_scribespells(Client *c, const Seperator *sep){
 	{
 		if
 			(
-			spells[curspell].classes[WARRIOR] != 0 && // check if spell exists
-			spells[curspell].classes[t->GetPP().class_ - 1] <= max_level &&	//maximum level
-			spells[curspell].classes[t->GetPP().class_ - 1] >= min_level &&	//minimum level
-			spells[curspell].skill != 52 &&
-			!spells[curspell].not_player_spell
-			)
+				spells[curspell].classes[WARRIOR] != 0 && // check if spell exists
+				spells[curspell].classes[t->GetPP().class_ - 1] <= max_level &&	//maximum level
+				spells[curspell].classes[t->GetPP().class_ - 1] >= min_level &&	//minimum level
+				spells[curspell].skill != 52 &&
+				!spells[curspell].not_player_spell
+				)
 		{
 			if (book_slot == -1) {	//no more book slots
 				t->Message(CC_Red, "Unable to scribe spell %s (%u) to spellbook: no more spell book slots available.", spells[curspell].name, curspell);
@@ -6378,7 +6379,7 @@ void command_scribespells(Client *c, const Seperator *sep){
 				spells[curspell].classes[t->GetPP().class_ - 1] >= min_level &&	//minimum level
 				spells[curspell].skill != 52 &&
 				!spells[curspell].not_player_spell
-			)
+				)
 		{
 			++totalcount;
 		}
@@ -6403,10 +6404,10 @@ void command_scribespells(Client *c, const Seperator *sep){
 	}
 }
 
-void command_scribespell(Client *c, const Seperator *sep){
+void command_scribespell(Client* c, const Seperator* sep) {
 	uint16 spell_id = 0;
 	uint16 book_slot = -1;
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6445,10 +6446,10 @@ void command_scribespell(Client *c, const Seperator *sep){
 		c->Message(CC_Red, "Spell ID: %i is an unknown spell and cannot be scribed.", spell_id);
 }
 
-void command_unmemspell(Client *c, const Seperator *sep){
+void command_unmemspell(Client* c, const Seperator* sep) {
 	uint16 spell_id = 0;
 	uint16 mem_slot = -1;
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6482,8 +6483,8 @@ void command_unmemspell(Client *c, const Seperator *sep){
 	}
 }
 
-void command_unmemspells(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_unmemspells(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6491,10 +6492,10 @@ void command_unmemspells(Client *c, const Seperator *sep){
 	t->UnmemSpellAll();
 }
 
-void command_unscribespell(Client *c, const Seperator *sep){
+void command_unscribespell(Client* c, const Seperator* sep) {
 	uint16 spell_id = 0;
 	uint16 book_slot = -1;
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6528,8 +6529,8 @@ void command_unscribespell(Client *c, const Seperator *sep){
 	}
 }
 
-void command_unscribespells(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_unscribespells(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -6537,25 +6538,25 @@ void command_unscribespells(Client *c, const Seperator *sep){
 	t->UnscribeSpellAll();
 }
 
-void command_wpinfo(Client *c, const Seperator *sep){
-	Mob *t = c->GetTarget();
+void command_wpinfo(Client* c, const Seperator* sep) {
+	Mob* t = c->GetTarget();
 
 	if (t == nullptr || !t->IsNPC()) {
 		c->Message(CC_Default, "You must target an NPC to use this.");
 		return;
 	}
 
-	NPC *n = t->CastToNPC();
+	NPC* n = t->CastToNPC();
 	n->DisplayWaypointInfo(c);
 }
 
-void command_wpadd(Client *c, const Seperator *sep)
+void command_wpadd(Client* c, const Seperator* sep)
 {
-	int	type1=0,
-		type2=0,
-		pause=0;	// Defaults for a new grid
+	int	type1 = 0,
+		type2 = 0,
+		pause = 0;	// Defaults for a new grid
 
-	Mob *t = c->GetTarget();
+	Mob* t = c->GetTarget();
 	if (t && t->IsNPC())
 	{
 		Spawn2* s2info = t->CastToNPC()->respawn2;
@@ -6577,7 +6578,7 @@ void command_wpadd(Client *c, const Seperator *sep)
 			}
 		}
 		auto position = c->GetPosition();
-		if (strcmp("-h",sep->arg[2]) != 0)
+		if (strcmp("-h", sep->arg[2]) != 0)
 			position.w = -1;
 
 		uint32 tmp_grid = database.AddWPForSpawn(c, s2info->GetID(), position, pause, type1, type2, zone->GetZoneID());
@@ -6591,7 +6592,7 @@ void command_wpadd(Client *c, const Seperator *sep)
 		c->Message(CC_Default, "You must target an NPC to use this.");
 }
 
-void command_interrogateinv(Client *c, const Seperator *sep)
+void command_interrogateinv(Client* c, const Seperator* sep)
 {
 	// 'command_interrogateinv' is an in-memory inventory interrogation tool only.
 	//
@@ -6659,7 +6660,7 @@ void command_interrogateinv(Client *c, const Seperator *sep)
 		c->Message(CC_Red, "An unknown error occurred while processing Client::InterrogateInventory()");
 }
 
-void command_interrupt(Client *c, const Seperator *sep){
+void command_interrupt(Client* c, const Seperator* sep) {
 	uint16 ci_message = 0x01b7, ci_color = 0x0121;
 
 	if (sep->arg[1][0])
@@ -6670,10 +6671,10 @@ void command_interrupt(Client *c, const Seperator *sep){
 	c->InterruptSpell(ci_message, ci_color);
 }
 
-void command_d1(Client *c, const Seperator *sep){
+void command_d1(Client* c, const Seperator* sep) {
 }
 
-void command_summonitem(Client *c, const Seperator *sep)
+void command_summonitem(Client* c, const Seperator* sep)
 {
 	uint32 itemid = 0;
 	std::string cmd_msg = sep->msg;
@@ -6697,9 +6698,9 @@ void command_summonitem(Client *c, const Seperator *sep)
 		}
 
 		int16 charges = 0;
-		if (sep->argnum<2 || !sep->IsNumber(2))
+		if (sep->argnum < 2 || !sep->IsNumber(2))
 		{
-			if(item && database.ItemQuantityType(itemid) == EQ::item::Quantity_Charges)
+			if (item && database.ItemQuantityType(itemid) == EQ::item::Quantity_Charges)
 			{
 				charges = item->MaxCharges;
 			}
@@ -6719,7 +6720,7 @@ void command_summonitem(Client *c, const Seperator *sep)
 	}
 }
 
-void command_giveitem(Client *c, const Seperator *sep){
+void command_giveitem(Client* c, const Seperator* sep) {
 	if (!sep->IsNumber(1)) {
 		c->Message(CC_Red, "Usage: #summonitem [item id] [charges], charges are optional");
 	}
@@ -6730,7 +6731,7 @@ void command_giveitem(Client *c, const Seperator *sep){
 		c->Message(CC_Red, "You can only give items to players with this command.");
 	}
 	else {
-		Client *t = c->GetTarget()->CastToClient();
+		Client* t = c->GetTarget()->CastToClient();
 		uint32 itemid = atoi(sep->arg[1]);
 		int16 item_status = 0;
 		const EQ::ItemData* item = database.GetItem(itemid);
@@ -6739,9 +6740,9 @@ void command_giveitem(Client *c, const Seperator *sep){
 		}
 
 		int16 charges = 0;
-		if (sep->argnum<2 || !sep->IsNumber(2))
+		if (sep->argnum < 2 || !sep->IsNumber(2))
 		{
-			if(item && database.ItemQuantityType(itemid) == EQ::item::Quantity_Charges)
+			if (item && database.ItemQuantityType(itemid) == EQ::item::Quantity_Charges)
 			{
 				charges = item->MaxCharges;
 			}
@@ -6761,7 +6762,7 @@ void command_giveitem(Client *c, const Seperator *sep){
 	}
 }
 
-void command_givemoney(Client *c, const Seperator *sep){
+void command_givemoney(Client* c, const Seperator* sep) {
 	if (!sep->IsNumber(1)) {	//as long as the first one is a number, we'll just let atoi convert the rest to 0 or a number
 		c->Message(CC_Red, "Usage: #Usage: #givemoney [pp] [gp] [sp] [cp]");
 	}
@@ -6778,14 +6779,14 @@ void command_givemoney(Client *c, const Seperator *sep){
 	}
 }
 
-void command_itemsearch(Client *c, const Seperator *sep){
+void command_itemsearch(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #itemsearch [search string]");
 	else
 	{
-		const char *search_criteria = sep->argplus[1];
+		const char* search_criteria = sep->argplus[1];
 
-		const EQ::ItemData *item = nullptr;
+		const EQ::ItemData* item = nullptr;
 		EQ::SayLinkEngine linker;
 		linker.SetLinkType(EQ::saylink::SayLinkItemData);
 
@@ -6807,13 +6808,13 @@ void command_itemsearch(Client *c, const Seperator *sep){
 		std::string sName;
 		std::string sCriteria;
 		sCriteria = search_criteria;
-		for (auto & c : sCriteria) c = toupper(c);
+		for (auto& c : sCriteria) c = toupper(c);
 		uint32 it = 0;
-		while ((item = database.IterateItems(&it))) 
+		while ((item = database.IterateItems(&it)))
 		{
 			sName = item->Name;
-			for (auto & c : sName) c = toupper(c);
-			if (sName.find(sCriteria) != std::string::npos) 
+			for (auto& c : sName) c = toupper(c);
+			if (sName.find(sCriteria) != std::string::npos)
 			{
 				linker.SetItemData(item);
 				c->Message(CC_Default, fmt::format(" {} : {} ", (int)item->ID, linker.GenerateLink().c_str()).c_str());
@@ -6832,8 +6833,8 @@ void command_itemsearch(Client *c, const Seperator *sep){
 	}
 }
 
-void command_setaaxp(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_setaaxp(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -6845,8 +6846,8 @@ void command_setaaxp(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #setaaxp <new AA XP value> (<new Group AA XP value> <new Raid XP value>)");
 }
 
-void command_setaapts(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_setaapts(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -6856,13 +6857,13 @@ void command_setaapts(Client *c, const Seperator *sep){
 	else if (atoi(sep->arg[1]) <= 0 || atoi(sep->arg[1]) > 170)
 		c->Message(CC_Default, "You must have a number greater than 0 for points and no more than 170.");
 	else {
-		t->SetEXP(t->GetEXP(), t->GetEXPForLevel(t->GetLevel(), true)*atoi(sep->arg[1]), false);
+		t->SetEXP(t->GetEXP(), t->GetEXPForLevel(t->GetLevel(), true) * atoi(sep->arg[1]), false);
 		t->SendAAStats();
 		t->SendAATable();
 	}
 }
 
-void command_stun(Client *c, const Seperator *sep)
+void command_stun(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (!arguments || !sep->IsNumber(1)) {
@@ -6924,7 +6925,7 @@ void command_stun(Client *c, const Seperator *sep)
 	);
 }
 
-void command_ban(Client *c, const Seperator *sep)
+void command_ban(Client* c, const Seperator* sep)
 {
 	int arguments = sep->argnum;
 	if (arguments < 2) {
@@ -6963,7 +6964,7 @@ void command_ban(Client *c, const Seperator *sep)
 	);
 	auto results = database.QueryDatabase(query);
 
-	c->Message(CC_Default, 
+	c->Message(CC_Default,
 		fmt::format(
 			"Account ID {} with the character {} has been banned for the following reason: \"{}\"",
 			account_id,
@@ -6991,7 +6992,7 @@ void command_ban(Client *c, const Seperator *sep)
 	worldserver.SendPacket(&kickPlayerPack);
 }
 
-void command_suspend(Client *c, const Seperator *sep)
+void command_suspend(Client* c, const Seperator* sep)
 {
 	if ((sep->arg[1][0] == 0) || (sep->arg[2][0] == 0)) {
 		c->Message(CC_Default, "Usage: #suspend <charname> <days> (Specify 0 days to lift the suspension immediately) <message>");
@@ -7049,22 +7050,22 @@ void command_suspend(Client *c, const Seperator *sep)
 	auto pack = new ServerPacket(ServerOP_KickPlayer, sizeof(ServerKickPlayer_Struct));
 	ServerKickPlayer_Struct* sks = (ServerKickPlayer_Struct*)pack->pBuffer;
 
-    strn0cpy(sks->adminname, c->GetName(), sizeof(sks->adminname));
-    strn0cpy(sks->name, sep->arg[1], sizeof(sks->name));
-    sks->adminrank = c->Admin();
+	strn0cpy(sks->adminname, c->GetName(), sizeof(sks->adminname));
+	strn0cpy(sks->name, sep->arg[1], sizeof(sks->name));
+	sks->adminrank = c->Admin();
 
-    worldserver.SendPacket(pack);
+	worldserver.SendPacket(pack);
 
-    safe_delete(pack);
+	safe_delete(pack);
 
-	Client *bannedClient = entity_list.GetClientByName(sep->arg[1]);
+	Client* bannedClient = entity_list.GetClientByName(sep->arg[1]);
 
 	if (bannedClient) {
 		bannedClient->WorldKick();
 	}
 }
 
-void command_ipban(Client *c, const Seperator *sep){
+void command_ipban(Client* c, const Seperator* sep) {
 	int arguments = sep->argnum;
 	if (!arguments) {
 		c->Message(CC_Default, "Usage: #ipban [IP]");
@@ -7097,7 +7098,7 @@ void command_ipban(Client *c, const Seperator *sep){
 	}
 }
 
-void command_revoke(Client *c, const Seperator *sep)
+void command_revoke(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] == 0 || sep->arg[2][0] == 0) {
 		c->Message(CC_Default, "Usage: #revoke [charname] [1/0]");
@@ -7134,7 +7135,7 @@ void command_revoke(Client *c, const Seperator *sep)
 	safe_delete(outapp);
 }
 
-void command_oocmute(Client *c, const Seperator *sep){
+void command_oocmute(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0 || !(sep->arg[1][0] == '1' || sep->arg[1][0] == '0'))
 		c->Message(CC_Default, "Usage: #oocmute [1/0]");
 	else {
@@ -7145,7 +7146,7 @@ void command_oocmute(Client *c, const Seperator *sep){
 	}
 }
 
-void command_checklos(Client *c, const Seperator *sep){
+void command_checklos(Client* c, const Seperator* sep) {
 	if (c->GetTarget())
 	{
 		//		if(c->CheckLos(c->GetTarget()))
@@ -7160,7 +7161,7 @@ void command_checklos(Client *c, const Seperator *sep){
 			c->Message(CC_Default, "You are in a different region than %s", c->GetTarget()->GetName());
 			auto position = glm::vec3(c->GetX(), c->GetY(), c->GetZ());
 			auto other_position = glm::vec3(c->GetTarget()->GetX(), c->GetTarget()->GetY(), c->GetTarget()->GetZ());
-			c->Message(CC_Default,"Your region: %d Target region: %d", zone->watermap->ReturnRegionType(position), zone->watermap->ReturnRegionType(other_position));
+			c->Message(CC_Default, "Your region: %d Target region: %d", zone->watermap->ReturnRegionType(position), zone->watermap->ReturnRegionType(other_position));
 		}
 		if (c->GetTarget()->CheckLosFN(c))
 			c->Message(CC_Default, " %s has LOS to you.", c->GetTarget()->GetName());
@@ -7174,7 +7175,7 @@ void command_checklos(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npcsay(Client *c, const Seperator *sep){
+void command_npcsay(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && sep->arg[1][0])
 	{
 		c->GetTarget()->Say(sep->argplus[1]);
@@ -7185,7 +7186,7 @@ void command_npcsay(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npcshout(Client *c, const Seperator *sep){
+void command_npcshout(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && sep->arg[1][0])
 	{
 		c->GetTarget()->Shout(sep->argplus[1]);
@@ -7196,14 +7197,14 @@ void command_npcshout(Client *c, const Seperator *sep){
 	}
 }
 
-void command_timers(Client *c, const Seperator *sep){
+void command_timers(Client* c, const Seperator* sep) {
 	if (!c->GetTarget() || !c->GetTarget()->IsClient()) {
 		c->Message(CC_Default, "Need a player target for timers.");
 		return;
 	}
-	Client *them = c->GetTarget()->CastToClient();
+	Client* them = c->GetTarget()->CastToClient();
 
-	std::vector< std::pair<pTimerType, PersistentTimer *> > res;
+	std::vector< std::pair<pTimerType, PersistentTimer*> > res;
 	them->GetPTimers().ToVector(res);
 
 	c->Message(CC_Default, "Timers for target:");
@@ -7215,7 +7216,7 @@ void command_timers(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npcemote(Client *c, const Seperator *sep){
+void command_npcemote(Client* c, const Seperator* sep) {
 	if (c->GetTarget() && c->GetTarget()->IsNPC() && sep->arg[1][0])
 	{
 		c->GetTarget()->Emote(sep->argplus[1]);
@@ -7226,7 +7227,7 @@ void command_npcemote(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npcedit(Client *c, const Seperator *sep){
+void command_npcedit(Client* c, const Seperator* sep) {
 	if (!c->GetTarget() || !c->GetTarget()->IsNPC())
 	{
 		c->Message(CC_Default, "Error: Must have NPC targeted");
@@ -7866,7 +7867,7 @@ void command_npcedit(Client *c, const Seperator *sep){
 			return;
 		}
 
-		c->Message(CC_Yellow,"NPCID %u now has the animation set to %i on spawn with spawngroup %i", npcTypeID, animation, c->GetTarget()->CastToNPC()->GetSp2() );
+		c->Message(CC_Yellow, "NPCID %u now has the animation set to %i on spawn with spawngroup %i", npcTypeID, animation, c->GetTarget()->CastToNPC()->GetSp2());
 
 		std::string query = StringFormat("UPDATE spawn2 SET animation = %i "
 			"WHERE spawngroupID = %i",
@@ -7875,7 +7876,7 @@ void command_npcedit(Client *c, const Seperator *sep){
 
 		c->GetTarget()->SetAppearance(EmuAppearance(animation));
 		return;
-		}
+	}
 
 	if (strcasecmp(sep->arg[1], "scalerate") == 0) {
 		c->Message(CC_Yellow, "NPCID %u now has a scaling rate of %i.",
@@ -7913,8 +7914,8 @@ void command_npcedit(Client *c, const Seperator *sep){
 }
 
 #ifdef PACKET_PROFILER
-void command_packetprofile(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_packetprofile(Client* c, const Seperator* sep) {
+	Client* t = c;
 	if (c->GetTarget() && c->GetTarget()->IsClient()) {
 		t = c->GetTarget()->CastToClient();
 	}
@@ -7923,23 +7924,23 @@ void command_packetprofile(Client *c, const Seperator *sep){
 #endif
 
 #ifdef EQPROFILE
-void command_profiledump(Client *c, const Seperator *sep){
+void command_profiledump(Client* c, const Seperator* sep) {
 	DumpZoneProfile();
 }
 
-void command_profilereset(Client *c, const Seperator *sep){
+void command_profilereset(Client* c, const Seperator* sep) {
 	ResetZoneProfile();
 }
 #endif
 
-void command_opcode(Client *c, const Seperator *sep){
+void command_opcode(Client* c, const Seperator* sep) {
 	if (!strcasecmp(sep->arg[1], "reload")) {
 		ReloadAllPatches();
 		c->Message(CC_Default, "Opcodes for all patches have been reloaded");
 	}
 }
 
-void command_qglobal(Client *c, const Seperator *sep)
+void command_qglobal(Client* c, const Seperator* sep)
 {
 	//In-game switch for qglobal column
 	if (sep->arg[1][0] == 0) {
@@ -7947,7 +7948,7 @@ void command_qglobal(Client *c, const Seperator *sep)
 		return;
 	}
 
-	Mob *target = c->GetTarget();
+	Mob* target = c->GetTarget();
 
 	if (!target || !target->IsNPC()) {
 		c->Message(CC_Red, "NPC Target Required!");
@@ -7963,7 +7964,7 @@ void command_qglobal(Client *c, const Seperator *sep)
 			return;
 		}
 
-        c->Message(CC_Yellow, "Success! Changes take effect on zone reboot.");
+		c->Message(CC_Yellow, "Success! Changes take effect on zone reboot.");
 		return;
 	}
 
@@ -7981,7 +7982,7 @@ void command_qglobal(Client *c, const Seperator *sep)
 	}
 
 	if (!strcasecmp(sep->arg[1], "view")) {
-		const NPCType *type = database.GetNPCType(target->GetNPCTypeID());
+		const NPCType* type = database.GetNPCType(target->GetNPCTypeID());
 		if (!type)
 			c->Message(CC_Yellow, "Invalid NPC type.");
 		else if (type->qglobal)
@@ -7994,22 +7995,22 @@ void command_qglobal(Client *c, const Seperator *sep)
 	c->Message(CC_Yellow, "Invalid action specified.");
 }
 
-void command_path(Client *c, const Seperator *sep)
+void command_path(Client* c, const Seperator* sep)
 {
 	if (zone->pathing) {
 		zone->pathing->DebugCommand(c, sep);
 	}
 }
 
-void command_ginfo(Client *c, const Seperator *sep){
-	Client *t;
+void command_ginfo(Client* c, const Seperator* sep) {
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
 	else
 		t = c;
 
-	Group *g = t->GetGroup();
+	Group* g = t->GetGroup();
 	if (!g)
 	{
 		Raid* r = t->GetRaid();
@@ -8059,18 +8060,18 @@ void command_ginfo(Client *c, const Seperator *sep){
 			c->Message(CC_Default, "- Zoned Member: %s", g->membername[r]);
 		}
 		else {
-			c->Message(CC_Default, "- In-Zone Member: %s (%s) level: %u HP: %u / %u MP: %u / %u", g->membername[r], GetClassIDName(g->members[r]->GetClass()), 
+			c->Message(CC_Default, "- In-Zone Member: %s (%s) level: %u HP: %u / %u MP: %u / %u", g->membername[r], GetClassIDName(g->members[r]->GetClass()),
 				g->members[r]->GetLevel(), g->members[r]->GetHP(), g->members[r]->GetMaxHP(), g->members[r]->GetMana(), g->members[r]->GetMaxMana());
 		}
 	}
 }
 
-void command_hp(Client *c, const Seperator *sep){
+void command_hp(Client* c, const Seperator* sep) {
 	c->SendHPUpdate();
 	c->SendManaUpdatePacket();
 }
 
-void command_aggro(Client *c, const Seperator *sep){
+void command_aggro(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == nullptr || !c->GetTarget()->IsNPC()) {
 		c->Message(CC_Default, "Error: you must have an NPC target.");
 		return;
@@ -8088,12 +8089,12 @@ void command_aggro(Client *c, const Seperator *sep){
 	entity_list.DescribeAggro(c, c->GetTarget()->CastToNPC(), d, verbose);
 }
 
-void command_pf(Client *c, const Seperator *sep){
+void command_pf(Client* c, const Seperator* sep) {
 	if (c->GetTarget())
 	{
-		Mob *who = c->GetTarget();
+		Mob* who = c->GetTarget();
 		c->Message(CC_Default, "POS: (%.2f, %.2f, %.2f)", who->GetX(), who->GetY(), who->GetZ());
-		c->Message(CC_Default, "WP: %s (%d/%d)", to_string(who->GetCurrentWayPoint()).c_str(), who->IsNPC()?who->CastToNPC()->GetMaxWp():-1);
+		c->Message(CC_Default, "WP: %s (%d/%d)", to_string(who->GetCurrentWayPoint()).c_str(), who->IsNPC() ? who->CastToNPC()->GetMaxWp() : -1);
 		c->Message(CC_Default, "TAR: (%.2f, %.2f, %.2f)", who->GetTarX(), who->GetTarY(), who->GetTarZ());
 		c->Message(CC_Default, "TARV: (%.2f, %.2f, %.2f)", who->GetTarVX(), who->GetTarVY(), who->GetTarVZ());
 		c->Message(CC_Default, "|TV|=%.2f index=%d", who->GetTarVector(), who->GetTarNDX());
@@ -8104,7 +8105,7 @@ void command_pf(Client *c, const Seperator *sep){
 	}
 }
 
-void command_bestz(Client *c, const Seperator *sep)
+void command_bestz(Client* c, const Seperator* sep)
 {
 	float xcoord = c->GetX();
 	float ycoord = c->GetY();
@@ -8149,27 +8150,27 @@ void command_bestz(Client *c, const Seperator *sep)
 			z = c->GetTarget()->GetZ();
 			auto position = glm::vec3(c->GetTarget()->GetX(), c->GetTarget()->GetY(), z);
 			RegionType = zone->watermap->ReturnRegionType(position);
-			c->Message(CC_Default,"InWater returns %d", zone->watermap->InWater(position));
-			c->Message(CC_Default,"InLava returns %d", zone->watermap->InLava(position));
+			c->Message(CC_Default, "InWater returns %d", zone->watermap->InWater(position));
+			c->Message(CC_Default, "InLava returns %d", zone->watermap->InLava(position));
 
 		}
 		else {
 			z = c->GetZ();
 			auto position = glm::vec3(c->GetX(), c->GetY(), z);
 			RegionType = zone->watermap->ReturnRegionType(position);
-			c->Message(CC_Default,"InWater returns %d", zone->watermap->InWater(position));
-			c->Message(CC_Default,"InLava returns %d", zone->watermap->InLava(position));
+			c->Message(CC_Default, "InWater returns %d", zone->watermap->InWater(position));
+			c->Message(CC_Default, "InLava returns %d", zone->watermap->InLava(position));
 
 		}
 
 		switch (RegionType) {
-		case RegionTypeNormal:	{ c->Message(CC_Default, "There is nothing special about the region you are in!"); break; }
-		case RegionTypeWater:	{ c->Message(CC_Default, "You/your target are in Water."); break; }
-		case RegionTypeLava:	{ c->Message(CC_Default, "You/your target are in Lava."); break; }
-		case RegionTypeVWater:	{ c->Message(CC_Default, "You/your target are in VWater (Icy Water?)."); break; }
-		case RegionTypePVP:	{ c->Message(CC_Default, "You/your target are in a pvp enabled area."); break; }
-		case RegionTypeSlime:	{ c->Message(CC_Default, "You/your target are in slime."); break; }
-		case RegionTypeIce:	{ c->Message(CC_Default, "You/your target are in ice."); break; }
+		case RegionTypeNormal: { c->Message(CC_Default, "There is nothing special about the region you are in!"); break; }
+		case RegionTypeWater: { c->Message(CC_Default, "You/your target are in Water."); break; }
+		case RegionTypeLava: { c->Message(CC_Default, "You/your target are in Lava."); break; }
+		case RegionTypeVWater: { c->Message(CC_Default, "You/your target are in VWater (Icy Water?)."); break; }
+		case RegionTypePVP: { c->Message(CC_Default, "You/your target are in a pvp enabled area."); break; }
+		case RegionTypeSlime: { c->Message(CC_Default, "You/your target are in slime."); break; }
+		case RegionTypeIce: { c->Message(CC_Default, "You/your target are in ice."); break; }
 		default: c->Message(CC_Default, "You/your target are in an unknown region type %d.", (int)RegionType);
 		}
 	}
@@ -8177,16 +8178,16 @@ void command_bestz(Client *c, const Seperator *sep)
 
 }
 
-void command_reloadstatic(Client *c, const Seperator *sep){
+void command_reloadstatic(Client* c, const Seperator* sep) {
 	c->Message(CC_Default, "Reloading zone static data...");
 	zone->ReloadStaticData();
 }
 
-void command_flags(Client *c, const Seperator *sep){
-	Client *t = c;
+void command_flags(Client* c, const Seperator* sep) {
+	Client* t = c;
 
 	if (c->Admin() >= minStatusToSeeOthersZoneFlags) {
-		Mob *tgt = c->GetTarget();
+		Mob* tgt = c->GetTarget();
 		if (tgt != nullptr && tgt->IsClient())
 			t = tgt->CastToClient();
 	}
@@ -8194,7 +8195,7 @@ void command_flags(Client *c, const Seperator *sep){
 	t->SendZoneFlagInfo(c);
 }
 
-void command_flagedit(Client *c, const Seperator *sep)
+void command_flagedit(Client* c, const Seperator* sep)
 {
 	//super-command for editing zone flags
 	if (sep->arg[1][0] == '\0' || !strcasecmp(sep->arg[1], "help")) {
@@ -8238,8 +8239,8 @@ void command_flagedit(Client *c, const Seperator *sep)
 			return;
 		}
 
-        c->Message(CC_Yellow, "Success! Zone %s now requires a flag, named %s", database.GetZoneName(zoneid), flag_name);
-        return;
+		c->Message(CC_Yellow, "Success! Zone %s now requires a flag, named %s", database.GetZoneName(zoneid), flag_name);
+		return;
 	}
 
 	if (!strcasecmp(sep->arg[1], "unlockzone")) {
@@ -8273,8 +8274,8 @@ void command_flagedit(Client *c, const Seperator *sep)
 		std::string query = "SELECT zoneidnumber, short_name, long_name, flag_needed FROM zone WHERE flag_needed != ''";
 		auto results = database.QueryDatabase(query);
 		if (!results.Success()) {
-            return;
-        }
+			return;
+		}
 
 		c->Message(CC_Default, "Zones which require flags:");
 		for (auto row = results.begin(); row != results.end(); ++row)
@@ -8296,7 +8297,7 @@ void command_flagedit(Client *c, const Seperator *sep)
 			return;
 		}
 
-		Mob *t = c->GetTarget();
+		Mob* t = c->GetTarget();
 		if (t == nullptr || !t->IsClient()) {
 			c->Message(CC_Red, "client target required");
 			return;
@@ -8319,7 +8320,7 @@ void command_flagedit(Client *c, const Seperator *sep)
 			return;
 		}
 
-		Mob *t = c->GetTarget();
+		Mob* t = c->GetTarget();
 		if (t == nullptr || !t->IsClient()) {
 			c->Message(CC_Red, "client target required");
 			return;
@@ -8332,8 +8333,8 @@ void command_flagedit(Client *c, const Seperator *sep)
 	c->Message(CC_Yellow, "Invalid action specified. use '#flagedit help' for help");
 }
 
-void command_guildcreate(Client *c, const Seperator *sep){
-	if (strlen(sep->argplus[1])>4 && strlen(sep->argplus[1])<16)
+void command_guildcreate(Client* c, const Seperator* sep) {
+	if (strlen(sep->argplus[1]) > 4 && strlen(sep->argplus[1]) < 16)
 	{
 		guild_mgr.AddGuildApproval(sep->argplus[1], c);
 	}
@@ -8343,11 +8344,11 @@ void command_guildcreate(Client *c, const Seperator *sep){
 	}
 }
 
-void command_guildapprove(Client *c, const Seperator *sep){
+void command_guildapprove(Client* c, const Seperator* sep) {
 	guild_mgr.AddMemberApproval(atoi(sep->arg[1]), c);
 }
 
-void command_guildlist(Client *c, const Seperator *sep){
+void command_guildlist(Client* c, const Seperator* sep) {
 	GuildApproval* tmp = guild_mgr.FindGuildByIDApproval(atoi(sep->arg[1]));
 	if (tmp)
 	{
@@ -8357,8 +8358,8 @@ void command_guildlist(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Could not find reference id.");
 }
 
-void command_hatelist(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_hatelist(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 	if (target == nullptr) {
 		c->Message(CC_Default, "Error: you must have a target.");
 		return;
@@ -8368,7 +8369,7 @@ void command_hatelist(Client *c, const Seperator *sep){
 	target->PrintHateListToClient(c);
 }
 
-void command_rules(Client *c, const Seperator *sep){
+void command_rules(Client* c, const Seperator* sep) {
 	//super-command for managing rules settings
 	if (sep->arg[1][0] == '\0' || !strcasecmp(sep->arg[1], "help")) {
 		c->Message(CC_Default, "Syntax: #rules [subcommand].");
@@ -8511,13 +8512,13 @@ void command_rules(Client *c, const Seperator *sep){
 	}
 	else if (!strcasecmp(sep->arg[1], "list")) {
 		if (sep->argnum == 1) {
-			std::vector<const char *> rule_list;
+			std::vector<const char*> rule_list;
 			if (!RuleManager::Instance()->ListCategories(rule_list)) {
 				c->Message(CC_Red, "Failed to list categories!");
 				return;
 			}
 			c->Message(CC_Default, "Rule Categories:");
-			std::vector<const char *>::iterator cur, end;
+			std::vector<const char*>::iterator cur, end;
 			cur = rule_list.begin();
 			end = rule_list.end();
 			for (; cur != end; ++cur) {
@@ -8525,16 +8526,16 @@ void command_rules(Client *c, const Seperator *sep){
 			}
 		}
 		else if (sep->argnum == 2) {
-			const char *catfilt = nullptr;
+			const char* catfilt = nullptr;
 			if (std::string("all") != sep->arg[2])
 				catfilt = sep->arg[2];
-			std::vector<const char *> rule_list;
+			std::vector<const char*> rule_list;
 			if (!RuleManager::Instance()->ListRules(catfilt, rule_list)) {
 				c->Message(CC_Red, "Failed to list rules!");
 				return;
 			}
 			c->Message(CC_Default, "Rules in category %s:", sep->arg[2]);
-			std::vector<const char *>::iterator cur, end;
+			std::vector<const char*>::iterator cur, end;
 			cur = rule_list.begin();
 			end = rule_list.end();
 			for (; cur != end; ++cur) {
@@ -8551,16 +8552,16 @@ void command_rules(Client *c, const Seperator *sep){
 			return;
 		}
 		else {
-			const char *catfilt = nullptr;
+			const char* catfilt = nullptr;
 			if (std::string("all") != sep->arg[2])
 				catfilt = sep->arg[2];
-			std::vector<const char *> rule_list;
+			std::vector<const char*> rule_list;
 			if (!RuleManager::Instance()->ListRules(catfilt, rule_list)) {
 				c->Message(CC_Red, "Failed to list rules!");
 				return;
 			}
 			c->Message(CC_Default, "Rules & values in category %s:", sep->arg[2]);
-			std::vector<const char *>::iterator cur, end;
+			std::vector<const char*>::iterator cur, end;
 			cur = rule_list.begin();
 			end = rule_list.end();
 			for (std::string tmp_value; cur != end; ++cur) {
@@ -8575,7 +8576,7 @@ void command_rules(Client *c, const Seperator *sep){
 	}
 }
 
-void command_reloadtitles(Client *c, const Seperator *sep){
+void command_reloadtitles(Client* c, const Seperator* sep) {
 	auto pack = new ServerPacket(ServerOP_ReloadTitles, 0);
 	worldserver.SendPacket(pack);
 	safe_delete(pack);
@@ -8583,47 +8584,47 @@ void command_reloadtitles(Client *c, const Seperator *sep){
 
 }
 
-void command_altactivate(Client *c, const Seperator *sep){
-	if (sep->arg[1][0] == '\0'){
+void command_altactivate(Client* c, const Seperator* sep) {
+	if (sep->arg[1][0] == '\0') {
 		c->Message(CC_Default, "Invalid argument, usage:");
 		c->Message(CC_Default, "#altactivate list - lists the AA ID numbers that are available to you");
 		c->Message(CC_Default, "#altactivate time [argument] - returns the time left until you can use the AA with the ID that matches the argument.");
 		c->Message(CC_Default, "#altactivate [argument] - activates the AA with the ID that matches the argument.");
 		return;
 	}
-	if (!strcasecmp(sep->arg[1], "help")){
+	if (!strcasecmp(sep->arg[1], "help")) {
 		c->Message(CC_Default, "Usage:");
 		c->Message(CC_Default, "#altactivate list - lists the AA ID numbers that are available to you");
 		c->Message(CC_Default, "#altactivate time [argument] - returns the time left until you can use the AA with the ID that matches the argument.");
 		c->Message(CC_Default, "#altactivate [argument] - activates the AA with the ID that matches the argument.");
 		return;
 	}
-	if (!strcasecmp(sep->arg[1], "list")){
+	if (!strcasecmp(sep->arg[1], "list")) {
 		c->Message(CC_Default, "You have access to the following AA Abilities:");
 		int x, val;
 		SendAA_Struct* saa = nullptr;
-		for (x = 0; x < aaHighestID; x++){
-			if (AA_Actions[x][0].spell_id || AA_Actions[x][0].action){ //if there's an action or spell associated we assume it's a valid
+		for (x = 0; x < aaHighestID; x++) {
+			if (AA_Actions[x][0].spell_id || AA_Actions[x][0].action) { //if there's an action or spell associated we assume it's a valid
 				val = 0;					//and assume if they don't have a value for the first rank then it isn't valid for any rank
 				saa = nullptr;
 				val = c->GetAA(x);
-				if (val){
+				if (val) {
 					saa = zone->FindAA(x, false);
 					c->Message(CC_Default, "%d: %s %d", x, saa->name, val);
 				}
 			}
 		}
 	}
-	else if (!strcasecmp(sep->arg[1], "time")){
+	else if (!strcasecmp(sep->arg[1], "time")) {
 		int ability = atoi(sep->arg[2]);
-		if (c->GetAA(ability)){
+		if (c->GetAA(ability)) {
 			int remain = c->GetPTimers().GetRemainingTime(pTimerAAStart + ability);
 			if (remain)
 				c->Message(CC_Default, "You may use that ability in %d minutes and %d seconds.", (remain / 60), (remain % 60));
 			else
 				c->Message(CC_Default, "You may use that ability now.");
 		}
-		else{
+		else {
 			c->Message(CC_Default, "You do not have access to that ability.");
 		}
 	}
@@ -8633,10 +8634,10 @@ void command_altactivate(Client *c, const Seperator *sep){
 	}
 }
 
-void command_setgraveyard(Client *c, const Seperator *sep){
+void command_setgraveyard(Client* c, const Seperator* sep) {
 	uint32 zoneid = 0;
 	uint32 graveyard_id = 0;
-	Client *t = c;
+	Client* t = c;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient() && c->GetGM())
 		t = c->GetTarget()->CastToClient();
@@ -8672,7 +8673,7 @@ void command_setgraveyard(Client *c, const Seperator *sep){
 	return;
 }
 
-void command_deletegraveyard(Client *c, const Seperator *sep){
+void command_deletegraveyard(Client* c, const Seperator* sep) {
 	uint32 zoneid = 0;
 	uint32 graveyard_id = 0;
 
@@ -8700,11 +8701,11 @@ void command_deletegraveyard(Client *c, const Seperator *sep){
 	return;
 }
 
-void command_refreshgroup(Client *c, const Seperator *sep){
+void command_refreshgroup(Client* c, const Seperator* sep) {
 	if (!c)
 		return;
 
-	Group *g = c->GetGroup();
+	Group* g = c->GetGroup();
 
 	if (!g)
 		return;
@@ -9156,18 +9157,18 @@ void command_advnpcspawn(Client* c, const Seperator* sep)
 	}
 }
 
-void command_aggrozone(Client *c, const Seperator *sep){
+void command_aggrozone(Client* c, const Seperator* sep) {
 	if (!c)
 		return;
 
-	Mob *m = c->GetTarget() ? c->GetTarget() : c->CastToMob();
+	Mob* m = c->GetTarget() ? c->GetTarget() : c->CastToMob();
 
 	if (!m)
 		return;
 
 	int hate = atoi(sep->arg[1]); //should default to 0 if we don't enter anything
 	bool use_ignore_dist = false;
-	if(sep->IsNumber(2))
+	if (sep->IsNumber(2))
 		use_ignore_dist = atoi(sep->arg[2]);
 	entity_list.AggroZone(m, hate, use_ignore_dist);
 	if (!c->GetTarget())
@@ -9176,7 +9177,7 @@ void command_aggrozone(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Train to %s! Watch them die!!!", c->GetTarget()->GetCleanName());
 }
 
-void command_modifynpcstat(Client *c, const Seperator *sep){
+void command_modifynpcstat(Client* c, const Seperator* sep) {
 	if (!c)
 		return;
 
@@ -9198,7 +9199,7 @@ void command_modifynpcstat(Client *c, const Seperator *sep){
 	c->GetTarget()->CastToNPC()->ModifyNPCStat(sep->arg[1], sep->arg[2]);
 }
 
-void command_netstats(Client *c, const Seperator *sep){
+void command_netstats(Client* c, const Seperator* sep) {
 	if (c)
 	{
 		if (c->GetTarget() && c->GetTarget()->IsClient())
@@ -9221,8 +9222,8 @@ void command_netstats(Client *c, const Seperator *sep){
 	}
 }
 
-void command_showspellslist(Client *c, const Seperator *sep){
-	Mob *target = c->GetTarget();
+void command_showspellslist(Client* c, const Seperator* sep) {
+	Mob* target = c->GetTarget();
 
 	if (!target) {
 		c->Message(CC_Default, "Must target an NPC.");
@@ -9239,13 +9240,13 @@ void command_showspellslist(Client *c, const Seperator *sep){
 	return;
 }
 
-void command_raidloot(Client *c, const Seperator *sep){
+void command_raidloot(Client* c, const Seperator* sep) {
 	if (!sep->arg[1][0]) {
 		c->Message(CC_Default, "Usage: #raidloot [LEADER/GROUPLEADER/SELECTED/ALL]");
 		return;
 	}
 
-	Raid *r = c->GetRaid();
+	Raid* r = c->GetRaid();
 	if (r)
 	{
 		for (int x = 0; x < 72; ++x)
@@ -9294,7 +9295,7 @@ void command_raidloot(Client *c, const Seperator *sep){
 	}
 }
 
-void command_emoteview(Client *c, const Seperator *sep){
+void command_emoteview(Client* c, const Seperator* sep) {
 	if (!c->GetTarget() || !c->GetTarget()->IsNPC())
 	{
 		c->Message(CC_Default, "You must target a NPC to view their emotes.");
@@ -9306,7 +9307,7 @@ void command_emoteview(Client *c, const Seperator *sep){
 		int count = 0;
 		int emoteid = c->GetTarget()->CastToNPC()->GetEmoteID();
 
-		for (auto &i : zone->NPCEmoteList)
+		for (auto& i : zone->NPCEmoteList)
 		{
 			NPC_Emote_Struct* nes = i;
 			if (emoteid == nes->emoteid)
@@ -9322,18 +9323,18 @@ void command_emoteview(Client *c, const Seperator *sep){
 	}
 }
 
-void command_emotesearch(Client *c, const Seperator *sep){
+void command_emotesearch(Client* c, const Seperator* sep) {
 	if (sep->arg[1][0] == 0)
 		c->Message(CC_Default, "Usage: #emotesearch [search string or emoteid]");
 	else
 	{
-		const char *search_criteria = sep->argplus[1];
+		const char* search_criteria = sep->argplus[1];
 		int count = 0;
 
 		if (Seperator::IsNumber(search_criteria))
 		{
 			uint16 emoteid = atoi(search_criteria);
-			for (auto &i : zone->NPCEmoteList)
+			for (auto& i : zone->NPCEmoteList)
 			{
 				NPC_Emote_Struct* nes = i;
 				if (emoteid == nes->emoteid)
@@ -9352,13 +9353,13 @@ void command_emotesearch(Client *c, const Seperator *sep){
 			std::string sText;
 			std::string sCriteria;
 			sCriteria = search_criteria;
-			for (auto & c : sCriteria) c = toupper(c);
+			for (auto& c : sCriteria) c = toupper(c);
 
-			for (auto &i : zone->NPCEmoteList)
+			for (auto& i : zone->NPCEmoteList)
 			{
 				NPC_Emote_Struct* nes = i;
 				sText = nes->text;
-				for (auto & c : sText) c = toupper(c);
+				for (auto& c : sText) c = toupper(c);
 				if (sText.find(sCriteria) != std::string::npos)
 				{
 					c->Message(CC_Default, "EmoteID: %i Event: %i Type: %i Text: %s", nes->emoteid, nes->event_, nes->type, nes->text);
@@ -9375,20 +9376,20 @@ void command_emotesearch(Client *c, const Seperator *sep){
 	}
 }
 
-void command_reloademote(Client *c, const Seperator *sep){
+void command_reloademote(Client* c, const Seperator* sep) {
 	zone->LoadNPCEmotes(&zone->NPCEmoteList);
 	c->Message(CC_Default, "NPC emotes reloaded.");
 }
 
-void command_globalview(Client *c, const Seperator *sep){
-	NPC * npcmob = nullptr;
+void command_globalview(Client* c, const Seperator* sep) {
+	NPC* npcmob = nullptr;
 
 	if (c->GetTarget() && c->GetTarget()->IsNPC())
 	{
 		npcmob = c->GetTarget()->CastToNPC();
-		QGlobalCache *npc_c = nullptr;
-		QGlobalCache *char_c = nullptr;
-		QGlobalCache *zone_c = nullptr;
+		QGlobalCache* npc_c = nullptr;
+		QGlobalCache* char_c = nullptr;
+		QGlobalCache* zone_c = nullptr;
 
 		if (npcmob)
 			npc_c = npcmob->GetQGlobals();
@@ -9431,8 +9432,8 @@ void command_globalview(Client *c, const Seperator *sep){
 	}
 	else
 	{
-		QGlobalCache *char_c = nullptr;
-		QGlobalCache *zone_c = nullptr;
+		QGlobalCache* char_c = nullptr;
+		QGlobalCache* zone_c = nullptr;
 
 		char_c = c->GetQGlobals();
 		zone_c = zone->GetQGlobals();
@@ -9464,7 +9465,7 @@ void command_globalview(Client *c, const Seperator *sep){
 	}
 }
 
-void command_distance(Client *c, const Seperator *sep){
+void command_distance(Client* c, const Seperator* sep) {
 	if (c && c->GetTarget()) {
 		Mob* target = c->GetTarget();
 
@@ -9472,17 +9473,17 @@ void command_distance(Client *c, const Seperator *sep){
 	}
 }
 
-void command_cvs(Client *c, const Seperator *sep)
+void command_cvs(Client* c, const Seperator* sep)
 {
 	auto pack = new ServerPacket(ServerOP_ClientVersionSummary, sizeof(ServerRequestClientVersionSummary_Struct));
-	ServerRequestClientVersionSummary_Struct *srcvss = (ServerRequestClientVersionSummary_Struct*)pack->pBuffer;
+	ServerRequestClientVersionSummary_Struct* srcvss = (ServerRequestClientVersionSummary_Struct*)pack->pBuffer;
 	strn0cpy(srcvss->Name, c->GetName(), sizeof(srcvss->Name));
 	worldserver.SendPacket(pack);
 
 	safe_delete(pack);
 }
 
-void command_maxallskills(Client *c, const Seperator *sep){
+void command_maxallskills(Client* c, const Seperator* sep) {
 	if (c)
 	{
 		for (int i = 0; i <= EQ::skills::HIGHEST_SKILL; ++i)
@@ -9500,7 +9501,8 @@ void command_maxallskills(Client *c, const Seperator *sep){
 	}
 }
 
-void command_showbonusstats(Client *c, const Seperator *sep){
+
+void command_showbonusstats(Client* c, const Seperator* sep) {
 	if (c->GetTarget() == 0)
 		c->Message(CC_Default, "ERROR: No target!");
 	else if (!c->GetTarget()->IsMob() && !c->GetTarget()->IsClient())
@@ -9523,7 +9525,7 @@ void command_showbonusstats(Client *c, const Seperator *sep){
 	}
 }
 
-void command_reloadallrules(Client *c, const Seperator *sep){
+void command_reloadallrules(Client* c, const Seperator* sep) {
 	if (c)
 	{
 		auto pack = new ServerPacket(ServerOP_ReloadRules, 0);
@@ -9534,7 +9536,7 @@ void command_reloadallrules(Client *c, const Seperator *sep){
 	}
 }
 
-void command_reloadworldrules(Client *c, const Seperator *sep){
+void command_reloadworldrules(Client* c, const Seperator* sep) {
 	if (c)
 	{
 		auto pack = new ServerPacket(ServerOP_ReloadRulesWorld, 0);
@@ -9544,7 +9546,7 @@ void command_reloadworldrules(Client *c, const Seperator *sep){
 	}
 }
 
-void command_qtest(Client *c, const Seperator *sep){
+void command_qtest(Client* c, const Seperator* sep) {
 
 
 	if (c && sep->arg[1][0])
@@ -9565,7 +9567,7 @@ void command_qtest(Client *c, const Seperator *sep){
 	}
 }
 
-void command_mysql(Client *c, const Seperator *sep)
+void command_mysql(Client* c, const Seperator* sep)
 {
 	if (!sep->arg[1][0] || !sep->arg[2][0]) {
 		c->Message(CC_Default, "Usage: #mysql query \"Query here\"");
@@ -9587,8 +9589,8 @@ void command_mysql(Client *c, const Seperator *sep)
 		int argnum = 3;
 		bool optionS = false;
 		bool optionH = false;
-		while (sep->arg[argnum] && strlen(sep->arg[argnum]) > 1){
-			switch (sep->arg[argnum][1]){
+		while (sep->arg[argnum] && strlen(sep->arg[argnum]) > 1) {
+			switch (sep->arg[argnum][1]) {
 			case 's': optionS = true; break;
 			case 'h': optionH = true; break;
 			default:
@@ -9598,14 +9600,14 @@ void command_mysql(Client *c, const Seperator *sep)
 			++argnum;
 		}
 
-        int highlightTextIndex = 0;
-        std::string query(sep->arg[2]);
-        //swap # for % so like queries can work
-        std::replace(query.begin(), query.end(), '#', '%');
-        auto results = database.QueryDatabase(query);
-        if (!results.Success()) {
-            return;
-        }
+		int highlightTextIndex = 0;
+		std::string query(sep->arg[2]);
+		//swap # for % so like queries can work
+		std::replace(query.begin(), query.end(), '#', '%');
+		auto results = database.QueryDatabase(query);
+		if (!results.Success()) {
+			return;
+		}
 
 		//Using sep->arg[2] again, replace # with %% so it doesn't screw up when sent through vsnprintf in Message
 		query = sep->arg[2];
@@ -9644,7 +9646,7 @@ void command_mysql(Client *c, const Seperator *sep)
 	}
 }
 
-void command_zopp(Client *c, const Seperator *sep){
+void command_zopp(Client* c, const Seperator* sep) {
 	// - Owner only command..non-targetable to eliminate malicious or mischievious activities.
 	if (!c)
 		return;
@@ -9697,7 +9699,7 @@ void command_zopp(Client *c, const Seperator *sep){
 	}
 }
 
-void command_questerrors(Client *c, const Seperator *sep)
+void command_questerrors(Client* c, const Seperator* sep)
 {
 	std::list<std::string> quest_errors;
 	parse->GetErrors(quest_errors);
@@ -9721,7 +9723,7 @@ void command_questerrors(Client *c, const Seperator *sep)
 	}
 }
 
-void command_update(Client *c, const Seperator *sep)
+void command_update(Client* c, const Seperator* sep)
 {
 	int admin = c->Admin();
 	int system_var = 0;
@@ -9744,14 +9746,14 @@ void command_update(Client *c, const Seperator *sep)
 	}
 	else if (strcasecmp(sep->arg[1], "quests") == 0)
 	{
-		FILE *fp;
+		FILE* fp;
 #ifdef _WINDOWS
 		char buf[1024];
 		fp = _popen("svn update quests", "r");
 
 		while (fgets(buf, 1024, fp))
 		{
-			const char * output = (const char *)buf;
+			const char* output = (const char*)buf;
 			c->Message(CC_Default, "%s", output);
 		}
 		fclose(fp);
@@ -9763,7 +9765,7 @@ void command_update(Client *c, const Seperator *sep)
 
 		while (getline(&buf, &len, fp) != -1)
 		{
-			const char * output = (const char *)buf;
+			const char* output = (const char*)buf;
 			c->Message(CC_Default, "%s", output);
 		}
 		free(buf);
@@ -9826,7 +9828,7 @@ void command_update(Client *c, const Seperator *sep)
 	}
 }
 
-void command_coredump(Client *c, const Seperator *sep)
+void command_coredump(Client* c, const Seperator* sep)
 {
 #ifdef _WINDOWS
 	// TODO: Add same functionality for windows from the following command.
@@ -9838,7 +9840,7 @@ void command_coredump(Client *c, const Seperator *sep)
 #endif
 }
 
-void command_enablerecipe(Client *c, const Seperator *sep){
+void command_enablerecipe(Client* c, const Seperator* sep) {
 	uint32 recipe_id = 0;
 	bool success = false;
 	if (c) {
@@ -9864,7 +9866,7 @@ void command_enablerecipe(Client *c, const Seperator *sep){
 	}
 }
 
-void command_disablerecipe(Client *c, const Seperator *sep){
+void command_disablerecipe(Client* c, const Seperator* sep) {
 	uint32 recipe_id = 0;
 	bool success = false;
 	if (c) {
@@ -9890,7 +9892,7 @@ void command_disablerecipe(Client *c, const Seperator *sep){
 	}
 }
 
-void command_npctypecache(Client *c, const Seperator *sep){
+void command_npctypecache(Client* c, const Seperator* sep) {
 	if (sep->argnum > 0) {
 		for (int i = 0; i < sep->argnum; ++i) {
 			if (strcasecmp(sep->arg[i + 1], "all") == 0) {
@@ -9914,22 +9916,22 @@ void command_npctypecache(Client *c, const Seperator *sep){
 	}
 }
 
-void command_starve(Client *c, const Seperator *sep){
+void command_starve(Client* c, const Seperator* sep) {
 
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
 	else
 		t = c;
 
-	t->SetConsumption(0,0);
+	t->SetConsumption(0, 0);
 	c->Message(CC_Default, "Target starved.");
 
 }
 
-void command_merchantopenshop(Client *c, const Seperator *sep){
-	Mob *merchant = c->GetTarget();
+void command_merchantopenshop(Client* c, const Seperator* sep) {
+	Mob* merchant = c->GetTarget();
 	if (!merchant || merchant->GetClass() != MERCHANT) {
 		c->Message(CC_Default, "You must target a merchant to open their shop.");
 		return;
@@ -9938,8 +9940,8 @@ void command_merchantopenshop(Client *c, const Seperator *sep){
 	merchant->CastToNPC()->MerchantOpenShop();
 }
 
-void command_merchantcloseshop(Client *c, const Seperator *sep){
-	Mob *merchant = c->GetTarget();
+void command_merchantcloseshop(Client* c, const Seperator* sep) {
+	Mob* merchant = c->GetTarget();
 	if (!merchant || merchant->GetClass() != MERCHANT) {
 		c->Message(CC_Default, "You must target a merchant to close their shop.");
 		return;
@@ -9948,10 +9950,10 @@ void command_merchantcloseshop(Client *c, const Seperator *sep){
 	merchant->CastToNPC()->MerchantCloseShop();
 }
 
-void command_falltest(Client *c, const Seperator *sep)
+void command_falltest(Client* c, const Seperator* sep)
 {
 	float zmod;
-	if(c)
+	if (c)
 	{
 		if (!sep->IsNumber(1)) {
 			c->Message(CC_Default, "Invalid number of arguments.\nUsage: #falltest [+z]");
@@ -9966,7 +9968,7 @@ void command_falltest(Client *c, const Seperator *sep)
 	}
 }
 
-void command_push(Client *c, const Seperator *sep) {
+void command_push(Client* c, const Seperator* sep) {
 
 	Mob* t;
 	if (!c->GetTarget())
@@ -10028,9 +10030,9 @@ void command_push(Client *c, const Seperator *sep) {
 	}
 }
 
-void command_xpinfo(Client *c, const Seperator *sep){
+void command_xpinfo(Client* c, const Seperator* sep) {
 
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10042,34 +10044,34 @@ void command_xpinfo(Client *c, const Seperator *sep){
 	uint32 currentxp = t->GetEXP();
 	float xpforlevel = totalrequiredxp - currentxp;
 	float totalxpforlevel = totalrequiredxp - t->GetEXPForLevel(level);
-	float xp_percent = 100.0 - ((xpforlevel/totalxpforlevel) * 100.0);
+	float xp_percent = 100.0 - ((xpforlevel / totalxpforlevel) * 100.0);
 
 	int exploss;
 	t->GetExpLoss(nullptr, 0, exploss);
-	float loss_percent = (exploss/totalxpforlevel) * 100.0;
+	float loss_percent = (exploss / totalxpforlevel) * 100.0;
 
 	float maxaa = t->GetEXPForLevel(0, true);
 	uint32 currentaaxp = t->GetAAXP();
-	float aa_percent = (currentaaxp/maxaa) * 100.0;
+	float aa_percent = (currentaaxp / maxaa) * 100.0;
 
 	c->Message(CC_Yellow, "%s has %d of %d required XP.", t->GetName(), currentxp, totalrequiredxp);
-	c->Message(CC_Yellow, "They need %0.1f more to get to %d. They are %0.2f percent towards this level.", xpforlevel, level+1, xp_percent);
+	c->Message(CC_Yellow, "They need %0.1f more to get to %d. They are %0.2f percent towards this level.", xpforlevel, level + 1, xp_percent);
 	c->Message(CC_Yellow, "Their XP loss at this level is %d which is %0.2f percent of their current level.", exploss, loss_percent);
 	c->Message(CC_Yellow, "They have %d of %0.1f towards an AA point. They are %0.2f percent towards this point.", currentaaxp, maxaa, aa_percent);
 }
 
-void command_chattest(Client *c, const Seperator *sep)
+void command_chattest(Client* c, const Seperator* sep)
 {
-	if(!sep->IsNumber(1))
+	if (!sep->IsNumber(1))
 		c->Message(CC_Red, "Please specify a valid number to send as the message color. (This message is red, btw.)");
 	else
 	{
 		int default_ = 10;
-		if(sep->IsNumber(2))
+		if (sep->IsNumber(2))
 			default_ = atoi(sep->arg[2]);
 
 		uint16 base = atoi(sep->arg[1]);
-		for(uint8 i = 0; i < default_; ++i)
+		for (uint8 i = 0; i < default_; ++i)
 		{
 			uint16 color = base + i;
 			c->Message(color, "All work and no play makes Jack a dull boy. (%i)", color);
@@ -10077,40 +10079,40 @@ void command_chattest(Client *c, const Seperator *sep)
 	}
 }
 
-void command_logtest(Client *c, const Seperator *sep){
+void command_logtest(Client* c, const Seperator* sep) {
 	clock_t t = std::clock(); /* Function timer start */
-	if (sep->IsNumber(1)){
+	if (sep->IsNumber(1)) {
 		uint32 i = 0;
 		t = std::clock();
-		for (i = 0; i < atoi(sep->arg[1]); i++){
+		for (i = 0; i < atoi(sep->arg[1]); i++) {
 			Log(Logs::General, Logs::Debug, "[%u] Test #2... Took %f seconds", i, ((float)(std::clock() - t)) / CLOCKS_PER_SEC);
 		}
 	}
 }
 
-void command_crashtest(Client *c, const Seperator *sep)
+void command_crashtest(Client* c, const Seperator* sep)
 {
 	c->Message(CC_Default, "Alright, now we get an GPF ;) ");
 	char* gpf = 0;
 	memcpy(gpf, "Ready to crash", 30);
 }
 
-void command_logs(Client *c, const Seperator *sep){
+void command_logs(Client* c, const Seperator* sep) {
 	int logs_set = 0;
 	if (sep->argnum > 0) {
 		/* #logs reload_all */
-		if (strcasecmp(sep->arg[1], "reload_all") == 0){
+		if (strcasecmp(sep->arg[1], "reload_all") == 0) {
 			auto pack = new ServerPacket(ServerOP_ReloadLogs, 0);
 			worldserver.SendPacket(pack);
 			c->Message(CC_Red, "Successfully sent the packet to world to reload log settings from the database for all zones");
 			safe_delete(pack);
 		}
 		/* #logs list_settings */
-		if (strcasecmp(sep->arg[1], "list_settings") == 0 || (strcasecmp(sep->arg[1], "set") == 0 && strcasecmp(sep->arg[3], "") == 0)){
+		if (strcasecmp(sep->arg[1], "list_settings") == 0 || (strcasecmp(sep->arg[1], "set") == 0 && strcasecmp(sep->arg[3], "") == 0)) {
 			c->Message(CC_Default, "[Category ID | console | file | gmsay | Category Description]");
 			int redisplay_columns = 0;
-			for (int i = 0; i < Logs::LogCategory::MaxCategoryID; i++){
-				if (redisplay_columns == 10){
+			for (int i = 0; i < Logs::LogCategory::MaxCategoryID; i++) {
+				if (redisplay_columns == 10) {
 					c->Message(CC_Default, "[Category ID | console | file | gmsay | Category Description]");
 					redisplay_columns = 0;
 				}
@@ -10119,34 +10121,34 @@ void command_logs(Client *c, const Seperator *sep){
 			}
 		}
 		/* #logs set */
-		if (strcasecmp(sep->arg[1], "set") == 0){
-			if (strcasecmp(sep->arg[2], "console") == 0){
+		if (strcasecmp(sep->arg[1], "set") == 0) {
+			if (strcasecmp(sep->arg[2], "console") == 0) {
 				LogSys.log_settings[atoi(sep->arg[3])].log_to_console = atoi(sep->arg[4]);
 				logs_set = 1;
 			}
-			else if (strcasecmp(sep->arg[2], "file") == 0){
+			else if (strcasecmp(sep->arg[2], "file") == 0) {
 				LogSys.log_settings[atoi(sep->arg[3])].log_to_file = atoi(sep->arg[4]);
 				logs_set = 1;
 			}
-			else if (strcasecmp(sep->arg[2], "gmsay") == 0){
+			else if (strcasecmp(sep->arg[2], "gmsay") == 0) {
 				LogSys.log_settings[atoi(sep->arg[3])].log_to_gmsay = atoi(sep->arg[4]);
 				logs_set = 1;
 			}
-			else{
+			else {
 				c->Message(CC_Default, "--- #logs set [console|file|gmsay] <category_id> <debug_level (1-3)> - Sets log settings during the lifetime of the zone");
 				c->Message(CC_Default, "--- #logs set gmsay 20 1 - Would output Quest errors to gmsay");
 			}
-			if (logs_set == 1){
+			if (logs_set == 1) {
 				c->Message(CC_Yellow, "Your Log Settings have been applied");
 				c->Message(CC_Yellow, "Output Method: %s :: Debug Level: %i - Category: %s", sep->arg[2], atoi(sep->arg[4]), Logs::LogCategoryName[atoi(sep->arg[3])]);
 			}
-			/* We use a general 'is_category_enabled' now, let's update when we update any output settings 
+			/* We use a general 'is_category_enabled' now, let's update when we update any output settings
 				This is used in hot places of code to check if its enabled in any way before triggering logs
 			*/
-			if (atoi(sep->arg[4]) > 0){
+			if (atoi(sep->arg[4]) > 0) {
 				LogSys.log_settings[atoi(sep->arg[3])].is_category_enabled = 1;
 			}
-			else{
+			else {
 				LogSys.log_settings[atoi(sep->arg[3])].is_category_enabled = 0;
 			}
 		}
@@ -10160,7 +10162,7 @@ void command_logs(Client *c, const Seperator *sep){
 			c->Message(CC_Yellow, "Shhh. Be vewy vewy quiet, I'm hunting wabbits.");
 		}
 	}
-	else 
+	else
 	{
 		c->Message(CC_Default, "#logs usage:");
 		c->Message(CC_Default, "--- #logs quiet - Turns off all gmsay logs in the current zone until the next time the zone resets.");
@@ -10170,23 +10172,23 @@ void command_logs(Client *c, const Seperator *sep){
 	}
 }
 
-void command_mysqltest(Client *c, const Seperator *sep)
+void command_mysqltest(Client* c, const Seperator* sep)
 {
 	clock_t t = std::clock(); /* Function timer start */
-	if (sep->IsNumber(1)){
+	if (sep->IsNumber(1)) {
 		uint32 i = 0;
 		t = std::clock();
-		for (i = 0; i < atoi(sep->arg[1]); i++){
+		for (i = 0; i < atoi(sep->arg[1]); i++) {
 			std::string query = "SELECT * FROM `zone`";
 			auto results = database.QueryDatabase(query);
-		} 
+		}
 	}
-	Log(Logs::General, Logs::Debug, "MySQL Test... Took %f seconds", ((float)(std::clock() - t)) / CLOCKS_PER_SEC); 
+	Log(Logs::General, Logs::Debug, "MySQL Test... Took %f seconds", ((float)(std::clock() - t)) / CLOCKS_PER_SEC);
 }
 
-void command_boatinfo(Client *c, const Seperator *sep)
+void command_boatinfo(Client* c, const Seperator* sep)
 {
-	if(!zone->IsBoatZone())
+	if (!zone->IsBoatZone())
 	{
 		c->Message(CC_Default, "Zone is not a boat zone!");
 	}
@@ -10196,11 +10198,11 @@ void command_boatinfo(Client *c, const Seperator *sep)
 	}
 }
 
-void command_undeletechar(Client *c, const Seperator *sep)
+void command_undeletechar(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] != 0)
 	{
-		if(!database.UnDeleteCharacter(sep->arg[1]))
+		if (!database.UnDeleteCharacter(sep->arg[1]))
 		{
 			c->Message(CC_Red, "%s could not be undeleted. Check the spelling of their name.", sep->arg[1]);
 		}
@@ -10215,13 +10217,13 @@ void command_undeletechar(Client *c, const Seperator *sep)
 	}
 }
 
-void command_hotfix(Client *c, const Seperator *sep)
+void command_hotfix(Client* c, const Seperator* sep)
 {
 	std::string hotfix;
 	database.GetVariable("hotfix_name", hotfix);
 
 	std::string hotfix_name;
-	if(!strcasecmp(hotfix.c_str(), "hotfix_")) {
+	if (!strcasecmp(hotfix.c_str(), "hotfix_")) {
 		hotfix_name = "";
 	}
 	else
@@ -10266,18 +10268,18 @@ void command_hotfix(Client *c, const Seperator *sep)
 		worldserver.SendPacket(&pack);
 
 		c->Message(CC_Default, "Hotfix applied");
-	});
+		});
 
 	t1.detach();
 }
 
-void command_load_shared_memory(Client *c, const Seperator *sep)
+void command_load_shared_memory(Client* c, const Seperator* sep)
 {
 	std::string hotfix;
 	database.GetVariable("hotfix_name", hotfix);
 
 	std::string hotfix_name;
-	if(strcasecmp(hotfix.c_str(), sep->arg[1]) == 0) {
+	if (strcasecmp(hotfix.c_str(), sep->arg[1]) == 0) {
 		c->Message(CC_Default, "Cannot attempt to load this shared memory segment as it is already loaded.");
 		return;
 	}
@@ -10285,39 +10287,39 @@ void command_load_shared_memory(Client *c, const Seperator *sep)
 	hotfix_name = sep->arg[1];
 	c->Message(CC_Default, "Loading shared memory segment %s", hotfix_name.c_str());
 	std::thread t1([c, hotfix_name]()
-	{
-		int sysRet = -1;
+		{
+			int sysRet = -1;
 #ifdef WIN32
-		if(hotfix_name.length() > 0)
-		{
-			sysRet = system(StringFormat("shared_memory -hotfix=%s", hotfix_name.c_str()).c_str());
-		}
-		else
-		{
-			sysRet = system(StringFormat("shared_memory").c_str());
-		}
+			if (hotfix_name.length() > 0)
+			{
+				sysRet = system(StringFormat("shared_memory -hotfix=%s", hotfix_name.c_str()).c_str());
+			}
+			else
+			{
+				sysRet = system(StringFormat("shared_memory").c_str());
+			}
 #else
-		if(hotfix_name.length() > 0)
-		{
-			sysRet = system(StringFormat("./shared_memory -hotfix=%s", hotfix_name.c_str()).c_str());
-		}
-		else
-		{
-			sysRet = system(StringFormat("./shared_memory").c_str());
-		}
+			if (hotfix_name.length() > 0)
+			{
+				sysRet = system(StringFormat("./shared_memory -hotfix=%s", hotfix_name.c_str()).c_str());
+			}
+			else
+			{
+				sysRet = system(StringFormat("./shared_memory").c_str());
+			}
 #endif
-		if (sysRet == -1)
-		{
-			c->Message(CC_Default, "Shared memory segment failed loading.");
-			return;
-		}
-		c->Message(CC_Default, "Shared memory segment finished loading.");
-	});
+			if (sysRet == -1)
+			{
+				c->Message(CC_Default, "Shared memory segment failed loading.");
+				return;
+			}
+			c->Message(CC_Default, "Shared memory segment finished loading.");
+		});
 
 	t1.detach();
 }
 
-void command_apply_shared_memory(Client *c, const Seperator *sep) {
+void command_apply_shared_memory(Client* c, const Seperator* sep) {
 	std::string hotfix;
 	database.GetVariable("hotfix_name", hotfix);
 	std::string hotfix_name = sep->arg[1];
@@ -10326,15 +10328,15 @@ void command_apply_shared_memory(Client *c, const Seperator *sep) {
 	database.SetVariable("hotfix_name", hotfix_name);
 
 	ServerPacket pack(ServerOP_ChangeSharedMem, hotfix_name.length() + 1);
-	if(hotfix_name.length() > 0) {
+	if (hotfix_name.length() > 0) {
 		strcpy((char*)pack.pBuffer, hotfix_name.c_str());
 	}
 	worldserver.SendPacket(&pack);
 }
 
-void command_keyring(Client *c, const Seperator *sep)
+void command_keyring(Client* c, const Seperator* sep)
 {
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10344,7 +10346,7 @@ void command_keyring(Client *c, const Seperator *sep)
 	t->KeyRingList(c);
 }
 
-void command_reloadmerchants(Client *c, const Seperator *sep)
+void command_reloadmerchants(Client* c, const Seperator* sep)
 {
 	zone->ClearMerchantLists();
 	zone->GetMerchantDataForZoneLoad();
@@ -10352,7 +10354,7 @@ void command_reloadmerchants(Client *c, const Seperator *sep)
 	c->Message(CC_Default, "Merchant list reloaded for %s.", zone->GetShortName());
 }
 
-void command_setgreed(Client *c, const Seperator *sep)
+void command_setgreed(Client* c, const Seperator* sep)
 {
 	if (!sep->IsNumber(1))
 	{
@@ -10371,21 +10373,21 @@ void command_setgreed(Client *c, const Seperator *sep)
 		c->Message(CC_Default, "Please select a NPC target to set greed.");
 		return;
 	}
-		
+
 }
 
-void command_trapinfo(Client *c, const Seperator *sep)
+void command_trapinfo(Client* c, const Seperator* sep)
 {
 	entity_list.GetTrapInfo(c);
 }
 
-void command_reloadtraps(Client *c, const Seperator *sep)
+void command_reloadtraps(Client* c, const Seperator* sep)
 {
 	entity_list.UpdateAllTraps(true, true);
 	c->Message(CC_Default, "Traps reloaded for %s.", zone->GetShortName());
 }
 
-void command_godmode(Client *c, const Seperator *sep){
+void command_godmode(Client* c, const Seperator* sep) {
 	bool state = atobool(sep->arg[1]);
 	uint32 account = c->AccountID();
 
@@ -10404,11 +10406,11 @@ void command_godmode(Client *c, const Seperator *sep){
 		c->Message(CC_Default, "Usage: #godmode [on/off]");
 }
 
-void command_skilldifficulty(Client *c, const Seperator *sep)
+void command_skilldifficulty(Client* c, const Seperator* sep)
 {
-	if (sep->argnum > 0) 
+	if (sep->argnum > 0)
 	{
-		Client *t;
+		Client* t;
 
 		if (c->GetTarget() && c->GetTarget()->IsClient())
 			t = c->GetTarget()->CastToClient();
@@ -10423,7 +10425,7 @@ void command_skilldifficulty(Client *c, const Seperator *sep)
 				int skillval = t->GetSkill(EQ::skills::SkillType(i));
 				int maxskill = t->GetMaxSkillAfterSpecializationRules(EQ::skills::SkillType(i), t->MaxSkill(EQ::skills::SkillType(i)));
 				c->Message(CC_Yellow, "Skill: %s (%d) has difficulty: %0.2f", zone->skill_difficulty[i].name, i, zone->skill_difficulty[i].difficulty);
-				if(maxskill > 0)
+				if (maxskill > 0)
 				{
 					c->Message(CC_Green, "%s currently has %d (raw: %d) of %d towards this skill.", t->GetName(), skillval, rawskillval, maxskill);
 				}
@@ -10431,12 +10433,12 @@ void command_skilldifficulty(Client *c, const Seperator *sep)
 		}
 		else if (strcasecmp(sep->arg[1], "difficulty") == 0)
 		{
-			if(!sep->IsNumber(2) && !sep->IsNumber(3))
+			if (!sep->IsNumber(2) && !sep->IsNumber(3))
 			{
 				c->Message(CC_Red, "Please specify a valid skill and difficulty.");
 				return;
 			}
-			else if(atoi(sep->arg[2]) > 74 || atoi(sep->arg[2]) < 0 || atof(sep->arg[3]) > 15 || atof(sep->arg[3]) < 1)
+			else if (atoi(sep->arg[2]) > 74 || atoi(sep->arg[2]) < 0 || atof(sep->arg[3]) > 15 || atof(sep->arg[3]) < 1)
 			{
 				c->Message(CC_Red, "Please specify a skill between 0 and 74 and a difficulty between 1 and 15.");
 				return;
@@ -10489,20 +10491,20 @@ void command_skilldifficulty(Client *c, const Seperator *sep)
 	}
 }
 
-void command_mule(Client *c, const Seperator *sep)
+void command_mule(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] != 0)
 	{
 		uint8 toggle = 0;
-		if(sep->IsNumber(2))
+		if (sep->IsNumber(2))
 			toggle = atoi(sep->arg[2]);
 
-		if(toggle >= 1)
+		if (toggle >= 1)
 			toggle = 1;
 		else
 			toggle = 0;
 
-		if(!database.SetMule(sep->arg[1], toggle))
+		if (!database.SetMule(sep->arg[1], toggle))
 		{
 			c->Message(CC_Red, "%s could not be toggled. Check the spelling of their account name.", sep->arg[1]);
 		}
@@ -10517,9 +10519,9 @@ void command_mule(Client *c, const Seperator *sep)
 	}
 }
 
-void command_cleartimers(Client *c, const Seperator *sep)
+void command_cleartimers(Client* c, const Seperator* sep)
 {
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10527,7 +10529,7 @@ void command_cleartimers(Client *c, const Seperator *sep)
 		t = c;
 
 	uint8 type = 0;
-	if(sep->IsNumber(1))
+	if (sep->IsNumber(1))
 	{
 		type = atoi(sep->arg[1]);
 		t->ClearPTimers(type);
@@ -10545,19 +10547,19 @@ void command_cleartimers(Client *c, const Seperator *sep)
 			c->Message(CC_Default, "(1000-2999 AAs) (3001-4999 AA Effects) (5000-9678 Spells)");
 			c->Message(CC_Default, "(5087 Lay Hands) (5088 Harm Touch)");
 		}
-		else if(strcasecmp(sep->arg[1], "all") == 0)
+		else if (strcasecmp(sep->arg[1], "all") == 0)
 		{
 			t->ClearPTimers(0);
 			t->SendAATimers();
 			t->ResetAllSkills();
 			c->Message(CC_Default, "Cleared all timers on %s", t->GetName());
 		}
-		else if(strcasecmp(sep->arg[1], "skills") == 0)
+		else if (strcasecmp(sep->arg[1], "skills") == 0)
 		{
 			t->ResetAllSkills();
 			c->Message(CC_Default, "Cleared all skill timers on %s", t->GetName());
 		}
-		else if(strcasecmp(sep->arg[1], "disc") == 0)
+		else if (strcasecmp(sep->arg[1], "disc") == 0)
 		{
 			for (x = pTimerDisciplineReuseStart; x <= pTimerDisciplineReuseEnd; ++x)
 			{
@@ -10565,7 +10567,7 @@ void command_cleartimers(Client *c, const Seperator *sep)
 			}
 			c->Message(CC_Default, "Cleared all disc timers on %s", t->GetName());
 		}
-		else if(strcasecmp(sep->arg[1], "aa") == 0)
+		else if (strcasecmp(sep->arg[1], "aa") == 0)
 		{
 			for (x = pTimerAAStart; x <= pTimerAAEffectEnd; ++x)
 			{
@@ -10574,7 +10576,7 @@ void command_cleartimers(Client *c, const Seperator *sep)
 			t->SendAATimers();
 			c->Message(CC_Default, "Cleared all AA timers on %s", t->GetName());
 		}
-		else if(strcasecmp(sep->arg[1], "spells") == 0)
+		else if (strcasecmp(sep->arg[1], "spells") == 0)
 		{
 			for (x = pTimerSpellStart; x <= pTimerSpellStart + 4678; ++x)
 			{
@@ -10591,7 +10593,7 @@ void command_cleartimers(Client *c, const Seperator *sep)
 	t->Save();
 }
 
-void command_damagetotals(Client *c, const Seperator *sep)
+void command_damagetotals(Client* c, const Seperator* sep)
 {
 	Mob* target = c->GetTarget();
 	if (!target || !target->IsNPC())
@@ -10601,12 +10603,12 @@ void command_damagetotals(Client *c, const Seperator *sep)
 	else
 	{
 		target->ReportDmgTotals(c);
-	}	
+	}
 }
 
-void command_showregen(Client *c, const Seperator *sep)
+void command_showregen(Client* c, const Seperator* sep)
 {
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10616,7 +10618,7 @@ void command_showregen(Client *c, const Seperator *sep)
 	t->ShowRegenInfo(c);
 }
 
-void command_fleeinfo(Client *c, const Seperator *sep)
+void command_fleeinfo(Client* c, const Seperator* sep)
 {
 	if (c->GetTarget() && c->GetTarget()->IsNPC())
 	{
@@ -10633,9 +10635,9 @@ void command_fleeinfo(Client *c, const Seperator *sep)
 
 }
 
-void command_fillbuffs(Client *c, const Seperator *sep)
+void command_fillbuffs(Client* c, const Seperator* sep)
 {
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10661,13 +10663,13 @@ void command_fillbuffs(Client *c, const Seperator *sep)
 
 }
 
-void command_showhelm(Client *c, const Seperator *sep)
+void command_showhelm(Client* c, const Seperator* sep)
 {
 	bool state = atobool(sep->arg[1]);
 	bool current_state = c->ShowHelm();
 	bool all = strcasecmp(sep->arg[2], "all") == 0 ? true : false;
 
-	if (sep->arg[1][0] != 0) 
+	if (sep->arg[1][0] != 0)
 	{
 		c->SetShowHelm(state);
 		if (!state && current_state)
@@ -10679,7 +10681,7 @@ void command_showhelm(Client *c, const Seperator *sep)
 				database.SaveAccountShowHelm(c->AccountID(), state);
 			}
 		}
-		else if(state && !current_state)
+		else if (state && !current_state)
 		{
 			c->SendWearChange(EQ::textures::armorHead, c);
 			entity_list.SendHelms(c);
@@ -10693,7 +10695,7 @@ void command_showhelm(Client *c, const Seperator *sep)
 			c->Message(CC_Default, "There was no change in your showhelm setting.");
 			return;
 		}
-		
+
 		c->Message(CC_Yellow, "You will %s display helms.", state ? "now" : "no longer");
 	}
 	else
@@ -10703,7 +10705,7 @@ void command_showhelm(Client *c, const Seperator *sep)
 }
 
 
-void command_underworld(Client *c, const Seperator *sep)
+void command_underworld(Client* c, const Seperator* sep)
 {
 	float z_coord = 0;
 	if (sep->IsNumber(1))
@@ -10740,7 +10742,7 @@ void command_underworld(Client *c, const Seperator *sep)
 	return;
 }
 
-void command_expansion(Client *c, const Seperator *sep)
+void command_expansion(Client* c, const Seperator* sep)
 {
 	if (sep->arg[1][0] != 0)
 	{
@@ -10766,9 +10768,9 @@ void command_expansion(Client *c, const Seperator *sep)
 	}
 }
 
-void command_showtraderitems(Client *c, const Seperator *sep)
+void command_showtraderitems(Client* c, const Seperator* sep)
 {
-	Client *t;
+	Client* t;
 
 	if (c->GetTarget() && c->GetTarget()->IsClient())
 		t = c->GetTarget()->CastToClient();
@@ -10906,8 +10908,44 @@ void command_viewzoneloot(Client* c, const Seperator* sep)
 	}
 }
 
+void command_betabuff(Client* c, const Seperator* sep) {
+
+	if (c->GetLevel() >= 25) {
+		c->Message(CC_Red, "This character is above the maximum level for test buff.");
+		return;
+	}
+	c->SetLevel(25);
+	c->AddEXPPercent(20);
+
+	int curspell;
+	int book_slot;
+
+	for (curspell = 0,book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot)) {
+		if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= 25 ) {
+			if (!c->HasSpellScribed(curspell)) {
+				c->ScribeSpell(curspell, book_slot);
+			}
+		}
+	}
+
+	for (int i = 0; i <= EQ::skills::HIGHEST_SKILL; ++i)
+	{
+		if (i >= EQ::skills::SkillSpecializeAbjure && i <= EQ::skills::SkillSpecializeEvocation)
+		{
+			c->SetSkill((EQ::skills::SkillType)i, 50);
+		}
+		else
+		{
+			int max_skill_level = database.GetSkillCap(c->GetClass(), (EQ::skills::SkillType)i, 25);
+			c->SetSkill((EQ::skills::SkillType)i, max_skill_level);
+		}
+	}
+	c->Save(1);
+}
+
 //Please keep this at the bottom of command.cpp! Feel free to use this for temporary commands used in testing :)
-void command_testcommand(Client *c, const Seperator *sep)
+void command_testcommand(Client* c, const Seperator* sep)
 {
 	return;
 }
+

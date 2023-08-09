@@ -1,0 +1,14 @@
+﻿  Building Custom Rule C:/EQMacEmu/submodules/recastnavigation/Recast/CMakeLists.txt
+  CMake does not need to re-run because C:/EQMacEmu/Build/submodules/recastnavigation/Recast/CMakeFiles/generate.stamp is up-to-date.
+  Recast.cpp
+  RecastAlloc.cpp
+  RecastArea.cpp
+  RecastAssert.cpp
+  RecastContour.cpp
+  RecastFilter.cpp
+  RecastLayers.cpp
+  RecastMesh.cpp
+  RecastMeshDetail.cpp
+  RecastRasterization.cpp
+  RecastRegion.cpp
+  Recast.vcxproj -> C:\EQMacEmu\Build\submodules\recastnavigation\Recast\RelWithDebInfo\Recast.lib
