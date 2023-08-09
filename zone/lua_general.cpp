@@ -266,17 +266,22 @@ void unregister_spell_event(int evt, int spell_id) {
 }
 
 Lua_Mob lua_spawn2(int npc_type, int grid, int unused, double x, double y, double z, double heading) {
-	auto position = glm::vec4(x, y, z, heading);
+	glm::vec4 position = glm::vec4(x, y, z, heading);
 	return Lua_Mob(quest_manager.spawn2(npc_type, grid, unused, position));
 }
 
 Lua_Mob lua_spawn2(int npc_type, int grid, int unused, double x, double y, double z, double heading, const char* name) {
-	auto position = glm::vec4(x, y, z, heading);
+	glm::vec4 position = glm::vec4(x, y, z, heading);
 	return Lua_Mob(quest_manager.spawn2(npc_type, grid, unused, position, name));
 }
 
-Lua_Mob lua_unique_spawn(int npc_type, int grid, int unused, double x, double y, double z, double heading = 0.0) {
-	auto position = glm::vec4(x, y, z, heading);
+Lua_Mob lua_unique_spawn(int npc_type, int grid, int unused, double x, double y, double z) {
+	glm::vec4 position = glm::vec4(x, y, z, 0.0);
+	return Lua_Mob(quest_manager.unique_spawn(npc_type, grid, unused, position));
+}
+
+Lua_Mob lua_unique_spawn(int npc_type, int grid, int unused, double x, double y, double z, double heading) {
+	glm::vec4 position = glm::vec4(x, y, z, heading);
 	return Lua_Mob(quest_manager.unique_spawn(npc_type, grid, unused, position));
 }
 
@@ -1070,6 +1075,10 @@ std::string lua_get_encounter() {
 	return quest_manager.GetEncounter();
 }
 
+float lua_get_current_expansion() {
+	return quest_manager.GetCurrentExpansion();
+}
+
 void lua_debug(std::string message) {
 	Log(Logs::General, Logs::QuestDebug, message.c_str());
 }
@@ -1453,7 +1462,8 @@ luabind::scope lua_register_general() {
 		luabind::def("commify", &lua_commify),
 		luabind::def("get_language_name", &lua_get_language_name),
 		luabind::def("get_body_type_name", &lua_get_body_type_name),
-		luabind::def("get_consider_level_name", &lua_get_consider_level_name)
+		luabind::def("get_consider_level_name", &lua_get_consider_level_name),
+		luabind::def("get_current_expansion", &lua_get_current_expansion)
 	];
 }
 
