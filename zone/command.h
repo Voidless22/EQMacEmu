@@ -318,5 +318,4 @@ void command_zstats(Client *c, const Seperator *sep);
 void command_zunderworld(Client *c, const Seperator *sep);
 void command_zuwcoords(Client *c, const Seperator *sep);
 void command_betabuff(Client* c, const Seperator* sep);
-//void command_currentserverexpansion(Client* c, const Seperator* sep);
 #endif
