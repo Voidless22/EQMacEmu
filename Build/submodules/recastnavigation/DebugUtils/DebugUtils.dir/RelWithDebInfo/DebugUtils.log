@@ -1,7 +1,0 @@
-﻿  Building Custom Rule C:/EQMacEmu/submodules/recastnavigation/DebugUtils/CMakeLists.txt
-  CMake does not need to re-run because C:/EQMacEmu/Build/submodules/recastnavigation/DebugUtils/CMakeFiles/generate.stamp is up-to-date.
-  DebugDraw.cpp
-  DetourDebugDraw.cpp
-  RecastDebugDraw.cpp
-  RecastDump.cpp
-  DebugUtils.vcxproj -> C:\EQMacEmu\Build\submodules\recastnavigation\DebugUtils\RelWithDebInfo\DebugUtils.lib

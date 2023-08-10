@@ -1,5 +1,0 @@
-﻿  Building Custom Rule C:/EQMacEmu/eqlaunch/CMakeLists.txt
-  CMake does not need to re-run because C:/EQMacEmu/Build/eqlaunch/CMakeFiles/generate.stamp is up-to-date.
-  eqlaunch.cpp
-  worldserver.cpp
-  zone_launch.cpp

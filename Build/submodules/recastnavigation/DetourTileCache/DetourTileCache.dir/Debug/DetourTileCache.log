@@ -1,5 +1,0 @@
-﻿  Building Custom Rule C:/EQMacEmu/submodules/recastnavigation/DetourTileCache/CMakeLists.txt
-  CMake does not need to re-run because C:/EQMacEmu/Build/submodules/recastnavigation/DetourTileCache/CMakeFiles/generate.stamp is up-to-date.
-  DetourTileCache.cpp
-  DetourTileCacheBuilder.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(1522,5): error MSB6006: "Lib.exe" exited with code -1073741502.

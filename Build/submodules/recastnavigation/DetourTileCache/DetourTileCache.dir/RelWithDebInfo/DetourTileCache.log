@@ -1,5 +1,0 @@
-﻿  Building Custom Rule C:/EQMacEmu/submodules/recastnavigation/DetourTileCache/CMakeLists.txt
-  CMake does not need to re-run because C:/EQMacEmu/Build/submodules/recastnavigation/DetourTileCache/CMakeFiles/generate.stamp is up-to-date.
-  DetourTileCache.cpp
-  DetourTileCacheBuilder.cpp
-  DetourTileCache.vcxproj -> C:\EQMacEmu\Build\submodules\recastnavigation\DetourTileCache\RelWithDebInfo\DetourTileCache.lib
