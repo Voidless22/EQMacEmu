@@ -10909,37 +10909,51 @@ void command_viewzoneloot(Client* c, const Seperator* sep)
 }
 
 void command_betabuff(Client* c, const Seperator* sep) {
+	int curspell = 0;
+	int book_slot = 0;
+	uint16 skillLevel = 130;
+	int pClass = c->GetClass();
+
 
 	if (c->GetLevel() >= 25) {
 		c->Message(CC_Red, "This character is above the maximum level for test buff.");
 		return;
 	}
-	c->SetLevel(25);
-	c->AddEXPPercent(20);
 
-	int curspell;
-	int book_slot;
-
-	for (curspell = 0,book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot)) {
-		if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= 25 ) {
+	c->SetLevel(25,true);
+	c->AddEXPPercent(10, 25);
+	//Scribe Spells
+	for (curspell = 0, book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot)) {
+		if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= 25) {
 			if (!c->HasSpellScribed(curspell)) {
 				c->ScribeSpell(curspell, book_slot);
 			}
 		}
 	}
-
-	for (int i = 0; i <= EQ::skills::HIGHEST_SKILL; ++i)
+	// Skills
+	for (EQ::skills::SkillType skill_num = EQ::skills::Skill1HBlunt; skill_num <= EQ::skills::HIGHEST_SKILL; skill_num = (EQ::skills::SkillType)(skill_num + 1))
 	{
-		if (i >= EQ::skills::SkillSpecializeAbjure && i <= EQ::skills::SkillSpecializeEvocation)
-		{
-			c->SetSkill((EQ::skills::SkillType)i, 50);
-		}
-		else
-		{
-			int max_skill_level = database.GetSkillCap(c->GetClass(), (EQ::skills::SkillType)i, 25);
-			c->SetSkill((EQ::skills::SkillType)i, max_skill_level);
-		}
+		uint16 max_level = c->GetMaxSkillAfterSpecializationRules(skill_num, c->MaxSkill(skill_num));
+		uint16 cap_level = skillLevel > max_level ? max_level : skillLevel;
+		c->SetSkill(skill_num, cap_level);
 	}
+
+	//Pet Reagents
+	switch (pClass)
+	{
+	case NECROMANCER:
+		c->SummonItem(13073, 20);
+		break;
+	case MAGICIAN:
+		c->SummonItem(10015, 20);
+		break;
+	case ENCHANTER:
+		c->SummonItem(13080, 20);
+		break;
+	}
+
+	c->AddMoneyToPP(0, 0, 0, 1000, true);
+
 	c->Save(1);
 }
 
