@@ -23,6 +23,7 @@
 RULE_CATEGORY(Character)
 RULE_BOOL(Character, CanCreate, true)
 RULE_INT ( Character, MaxLevel, 65 )
+RULE_INT ( Character, MaxBetaBuffLevel, 25)
 RULE_BOOL ( Character, PerCharacterQglobalMaxLevel, false) // This will check for qglobal 'CharMaxLevel' character qglobal (Type 5), if player tries to level beyond that point, it will not go beyond that level
 RULE_INT ( Character, MaxExpLevel, 0 ) //Sets the Max Level attainable via Experience
 RULE_INT ( Character, DeathExpLossLevel, 10 )	// Any level greater than this will lose exp on death
@@ -190,6 +191,8 @@ RULE_BOOL (AlKabor, BlockProjectileCorners, true) // AK behavior is true.  If an
 RULE_BOOL (AlKabor, BlockProjectileWalls, true) // AK behavior is true.  If an NPC was walled, then arrows and bolts had to be fired from an angle parallel to the wall in order to hit them. (if this is true, corners will also block)
 RULE_BOOL (AlKabor, EnableMobLevelModifier, true) // AK behavior is true.  If true, enable the September 4 & 6 2002 patch exp modifications that granted a large experience bonus to kills within +/-5 levels of the player for level 51+ players
 RULE_BOOL (AlKabor, EnableEraFocusEffectRules, false) // AK behavior is false. If true, disable focus effects in the era they did not exist in.
+RULE_BOOL (AlKabor, EnableLuclinHarmonyResistOverride, true) // AK behavior is true. If true, enable the late Luclin Harmony resist override.
+RULE_BOOL (AlKabor, EnableLatePlanesHarmonyNerf, true) // AK behavior is true. If true, enable the late Planes of Power Harmony nerf
 RULE_CATEGORY_END()
 
 
