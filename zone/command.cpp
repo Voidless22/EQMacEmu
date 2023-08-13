@@ -10929,6 +10929,17 @@ void command_betabuff(Client* c, const Seperator* sep) {
 		int book_slot = 0;
 		uint16 skillLevel = HARD_SKILL_CAP;
 		int pClass = c->GetClass();
+		bool hasBetaBuffed = false;
+		int bandedIDs[12] = { 3053,3054,3055,3056,3061,3057,3058,3059,3060,3062,3063,3064 };
+		int smallBandedIDs[12] = { 3065,3066,3067,3068,3069,3070,3071,3072,3073,3074,3075,3076 };
+		int largeBandedIDs[12] = { 3080,3084,3087,3089,3088,3083,3085,3077,3082,3081,3078,3079 };
+		int rawSilkIDs[12] = { 1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171 };
+		int reinforcedIDs[12] = { 2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247 };
+		int smallReinforcedIDs[12] = { 2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260 };
+		int largeReinforcedIDs[12] = { 2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272 };
+		//Get Armor Size based on Race(Function)
+		GetArmorSize(c);
+		//Check if level argument is lower than our level
 
 
 		if ((uint32)c->GetLevel() >= level) {
