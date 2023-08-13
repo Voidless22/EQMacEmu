@@ -10985,7 +10985,7 @@ void command_betabuff(Client* c, const Seperator* sep) {
 			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
 			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
 			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
-			c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+			c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 0));
 
 			//Armor Summoning Skeleton
 			switch (pClass)
@@ -11159,83 +11159,23 @@ void command_betabuff(Client* c, const Seperator* sep) {
 			}
 
 			//Weapons:
-			//ID:  Weapon:
-			//6350 Fine Steel Warhammer
-			//6352 Fine Steel Great Staff
-			//6359 Stein of Moggok
-			//9002 Round Shield
-			//7352 Fine Steel Rapier
-			//7350 Fine Steel Dagger
-			switch (pClass)
-			{
-			case CLERIC:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-			case PALADIN:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+		//ID:  Weapon:
+		//6350 Fine Steel Warhammer
+		//6352 Fine Steel Great Staff
+		//6359 Stein of Moggok
+		//9002 Round Shield
+		//7352 Fine Steel Rapier
+		//7350 Fine Steel Dagger
 
-			case SHAMAN:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-			case RANGER:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(6359, 1, c->GetInv().FindFreeSlot(0, 0));
 
-			case SHADOWKNIGHT:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case BARD:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-			case ROGUE:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case WARRIOR:
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case NECROMANCER:
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case ENCHANTER:
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case MAGICIAN:
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			case WIZARD:
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-			case DRUID:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-			case BEASTLORD:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-			case MONK:
-				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-
-			}
-			c->SummonItem(6359, 1, c->GetInv().FindFreeSlot(0, 1));
 			c->AddMoneyToPP(0, 0, 0, 100 * level, true);
+
 			//Give Sow and Strength incase we're encumbered or too low agility.
 			c->SetGMSpellException(1);
 			c->SpellFinished(278, c); // Spirit of Wolf
