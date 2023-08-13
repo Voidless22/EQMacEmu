@@ -43,6 +43,7 @@
 #define strcasecmp _stricmp
 #endif
 
+
 #include "../common/global_define.h"
 #include "../common/eq_packet.h"
 #include "../common/features.h"
@@ -66,6 +67,10 @@
 #include "water_map.h"
 #include "worldserver.h"
 #include "queryserv.h"
+
+#define SMALL_ARMOR 0
+#define MEDIUM_ARMOR 1
+#define LARGE_ARMOR 2
 
 extern WorldServer worldserver;
 extern QueryServ* QServ;
@@ -148,7 +153,6 @@ int command_init(void)
 
 	if
 		(
-			command_add("betabuff", "Buffs player to Level 25, along with providing a basic set of gear, spells and abilities.", 100, command_betabuff) ||
 			command_add("advnpcspawn", "[maketype|makegroup|addgroupentry|addgroupspawn][removegroupspawn|movespawn|editgroupbox|cleargroupbox].", AccountStatus::GMImpossible, command_advnpcspawn) ||
 			command_add("aggro", "(range) [-v] - Display aggro information for all mobs 'range' distance from your target. -v is verbose faction info.", AccountStatus::GMStaff, command_aggro) ||
 			command_add("aggrozone", "[aggro] [0/1: Enforce ignore distance. If 0 or not set, all will come] - Aggro every mob in the zone with X aggro. Default is 0. Not recommend if you're not invulnerable.", AccountStatus::GMImpossible, command_aggrozone) ||
@@ -159,11 +163,15 @@ int command_init(void)
 			command_add("attack", "[targetname] - Make your NPC target attack targetname.", AccountStatus::QuestMaster, command_attack) ||
 			command_add("attackentity", "[entityid] - Make your NPC target attack target entity.", AccountStatus::QuestMaster, command_attackentity) ||
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 			command_add("ban", "[name][reason] - Ban by character name.", AccountStatus::GMAdmin, command_ban) ||
 			command_add("beard", "- Change the beard of your target.", AccountStatus::GMImpossible, command_beard) ||
 			command_add("beardcolor", "- Change the beard color of your target.", AccountStatus::GMImpossible, command_beardcolor) ||
 			command_add("bestz", "- Ask map for a good Z coord for your x,y coords.", AccountStatus::ApprenticeGuide, command_bestz) ||
+<<<<<<< Updated upstream
 			command_add("bind", "- Sets your targets bind spot to their current location.", AccountStatus::SeniorGuide, command_bind) ||
 			command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
 			command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
@@ -177,6 +185,12 @@ int command_init(void)
 		command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
 		command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
 >>>>>>> 2f00e21496b27a4aca9056244289e4bd31245c80
+=======
+			command_add("betabuff", "[level] - Buffs user's player to provided level, giving level * 100 platinum, along with providing a (potentially non era-specific) set of reagents, spells and skills.", AccountStatus::GMImpossible, command_betabuff) ||
+			command_add("bind", "- Sets your targets bind spot to their current location.", AccountStatus::SeniorGuide, command_bind) ||
+			command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
+			command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
+>>>>>>> Stashed changes
 
 			command_add("castspell", "[spellid] [gm_override] [entityid] - Cast a spell. GM override bypasses resist and stacking checks. If entityid is specified, that NPC will cast a spell on the target mob.", AccountStatus::QuestMaster, command_castspell) ||
 			command_add("chat", "[channel num] [message] - Send a channel message to all zones.", AccountStatus::EQSupport, command_chat) ||
@@ -360,106 +374,106 @@ int command_init(void)
 			command_add("repopclose", "[distance in units] Repops only NPC's nearby for fast development purposes", AccountStatus::GMAdmin, command_repopclose) ||
 			command_add("resetaa", "- Resets a Player's AA in their profile and refunds spent AA's to unspent, disconnects player.", AccountStatus::GMImpossible, command_resetaa) ||
 			command_add("resetboat", "- Sets player's boat to 0 in their profile.", AccountStatus::GMStaff, command_resetboat) ||
-command_add("revoke", "[charname] [1/0] - Makes charname unable to talk on OOC.", AccountStatus::GMStaff, command_revoke) ||
-command_add("rewind", nullptr, AccountStatus::Player, command_rewind) ||
-command_add("rules", "(subcommand) - Manage server rules.", AccountStatus::GMImpossible, command_rules) ||
+			command_add("revoke", "[charname] [1/0] - Makes charname unable to talk on OOC.", AccountStatus::GMStaff, command_revoke) ||
+			command_add("rewind", nullptr, AccountStatus::Player, command_rewind) ||
+			command_add("rules", "(subcommand) - Manage server rules.", AccountStatus::GMImpossible, command_rules) ||
 
-command_add("save", "- Force your player or player corpse target to be saved to the database.", AccountStatus::GMLeadAdmin, command_save) ||
-command_add("scribespell", "[spellid] - Scribe specified spell in your target's spell book.", AccountStatus::GMAreas, command_scribespell) ||
-command_add("scribespells", "[max level] [min level] - Scribe all spells for you or your player target that are usable by them, up to level specified. (may freeze client for a few seconds).", AccountStatus::GMAreas, command_scribespells) ||
-command_add("sendop", "[opcode] - LE's Private test command, leave it alone.", AccountStatus::GMCoder, command_sendop) ||
-command_add("sendzonespawns", "- Refresh spawn list for all clients in zone.", AccountStatus::GMAdmin, command_sendzonespawns) ||
-command_add("serverlock", "[0|1] - Lock or Unlock the World Server (0 = Unlocked, 1 = Locked)", AccountStatus::GMLeadAdmin, command_serverlock) ||
-command_add("serversidename", "- Prints target's server side name.", AccountStatus::GMAdmin, command_serversidename) ||
-command_add("setaapts", "[value] - Set your or your player target's available AA points.", AccountStatus::GMImpossible, command_setaapts) ||
-command_add("setaaxp", "[value] - Set your or your player target's AA experience.", AccountStatus::GMImpossible, command_setaaxp) ||
-command_add("setanim", "[animnum] - Set target's appearance to animnum.", AccountStatus::GMImpossible, command_setanim) ||
-command_add("setfaction", "[faction number] - Sets targeted NPC's faction in the database.", AccountStatus::GMImpossible, command_setfaction) ||
-command_add("setgraveyard", "[zone name] - Creates a graveyard for the specified zone based on your target's LOC.", AccountStatus::GMImpossible, command_setgraveyard) ||
-command_add("setgreed", "[greed] - Sets a merchant greed value.", AccountStatus::GMAdmin, command_setgreed) ||
-command_add("setlanguage", "[language ID] [value] - Set your target's language skillnum to value.", AccountStatus::GMAreas, command_setlanguage) ||
-command_add("setlsinfo", "[email] [password] - Set login server email address and password (if supported by login server).", AccountStatus::Max, command_setlsinfo) ||
-command_add("setnpcexpansion", "[bitmask] - Restrict an NPC spawn2 by bitmask.", AccountStatus::GMAdmin, command_setnpcexpansion) ||
-command_add("setpass", "[accountname] [password] - Set local password for accountname.", AccountStatus::Max, command_setpass) ||
-command_add("setskill", "[skillnum] [value] - Set your target's skill skillnum to value.", AccountStatus::GMAreas, command_setskill) ||
-command_add("setskillall", "[value] - Set all of your target's skills to value.", AccountStatus::GMAreas, command_setskillall) ||
-command_add("setxp", "[value] - Set your or your player target's experience.", AccountStatus::GMAreas, command_setxp) ||
-command_add("showbonusstats", "[item|spell|all] Shows bonus stats for target from items or spells. Shows both by default.", AccountStatus::Guide, command_showbonusstats) ||
-command_add("showbuffs", "- List buffs active on your target or you if no target.", AccountStatus::Guide, command_showbuffs) ||
-command_add("showfilters", "- list client serverfilter settings.", AccountStatus::GMCoder, command_showfilters) ||
-command_add("showhelm", "on/off [all] Toggles displaying of player helms (including your own.) Specifying 'all' toggles every character currently on your account", AccountStatus::Player, command_showhelm) ||
-command_add("showpetspell", "[spellid/searchstring] - search pet summoning spells.", AccountStatus::Guide, command_showpetspell) ||
-command_add("showregen", "- Shows information about your target's regen.", AccountStatus::GMAdmin, command_showregen) ||
-command_add("showskills", "- Show the values of your skills if no target, or your target's skills.", AccountStatus::Guide, command_showskills) ||
-command_add("showspellslist", "Shows spell list of targeted NPC.", AccountStatus::GMStaff, command_showspellslist) ||
-command_add("showstats", "[quick stats]- Show details about you or your target. Quick stats shows only key stats.", AccountStatus::Guide, command_showstats) ||
-command_add("showtraderitems", "Displays the list of items a trader has up for sale.", AccountStatus::QuestTroupe, command_showtraderitems) ||
-command_add("shutdown", "- Shut this zone process down.", AccountStatus::GMImpossible, command_shutdown) ||
-command_add("size", "[size] - Change size of you or your target.", AccountStatus::GMAdmin, command_size) ||
-command_add("skills", "List skill difficulty.", AccountStatus::GMAdmin, command_skilldifficulty) ||
-command_add("spawn", "[name] [race] [level] [material] [hp] [gender] [class] [priweapon] [secweapon] [merchantid] - Spawn an NPC.", AccountStatus::GMImpossible, command_spawn) ||
-command_add("spawnfix", "- Find targeted NPC in database based on its X/Y/heading and update the database to make it spawn at your current location/heading.", AccountStatus::GMImpossible, command_spawnfix) ||
-command_add("spawnstatus", "[a|u|s|d|e|spawnid|help] - Show respawn timer status.", AccountStatus::GMStaff, command_spawnstatus) ||
-command_add("spellinfo", "[spellid] - Get detailed info about a spell.", AccountStatus::Guide, command_spellinfo) ||
-command_add("starve", "Sets hunger and thirst to 0.", AccountStatus::GMCoder, command_starve) ||
-command_add("stun", "[duration] - Stuns you or your target for duration.", AccountStatus::QuestMaster, command_stun) ||
-command_add("summon", "[charname] - Summons your player/npc/corpse target, or charname if specified.", AccountStatus::EQSupport, command_summon) ||
-command_add("summonitem", "[itemid] [charges] - Summon an item onto your cursor. Charges are optional.", AccountStatus::QuestMaster, command_summonitem) ||
-command_add("suspend", "[name][days][reason] - Suspend by character name and for specificed number of days.", AccountStatus::EQSupport, command_suspend) ||
-command_add("synctod", "- Send a time of day update to every client in zone.", AccountStatus::GMAdmin, command_synctod) ||
+			command_add("save", "- Force your player or player corpse target to be saved to the database.", AccountStatus::GMLeadAdmin, command_save) ||
+			command_add("scribespell", "[spellid] - Scribe specified spell in your target's spell book.", AccountStatus::GMAreas, command_scribespell) ||
+			command_add("scribespells", "[max level] [min level] - Scribe all spells for you or your player target that are usable by them, up to level specified. (may freeze client for a few seconds).", AccountStatus::GMAreas, command_scribespells) ||
+			command_add("sendop", "[opcode] - LE's Private test command, leave it alone.", AccountStatus::GMCoder, command_sendop) ||
+			command_add("sendzonespawns", "- Refresh spawn list for all clients in zone.", AccountStatus::GMAdmin, command_sendzonespawns) ||
+			command_add("serverlock", "[0|1] - Lock or Unlock the World Server (0 = Unlocked, 1 = Locked)", AccountStatus::GMLeadAdmin, command_serverlock) ||
+			command_add("serversidename", "- Prints target's server side name.", AccountStatus::GMAdmin, command_serversidename) ||
+			command_add("setaapts", "[value] - Set your or your player target's available AA points.", AccountStatus::GMImpossible, command_setaapts) ||
+			command_add("setaaxp", "[value] - Set your or your player target's AA experience.", AccountStatus::GMImpossible, command_setaaxp) ||
+			command_add("setanim", "[animnum] - Set target's appearance to animnum.", AccountStatus::GMImpossible, command_setanim) ||
+			command_add("setfaction", "[faction number] - Sets targeted NPC's faction in the database.", AccountStatus::GMImpossible, command_setfaction) ||
+			command_add("setgraveyard", "[zone name] - Creates a graveyard for the specified zone based on your target's LOC.", AccountStatus::GMImpossible, command_setgraveyard) ||
+			command_add("setgreed", "[greed] - Sets a merchant greed value.", AccountStatus::GMAdmin, command_setgreed) ||
+			command_add("setlanguage", "[language ID] [value] - Set your target's language skillnum to value.", AccountStatus::GMAreas, command_setlanguage) ||
+			command_add("setlsinfo", "[email] [password] - Set login server email address and password (if supported by login server).", AccountStatus::Max, command_setlsinfo) ||
+			command_add("setnpcexpansion", "[bitmask] - Restrict an NPC spawn2 by bitmask.", AccountStatus::GMAdmin, command_setnpcexpansion) ||
+			command_add("setpass", "[accountname] [password] - Set local password for accountname.", AccountStatus::Max, command_setpass) ||
+			command_add("setskill", "[skillnum] [value] - Set your target's skill skillnum to value.", AccountStatus::GMAreas, command_setskill) ||
+			command_add("setskillall", "[value] - Set all of your target's skills to value.", AccountStatus::GMAreas, command_setskillall) ||
+			command_add("setxp", "[value] - Set your or your player target's experience.", AccountStatus::GMAreas, command_setxp) ||
+			command_add("showbonusstats", "[item|spell|all] Shows bonus stats for target from items or spells. Shows both by default.", AccountStatus::Guide, command_showbonusstats) ||
+			command_add("showbuffs", "- List buffs active on your target or you if no target.", AccountStatus::Guide, command_showbuffs) ||
+			command_add("showfilters", "- list client serverfilter settings.", AccountStatus::GMCoder, command_showfilters) ||
+			command_add("showhelm", "on/off [all] Toggles displaying of player helms (including your own.) Specifying 'all' toggles every character currently on your account", AccountStatus::Player, command_showhelm) ||
+			command_add("showpetspell", "[spellid/searchstring] - search pet summoning spells.", AccountStatus::Guide, command_showpetspell) ||
+			command_add("showregen", "- Shows information about your target's regen.", AccountStatus::GMAdmin, command_showregen) ||
+			command_add("showskills", "- Show the values of your skills if no target, or your target's skills.", AccountStatus::Guide, command_showskills) ||
+			command_add("showspellslist", "Shows spell list of targeted NPC.", AccountStatus::GMStaff, command_showspellslist) ||
+			command_add("showstats", "[quick stats]- Show details about you or your target. Quick stats shows only key stats.", AccountStatus::Guide, command_showstats) ||
+			command_add("showtraderitems", "Displays the list of items a trader has up for sale.", AccountStatus::QuestTroupe, command_showtraderitems) ||
+			command_add("shutdown", "- Shut this zone process down.", AccountStatus::GMImpossible, command_shutdown) ||
+			command_add("size", "[size] - Change size of you or your target.", AccountStatus::GMAdmin, command_size) ||
+			command_add("skills", "List skill difficulty.", AccountStatus::GMAdmin, command_skilldifficulty) ||
+			command_add("spawn", "[name] [race] [level] [material] [hp] [gender] [class] [priweapon] [secweapon] [merchantid] - Spawn an NPC.", AccountStatus::GMImpossible, command_spawn) ||
+			command_add("spawnfix", "- Find targeted NPC in database based on its X/Y/heading and update the database to make it spawn at your current location/heading.", AccountStatus::GMImpossible, command_spawnfix) ||
+			command_add("spawnstatus", "[a|u|s|d|e|spawnid|help] - Show respawn timer status.", AccountStatus::GMStaff, command_spawnstatus) ||
+			command_add("spellinfo", "[spellid] - Get detailed info about a spell.", AccountStatus::Guide, command_spellinfo) ||
+			command_add("starve", "Sets hunger and thirst to 0.", AccountStatus::GMCoder, command_starve) ||
+			command_add("stun", "[duration] - Stuns you or your target for duration.", AccountStatus::QuestMaster, command_stun) ||
+			command_add("summon", "[charname] - Summons your player/npc/corpse target, or charname if specified.", AccountStatus::EQSupport, command_summon) ||
+			command_add("summonitem", "[itemid] [charges] - Summon an item onto your cursor. Charges are optional.", AccountStatus::QuestMaster, command_summonitem) ||
+			command_add("suspend", "[name][days][reason] - Suspend by character name and for specificed number of days.", AccountStatus::EQSupport, command_suspend) ||
+			command_add("synctod", "- Send a time of day update to every client in zone.", AccountStatus::GMAdmin, command_synctod) ||
 
-command_add("testcopy", "Sends a copy of the targets loginserver/game account/characters to a backup file.", AccountStatus::GMImpossible, command_testcopy) ||
-command_add("testcommand", "Template for temporary commands as needed. Don't delete.", AccountStatus::GMImpossible, command_testcommand) ||
-command_add("testspawn", "[memloc] [value] - spawns a NPC for you only, with the specified values set in the spawn struct.", AccountStatus::GMCoder, command_testspawn) ||
-command_add("testspawnkill", "- Sends an OP_Death packet for spawn made with #testspawn.", AccountStatus::GMCoder, command_testspawnkill) ||
-command_add("texture", "[texture] [helmtexture] - Change your or your target's appearance, use 255 to show equipment.", AccountStatus::GMImpossible, command_texture) ||
-command_add("time", "[HH] [MM] - Set EQ time", AccountStatus::GMImpossible, command_time) ||
-command_add("timers", "- Display persistent timers for target.", AccountStatus::GMAdmin, command_timers) ||
-command_add("timezone", "[HH] [MM] - Set timezone. Minutes are optional.", AccountStatus::GMImpossible, command_timezone) ||
-command_add("title", "[text] [1 = create title table row] - Set your or your player target's title.", AccountStatus::GMStaff, command_title) ||
-command_add("titlesuffix", "[text] [1 = create title table row] - Set your or your player target's title suffix.", AccountStatus::Max, command_titlesuffix) ||
-command_add("trapinfo", "- Gets infomation about the traps currently spawned in the zone.", AccountStatus::SeniorGuide, command_trapinfo) ||
+			command_add("testcopy", "Sends a copy of the targets loginserver/game account/characters to a backup file.", AccountStatus::GMImpossible, command_testcopy) ||
+			command_add("testcommand", "Template for temporary commands as needed. Don't delete.", AccountStatus::GMImpossible, command_testcommand) ||
+			command_add("testspawn", "[memloc] [value] - spawns a NPC for you only, with the specified values set in the spawn struct.", AccountStatus::GMCoder, command_testspawn) ||
+			command_add("testspawnkill", "- Sends an OP_Death packet for spawn made with #testspawn.", AccountStatus::GMCoder, command_testspawnkill) ||
+			command_add("texture", "[texture] [helmtexture] - Change your or your target's appearance, use 255 to show equipment.", AccountStatus::GMImpossible, command_texture) ||
+			command_add("time", "[HH] [MM] - Set EQ time", AccountStatus::GMImpossible, command_time) ||
+			command_add("timers", "- Display persistent timers for target.", AccountStatus::GMAdmin, command_timers) ||
+			command_add("timezone", "[HH] [MM] - Set timezone. Minutes are optional.", AccountStatus::GMImpossible, command_timezone) ||
+			command_add("title", "[text] [1 = create title table row] - Set your or your player target's title.", AccountStatus::GMStaff, command_title) ||
+			command_add("titlesuffix", "[text] [1 = create title table row] - Set your or your player target's title suffix.", AccountStatus::Max, command_titlesuffix) ||
+			command_add("trapinfo", "- Gets infomation about the traps currently spawned in the zone.", AccountStatus::SeniorGuide, command_trapinfo) ||
 
-command_add("undeletechar", "- Undelete a character that was previously deleted.", AccountStatus::Max, command_undeletechar) ||
-command_add("underworld", "[z] - Reports NPCs that are below the given Z or if not given, below the lowest spawn2/grid coord. If red, the NPC is below the underworld coord.", AccountStatus::QuestTroupe, command_underworld) ||
-command_add("unfreeze", "- Unfreeze your target.", AccountStatus::QuestMaster, command_unfreeze) ||
-command_add("unmemspell", "[spellid] - Unmem specified spell from your target's spell bar.", AccountStatus::GMAreas, command_unmemspell) ||
-command_add("unmemspells", "- Clear out your or your player target's spell gems.", AccountStatus::GMAreas, command_unmemspells) ||
-command_add("unscribespell", "[spellid] - Unscribe specified spell from your target's spell book.", AccountStatus::GMAreas, command_unscribespell) ||
-command_add("unscribespells", "- Clear out your or your player target's spell book.", AccountStatus::GMAreas, command_unscribespells) ||
-command_add("update", "Handles all server updates/reboots. Use with no args or 'help' for how to use.", AccountStatus::GMMgmt, command_update) ||
-command_add("uptime", "[zone server id] - Get uptime of worldserver, or zone server if argument provided.", AccountStatus::GMStaff, command_uptime) ||
+			command_add("undeletechar", "- Undelete a character that was previously deleted.", AccountStatus::Max, command_undeletechar) ||
+			command_add("underworld", "[z] - Reports NPCs that are below the given Z or if not given, below the lowest spawn2/grid coord. If red, the NPC is below the underworld coord.", AccountStatus::QuestTroupe, command_underworld) ||
+			command_add("unfreeze", "- Unfreeze your target.", AccountStatus::QuestMaster, command_unfreeze) ||
+			command_add("unmemspell", "[spellid] - Unmem specified spell from your target's spell bar.", AccountStatus::GMAreas, command_unmemspell) ||
+			command_add("unmemspells", "- Clear out your or your player target's spell gems.", AccountStatus::GMAreas, command_unmemspells) ||
+			command_add("unscribespell", "[spellid] - Unscribe specified spell from your target's spell book.", AccountStatus::GMAreas, command_unscribespell) ||
+			command_add("unscribespells", "- Clear out your or your player target's spell book.", AccountStatus::GMAreas, command_unscribespells) ||
+			command_add("update", "Handles all server updates/reboots. Use with no args or 'help' for how to use.", AccountStatus::GMMgmt, command_update) ||
+			command_add("uptime", "[zone server id] - Get uptime of worldserver, or zone server if argument provided.", AccountStatus::GMStaff, command_uptime) ||
 
-command_add("version", "- Display current version of EQEmu server.", AccountStatus::GMCoder, command_version) ||
-command_add("viewnpctype", "[npctype id] - Show info about an npctype.", AccountStatus::GMStaff, command_viewnpctype) ||
-command_add("viewplayerfaction", "[factionid] - Shows current personal and modified faction with the given ID.", AccountStatus::GMAdmin, command_viewplayerfaction) ||
-command_add("viewzoneloot", "[item id] - Allows you to search a zone's loot for a specific item ID. (0 shows all loot in the zone)", AccountStatus::QuestTroupe, command_viewzoneloot) ||
+			command_add("version", "- Display current version of EQEmu server.", AccountStatus::GMCoder, command_version) ||
+			command_add("viewnpctype", "[npctype id] - Show info about an npctype.", AccountStatus::GMStaff, command_viewnpctype) ||
+			command_add("viewplayerfaction", "[factionid] - Shows current personal and modified faction with the given ID.", AccountStatus::GMAdmin, command_viewplayerfaction) ||
+			command_add("viewzoneloot", "[item id] - Allows you to search a zone's loot for a specific item ID. (0 shows all loot in the zone)", AccountStatus::QuestTroupe, command_viewzoneloot) ||
 
-command_add("wc", "[wear slot] [material] - Sends an OP_WearChange for your target.", AccountStatus::GMImpossible, command_wc) ||
-command_add("weather", "[0/1/2] (Off/Rain/Snow) [0/1] Serverwide [minutes] Duration - Change the weather.", AccountStatus::QuestMaster, command_weather) ||
-command_add("worldshutdown", "- Shut down world and all zones.", AccountStatus::GMImpossible, command_worldshutdown) ||
-command_add("wp", "[add/delete] [grid_num] [pause] [wp_num] [-h] - Add/delete a waypoint to/from a wandering grid.", AccountStatus::GMImpossible, command_wp) ||
-command_add("wpadd", "[pause] [-h] - Add your current location as a waypoint to your NPC target's AI path.", AccountStatus::GMImpossible, command_wpadd) ||
-command_add("wpinfo", "- Show waypoint info about your NPC target.", AccountStatus::GMImpossible, command_wpinfo) ||
+			command_add("wc", "[wear slot] [material] - Sends an OP_WearChange for your target.", AccountStatus::GMImpossible, command_wc) ||
+			command_add("weather", "[0/1/2] (Off/Rain/Snow) [0/1] Serverwide [minutes] Duration - Change the weather.", AccountStatus::QuestMaster, command_weather) ||
+			command_add("worldshutdown", "- Shut down world and all zones.", AccountStatus::GMImpossible, command_worldshutdown) ||
+			command_add("wp", "[add/delete] [grid_num] [pause] [wp_num] [-h] - Add/delete a waypoint to/from a wandering grid.", AccountStatus::GMImpossible, command_wp) ||
+			command_add("wpadd", "[pause] [-h] - Add your current location as a waypoint to your NPC target's AI path.", AccountStatus::GMImpossible, command_wpadd) ||
+			command_add("wpinfo", "- Show waypoint info about your NPC target.", AccountStatus::GMImpossible, command_wpinfo) ||
 
-command_add("xpinfo", "- Show XP info about your current target.", AccountStatus::GMStaff, command_xpinfo) ||
+			command_add("xpinfo", "- Show XP info about your current target.", AccountStatus::GMStaff, command_xpinfo) ||
 
-command_add("zclip", "[min] [max] - modifies and resends zhdr packet.", AccountStatus::GMImpossible, command_zclip) ||
-command_add("zcolor", "[red] [green] [blue] - Change sky color.", AccountStatus::GMImpossible, command_zcolor) ||
-command_add("zheader", "[zonename] - Load zheader for zonename from the database.", AccountStatus::GMImpossible, command_zheader) ||
-command_add("zone", "[Zone ID|Zone Short Name] [X] [Y] [Z] - Teleport to specified Zone by ID or Short Name (coordinates are optional).", AccountStatus::QuestTroupe, command_zone) ||
-command_add("zonebootup", "(shortname) (ZoneServerID) - Make a zone server boot a specific zone. If no arguments are given, it will find and boot any crashed zones.", AccountStatus::GMImpossible, command_zonebootup) ||
-command_add("zonelock", "[list/lock/unlock] - Set/query lock flag for zoneservers.", AccountStatus::GMAreas, command_zonelock) ||
-command_add("zoneshutdown", "[shortname] - Shut down a zone server.", AccountStatus::GMImpossible, command_zoneshutdown) ||
-command_add("zonespawn", "- Not implemented.", AccountStatus::Max, command_zonespawn) ||
-command_add("zonestatus", "- Show connected zoneservers, synonymous with /servers.", AccountStatus::GMStaff, command_zonestatus) ||
-command_add("zopp", "Troubleshooting command - Sends a fake item packet to you. No server reference is created.", AccountStatus::GMCoder, command_zopp) ||
-command_add("zsafecoords", "[x] [y] [z] - Set safe coords.", AccountStatus::GMImpossible, command_zsafecoords) ||
-command_add("zsave", " - Saves zheader to the database.", AccountStatus::GMImpossible, command_zsave) ||
-command_add("zsky", "[skytype] - Change zone sky type.", AccountStatus::GMImpossible, command_zsky) ||
-command_add("zstats", "- Show info about zone header.", AccountStatus::QuestTroupe, command_zstats) ||
-command_add("zunderworld", "[zcoord] - Sets the underworld using zcoord.", AccountStatus::GMImpossible, command_zunderworld) ||
-command_add("zuwcoords", "[z coord] - Set underworld coord.", AccountStatus::GMImpossible, command_zuwcoords) 
+			command_add("zclip", "[min] [max] - modifies and resends zhdr packet.", AccountStatus::GMImpossible, command_zclip) ||
+			command_add("zcolor", "[red] [green] [blue] - Change sky color.", AccountStatus::GMImpossible, command_zcolor) ||
+			command_add("zheader", "[zonename] - Load zheader for zonename from the database.", AccountStatus::GMImpossible, command_zheader) ||
+			command_add("zone", "[Zone ID|Zone Short Name] [X] [Y] [Z] - Teleport to specified Zone by ID or Short Name (coordinates are optional).", AccountStatus::QuestTroupe, command_zone) ||
+			command_add("zonebootup", "(shortname) (ZoneServerID) - Make a zone server boot a specific zone. If no arguments are given, it will find and boot any crashed zones.", AccountStatus::GMImpossible, command_zonebootup) ||
+			command_add("zonelock", "[list/lock/unlock] - Set/query lock flag for zoneservers.", AccountStatus::GMAreas, command_zonelock) ||
+			command_add("zoneshutdown", "[shortname] - Shut down a zone server.", AccountStatus::GMImpossible, command_zoneshutdown) ||
+			command_add("zonespawn", "- Not implemented.", AccountStatus::Max, command_zonespawn) ||
+			command_add("zonestatus", "- Show connected zoneservers, synonymous with /servers.", AccountStatus::GMStaff, command_zonestatus) ||
+			command_add("zopp", "Troubleshooting command - Sends a fake item packet to you. No server reference is created.", AccountStatus::GMCoder, command_zopp) ||
+			command_add("zsafecoords", "[x] [y] [z] - Set safe coords.", AccountStatus::GMImpossible, command_zsafecoords) ||
+			command_add("zsave", " - Saves zheader to the database.", AccountStatus::GMImpossible, command_zsave) ||
+			command_add("zsky", "[skytype] - Change zone sky type.", AccountStatus::GMImpossible, command_zsky) ||
+			command_add("zstats", "- Show info about zone header.", AccountStatus::QuestTroupe, command_zstats) ||
+			command_add("zunderworld", "[zcoord] - Sets the underworld using zcoord.", AccountStatus::GMImpossible, command_zunderworld) ||
+			command_add("zuwcoords", "[z coord] - Set underworld coord.", AccountStatus::GMImpossible, command_zuwcoords)
 			)
 	{
 		command_deinit();
@@ -10921,42 +10935,65 @@ void command_viewzoneloot(Client* c, const Seperator* sep)
 	}
 }
 
+
+
+int armorSize = 0;
+
 void command_betabuff(Client* c, const Seperator* sep) {
+	//Arguments?
 	if (sep->IsNumber(1))
 	{
-
+		//Variables
 		uint32 level = atoi(sep->arg[1]);
-
 		int curspell = 0;
 		int book_slot = 0;
 		uint16 skillLevel = HARD_SKILL_CAP;
 		int pClass = c->GetClass();
+<<<<<<< Updated upstream
 
 
 		if ((uint32)c->GetLevel() >= level) {
+=======
+		bool hasBetaBuffed = false;
+		int bandedIDs[12] = { 3053,3054,3055,3056,3061,3057,3058,3059,3060,3062,3063,3064 };
+		int smallBandedIDs[12] = { 3065,3066,3067,3068,3069,3070,3071,3072,3073,3074,3075,3076 };
+		int largeBandedIDs[12] = { 3080,3084,3087,3089,3088,3083,3085,3077,3082,3081,3078,3079 };
+		int rawSilkIDs[12] = { 1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171 };
+		int reinforcedIDs[12] = { 2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247 };
+		int smallReinforcedIDs[12] = { 2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260 };
+		int largeReinforcedIDs[12] = { 2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272 };
+		//Get Armor Size based on Race(Function)
+		GetArmorSize(c);
+		//Check if level argument is lower than our level
+			if ((uint32)c->GetLevel() >= level) {
+>>>>>>> Stashed changes
 			c->Message(CC_Red, "This character cannot be buffed to this level.");
 			return;
 		}
-
+		//Check MaxBetaBuffLevel Rule
 		if (level > RuleI(Character, MaxBetaBuffLevel))
 		{
 			c->Message(CC_Red, "This character cannot be buffed to this level. The current betabuff cap is: %i", RuleI(Character, MaxBetaBuffLevel));
 			return;
 		}
-
+		//Check if character is above the max level 
 		if (c->GetLevel() > RuleI(Character, MaxLevel)) {
 			c->Message(CC_Red, "This character is above the maximum level for test buff.");
 			return;
 		}
 
+		//Set Level and Exp
+		c->SetLevel(1, true);
 		c->SetLevel(level, true);
 		c->AddEXPPercent(10, level);
+
 		//Scribe Spells
-		for (curspell = 0, book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot)) {
+		for (curspell = 0, book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot))
+		{
 			if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= level) {
 				if (!c->HasSpellScribed(curspell)) {
 					c->ScribeSpell(curspell, book_slot);
-				}
+				} 
 			}
 		}
 		// Skills
@@ -10967,6 +11004,272 @@ void command_betabuff(Client* c, const Seperator* sep) {
 			c->SetSkill(skill_num, cap_level);
 		}
 
+		//Summon Bags, Gear and Plat for first time beta buff
+		if (!c->HasBetaBuffGearFlag()) 
+		{
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			//Armor Summoning Skeleton
+			switch (pClass)
+			{
+			case CLERIC:
+			case PALADIN:
+			case SHAMAN:
+			case RANGER:
+			case SHADOWKNIGHT:
+			case BARD:
+			case ROGUE:		
+			case WARRIOR:
+				if (armorSize == SMALL_ARMOR)
+				{
+					for (int i : smallBandedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 3073)
+							{
+								c->SummonItem(i, 1, slot);
+								if (slot != 0) {
+									c->SummonItem(i, 1, slot);
+								}
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
+				}
+				if (armorSize == MEDIUM_ARMOR)
+				{
+					for (int i : bandedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+
+							if (i == 3061)
+							{
+								c->SummonItem(i, 1, slot);
+								if (slot != 0) {
+									c->SummonItem(i, 1, slot);
+								}
+
+							}
+							else
+							{
+								c->SummonItem(i, 1, slot);
+							}
+						}
+					}
+
+				}
+				if (armorSize == LARGE_ARMOR)
+				{
+					for (int i : largeBandedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+
+							if (i == 3085)
+							{
+								c->SummonItem(i, 1, slot);
+
+								if (slot != 0) {
+									c->SummonItem(i, 1, slot);
+								}
+							}
+							else
+							{
+								c->SummonItem(i, 1, slot);
+
+							}
+						}
+					}
+				}
+				break;
+			case NECROMANCER:
+			case ENCHANTER:
+			case MAGICIAN:
+			case WIZARD:
+				for (int i : rawSilkIDs)
+				{
+					uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+					if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+						if (i == 1168)
+
+							c->SummonItem(i, 1, slot);
+
+						if (slot != 0) {
+							c->SummonItem(i, 1, slot);
+						}
+					}
+					else
+					{
+						c->SummonItem(i, 1, slot);
+					}
+				}
+				break;
+			case DRUID:
+			case BEASTLORD:
+			case MONK:
+				if (armorSize == SMALL_ARMOR) {
+					for (int i : smallReinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2257)
+
+								c->SummonItem(i, 1, slot);
+
+							if (slot != 0) {
+								c->SummonItem(i, 1, slot);
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
+				}
+
+				if (armorSize == MEDIUM_ARMOR) {
+					for (int i : reinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2245)
+
+								c->SummonItem(i, 1, slot);
+
+							if (slot != 0) {
+								c->SummonItem(i, 1, slot);
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
+				}
+
+				if (armorSize == LARGE_ARMOR) {
+					for (int i : largeReinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2269)
+
+								c->SummonItem(i, 1, slot);
+
+							if (slot != 0) {
+								c->SummonItem(i, 1, slot);
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
+				}
+
+			}
+
+			//Weapons:
+			//ID:  Weapon:
+			//6350 Fine Steel Warhammer
+			//6352 Fine Steel Great Staff
+			//6359 Stein of Moggok
+			//9002 Round Shield
+			//7352 Fine Steel Rapier
+			//7350 Fine Steel Dagger
+			switch (pClass)
+			{
+			case CLERIC:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case PALADIN:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case SHAMAN:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case RANGER:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case SHADOWKNIGHT:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case BARD:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case ROGUE:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case WARRIOR:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case NECROMANCER:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case ENCHANTER:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case MAGICIAN:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case WIZARD:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+			case DRUID:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case BEASTLORD:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+			case MONK:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			}
+			c->SummonItem(6359, 1, c->GetInv().FindFreeSlot(0, 1));
+			c->AddMoneyToPP(0, 0, 0, 100 * level, true);
+			//Give Sow and Strength incase we're encumbered or too low agility.
+			c->SetGMSpellException(1);
+			c->SpellFinished(278, c); // Spirit of Wolf
+			c->SpellFinished(430, c); // Storm Strength
+			c->SetGMSpellException(0);
+
+			c->SetBetaBuffGearFlag(1);
+		}
 		//Pet Reagents
 		switch (pClass)
 		{
@@ -10981,9 +11284,14 @@ void command_betabuff(Client* c, const Seperator* sep) {
 			break;
 		}
 
+<<<<<<< Updated upstream
 		c->AddMoneyToPP(0, 0, 0, 100 * level, true);
+=======
+
+>>>>>>> Stashed changes
 
 		c->Save(1);
+
 		return;
 	}
 	else
@@ -10991,6 +11299,53 @@ void command_betabuff(Client* c, const Seperator* sep) {
 		c->Message(CC_Default, "Usage: #betabuff [level]");
 	}
 }
+
+
+
+void GetArmorSize(Client* c) {
+	int pRace = c->GetRace();
+
+	switch (pRace)
+	{
+	case WOOD_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case HIGH_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case DARK_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case DWARF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case HALFLING:
+		armorSize = SMALL_ARMOR;
+		break;
+	case GNOME:
+		armorSize = SMALL_ARMOR;
+		break;
+	case BARBARIAN:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case ERUDITE:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case HALF_ELF:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case HUMAN:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case TROLL:
+		armorSize = LARGE_ARMOR;
+		break;
+	case OGRE:
+		armorSize = LARGE_ARMOR;
+		break;
+	}
+}
+
 
 //Please keep this at the bottom of command.cpp! Feel free to use this for temporary commands used in testing :)
 void command_testcommand(Client* c, const Seperator* sep)

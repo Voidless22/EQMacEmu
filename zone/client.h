@@ -336,12 +336,15 @@ public:
 	inline uint8 IsHardcore() const { return m_epp.hardcore; }
 	inline uint8 IsSoloOnly() const { return m_epp.solo_only; }
 	inline uint8 IsSelfFound() const { return m_epp.self_found; }
+	inline uint8 HasBetaBuffGearFlag() const { return m_epp.betabuff_gear_flag; }
+
+
 
 	inline void SetHardcore(uint8 in_hardcore) { m_epp.hardcore = in_hardcore; }
 	inline void SetSoloOnly(uint8 in_solo_only) { m_epp.solo_only = in_solo_only; }
 	inline void SetSelfFound(uint8 in_self_found) { m_epp.self_found = in_self_found; }
 	inline void SetHardcoreDeathTimeStamp(uint32 in_death_timestamp) { m_epp.hardcore_death_time = in_death_timestamp; Save(1); }
-
+	inline void SetBetaBuffGearFlag(uint8 gearflag) { m_epp.betabuff_gear_flag = gearflag; }
 	int32 CalcMaxMana();
 	int32 CalcBaseMana();
 	const int32& SetMana(int32 amount);
