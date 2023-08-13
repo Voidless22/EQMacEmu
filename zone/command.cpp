@@ -162,6 +162,7 @@ int command_init(void)
 			command_add("apply_shared_memory", "[shared_memory_name] - Tells every zone and world to apply a specific shared memory segment by name.", AccountStatus::GMImpossible, command_apply_shared_memory) ||
 			command_add("attack", "[targetname] - Make your NPC target attack targetname.", AccountStatus::QuestMaster, command_attack) ||
 			command_add("attackentity", "[entityid] - Make your NPC target attack target entity.", AccountStatus::QuestMaster, command_attackentity) ||
+
 			command_add("ban", "[name][reason] - Ban by character name.", AccountStatus::GMAdmin, command_ban) ||
 			command_add("beard", "- Change the beard of your target.", AccountStatus::GMImpossible, command_beard) ||
 			command_add("beardcolor", "- Change the beard color of your target.", AccountStatus::GMImpossible, command_beardcolor) ||
@@ -170,6 +171,7 @@ int command_init(void)
 			command_add("bind", "- Sets your targets bind spot to their current location.", AccountStatus::SeniorGuide, command_bind) ||
 			command_add("boatinfo", "- Gets infomation about the boats currently spawned in the zone.", AccountStatus::SeniorGuide, command_boatinfo) ||
 			command_add("bug", "- Bug report system. Encase your bug in quotes. Type: #bug <quote>I have a bug</quote>.", AccountStatus::EQSupport, command_bug) ||
+
 			command_add("castspell", "[spellid] [gm_override] [entityid] - Cast a spell. GM override bypasses resist and stacking checks. If entityid is specified, that NPC will cast a spell on the target mob.", AccountStatus::QuestMaster, command_castspell) ||
 			command_add("chat", "[channel num] [message] - Send a channel message to all zones.", AccountStatus::EQSupport, command_chat) ||
 			command_add("chattest", "[color] [loops] - Sends a test message with the specified color to yourself.", AccountStatus::GMCoder, command_chattest) ||
@@ -10917,8 +10919,7 @@ void command_viewzoneloot(Client* c, const Seperator* sep)
 
 int armorSize = 0;
 
-void command_betabuff(Client* c, const Seperator* sep)
-{
+void command_betabuff(Client* c, const Seperator* sep) {
 	//Arguments?
 	if (sep->IsNumber(1))
 	{
@@ -10928,91 +10929,110 @@ void command_betabuff(Client* c, const Seperator* sep)
 		int book_slot = 0;
 		uint16 skillLevel = HARD_SKILL_CAP;
 		int pClass = c->GetClass();
-
-
-		if ((uint32)c->GetLevel() >= level) {
-			bool hasBetaBuffed = false;
-			int bandedIDs[12] = { 3053,3054,3055,3056,3061,3057,3058,3059,3060,3062,3063,3064 };
-			int smallBandedIDs[12] = { 3065,3066,3067,3068,3069,3070,3071,3072,3073,3074,3075,3076 };
-			int largeBandedIDs[12] = { 3080,3084,3087,3089,3088,3083,3085,3077,3082,3081,3078,3079 };
-			int rawSilkIDs[12] = { 1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171 };
-			int reinforcedIDs[12] = { 2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247 };
-			int smallReinforcedIDs[12] = { 2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260 };
-			int largeReinforcedIDs[12] = { 2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272 };
-			//Get Armor Size based on Race(Function)
-			GetArmorSize(c);
-			//Check if level argument is lower than our level
+		bool hasBetaBuffed = false;
+		int bandedIDs[12] = { 3053,3054,3055,3056,3061,3057,3058,3059,3060,3062,3063,3064 };
+		int smallBandedIDs[12] = { 3065,3066,3067,3068,3069,3070,3071,3072,3073,3074,3075,3076 };
+		int largeBandedIDs[12] = { 3080,3084,3087,3089,3088,3083,3085,3077,3082,3081,3078,3079 };
+		int rawSilkIDs[12] = { 1160,1161,1162,1163,1164,1165,1166,1167,1168,1169,1170,1171 };
+		int reinforcedIDs[12] = { 2237,2238,2239,2240,2241,2242,2243,2244,2245,2246,2247 };
+		int smallReinforcedIDs[12] = { 2249,2250,2251,2252,2253,2254,2255,2256,2257,2258,2259,2260 };
+		int largeReinforcedIDs[12] = { 2261,2262,2263,2264,2265,2266,2267,2268,2269,2270,2271,2272 };
+		//Get Armor Size based on Race(Function)
+		GetArmorSize(c);
+		//Check if level argument is lower than our level
 			if ((uint32)c->GetLevel() >= level) {
-				c->Message(CC_Red, "This character cannot be buffed to this level.");
-				return;
-			}
-			//Check MaxBetaBuffLevel Rule
-			if (level > RuleI(Character, MaxBetaBuffLevel))
-			{
-				c->Message(CC_Red, "This character cannot be buffed to this level. The current betabuff cap is: %i", RuleI(Character, MaxBetaBuffLevel));
-				return;
-			}
-			//Check if character is above the max level 
-			if (c->GetLevel() > RuleI(Character, MaxLevel)) {
-				c->Message(CC_Red, "This character is above the maximum level for test buff.");
-				return;
-			}
+			c->Message(CC_Red, "This character cannot be buffed to this level.");
+			return;
+		}
+		//Check MaxBetaBuffLevel Rule
+		if (level > RuleI(Character, MaxBetaBuffLevel))
+		{
+			c->Message(CC_Red, "This character cannot be buffed to this level. The current betabuff cap is: %i", RuleI(Character, MaxBetaBuffLevel));
+			return;
+		}
+		//Check if character is above the max level 
+		if (c->GetLevel() > RuleI(Character, MaxLevel)) {
+			c->Message(CC_Red, "This character is above the maximum level for test buff.");
+			return;
+		}
 
-			//Set Level and Exp
-			c->SetLevel(1, true);
-			c->SetLevel(level, true);
-			c->AddEXPPercent(10, level);
+		//Set Level and Exp
+		c->SetLevel(1, true);
+		c->SetLevel(level, true);
+		c->AddEXPPercent(10, level);
 
-			//Scribe Spells
-			for (curspell = 0, book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot))
+		//Scribe Spells
+		for (curspell = 0, book_slot = c->GetNextAvailableSpellBookSlot(); curspell < SPDAT_RECORDS && book_slot < MAX_PP_SPELLBOOK; curspell++, book_slot = c->GetNextAvailableSpellBookSlot(book_slot))
+		{
+			if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= level) {
+				if (!c->HasSpellScribed(curspell)) {
+					c->ScribeSpell(curspell, book_slot);
+				} 
+			}
+		}
+		// Skills
+		for (EQ::skills::SkillType skill_num = EQ::skills::Skill1HBlunt; skill_num <= EQ::skills::HIGHEST_SKILL; skill_num = (EQ::skills::SkillType)(skill_num + 1))
+		{
+			uint16 max_level = c->GetMaxSkillAfterSpecializationRules(skill_num, c->MaxSkill(skill_num));
+			uint16 cap_level = skillLevel > max_level ? max_level : skillLevel;
+			c->SetSkill(skill_num, cap_level);
+		}
+
+		//Summon Bags, Gear and Plat for first time beta buff
+		if (!c->HasBetaBuffGearFlag()) 
+		{
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
+			c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			//Armor Summoning Skeleton
+			switch (pClass)
 			{
-				if (spells[curspell].classes[c->GetPP().class_ - 1] >= 1 && spells[curspell].classes[c->GetPP().class_ - 1] <= level) {
-					if (!c->HasSpellScribed(curspell)) {
-						c->ScribeSpell(curspell, book_slot);
+			case CLERIC:
+			case PALADIN:
+			case SHAMAN:
+			case RANGER:
+			case SHADOWKNIGHT:
+			case BARD:
+			case ROGUE:		
+			case WARRIOR:
+				if (armorSize == SMALL_ARMOR)
+				{
+					for (int i : smallBandedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 3073)
+							{
+								c->SummonItem(i, 1, slot);
+								if (slot != 0) {
+									c->SummonItem(i, 1, slot);
+								}
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
 					}
 				}
-			}
-			// Skills
-			for (EQ::skills::SkillType skill_num = EQ::skills::Skill1HBlunt; skill_num <= EQ::skills::HIGHEST_SKILL; skill_num = (EQ::skills::SkillType)(skill_num + 1))
-			{
-				uint16 max_level = c->GetMaxSkillAfterSpecializationRules(skill_num, c->MaxSkill(skill_num));
-				uint16 cap_level = skillLevel > max_level ? max_level : skillLevel;
-				c->SetSkill(skill_num, cap_level);
-			}
-
-			//Summon Bags, Gear and Plat for first time beta buff
-			if (!c->HasBetaBuffGearFlag())
-			{
-				c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
-				c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
-				c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
-				c->SummonItem(17046, 1, c->GetInv().FindFreeSlot(0, 0));
-				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				//Armor Summoning Skeleton
-				switch (pClass)
+				if (armorSize == MEDIUM_ARMOR)
 				{
-				case CLERIC:
-				case PALADIN:
-				case SHAMAN:
-				case RANGER:
-				case SHADOWKNIGHT:
-				case BARD:
-				case ROGUE:
-				case WARRIOR:
-					if (armorSize == SMALL_ARMOR)
+					for (int i : bandedIDs)
 					{
-						for (int i : smallBandedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-								if (i == 3073)
-								{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+
+							if (i == 3061)
+							{
+								c->SummonItem(i, 1, slot);
+								if (slot != 0) {
 									c->SummonItem(i, 1, slot);
-									if (slot != 0) {
-										c->SummonItem(i, 1, slot);
-									}
 								}
+
 							}
 							else
 							{
@@ -11020,65 +11040,66 @@ void command_betabuff(Client* c, const Seperator* sep)
 							}
 						}
 					}
-					if (armorSize == MEDIUM_ARMOR)
-					{
-						for (int i : bandedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
 
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-
-								if (i == 3061)
-								{
-									c->SummonItem(i, 1, slot);
-									if (slot != 0) {
-										c->SummonItem(i, 1, slot);
-									}
-
-								}
-								else
-								{
-									c->SummonItem(i, 1, slot);
-								}
-							}
-						}
-
-					}
-					if (armorSize == LARGE_ARMOR)
-					{
-						for (int i : largeBandedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
-
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-
-								if (i == 3085)
-								{
-									c->SummonItem(i, 1, slot);
-
-									if (slot != 0) {
-										c->SummonItem(i, 1, slot);
-									}
-								}
-								else
-								{
-									c->SummonItem(i, 1, slot);
-
-								}
-							}
-						}
-					}
-					break;
-				case NECROMANCER:
-				case ENCHANTER:
-				case MAGICIAN:
-				case WIZARD:
-					for (int i : rawSilkIDs)
+				}
+				if (armorSize == LARGE_ARMOR)
+				{
+					for (int i : largeBandedIDs)
 					{
 						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
 
 						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-							if (i == 1168)
+
+							if (i == 3085)
+							{
+								c->SummonItem(i, 1, slot);
+
+								if (slot != 0) {
+									c->SummonItem(i, 1, slot);
+								}
+							}
+							else
+							{
+								c->SummonItem(i, 1, slot);
+
+							}
+						}
+					}
+				}
+				break;
+			case NECROMANCER:
+			case ENCHANTER:
+			case MAGICIAN:
+			case WIZARD:
+				for (int i : rawSilkIDs)
+				{
+					uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+					if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+						if (i == 1168)
+
+							c->SummonItem(i, 1, slot);
+
+						if (slot != 0) {
+							c->SummonItem(i, 1, slot);
+						}
+					}
+					else
+					{
+						c->SummonItem(i, 1, slot);
+					}
+				}
+				break;
+			case DRUID:
+			case BEASTLORD:
+			case MONK:
+				if (armorSize == SMALL_ARMOR) {
+					for (int i : smallReinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2257)
 
 								c->SummonItem(i, 1, slot);
 
@@ -11091,236 +11112,213 @@ void command_betabuff(Client* c, const Seperator* sep)
 							c->SummonItem(i, 1, slot);
 						}
 					}
-					break;
-				case DRUID:
-				case BEASTLORD:
-				case MONK:
-					if (armorSize == SMALL_ARMOR) {
-						for (int i : smallReinforcedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
-
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-								if (i == 2257)
-
-									c->SummonItem(i, 1, slot);
-
-								if (slot != 0) {
-									c->SummonItem(i, 1, slot);
-								}
-							}
-							else
-							{
-								c->SummonItem(i, 1, slot);
-							}
-						}
-					}
-
-					if (armorSize == MEDIUM_ARMOR) {
-						for (int i : reinforcedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
-
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-								if (i == 2245)
-
-									c->SummonItem(i, 1, slot);
-
-								if (slot != 0) {
-									c->SummonItem(i, 1, slot);
-								}
-							}
-							else
-							{
-								c->SummonItem(i, 1, slot);
-							}
-						}
-					}
-
-					if (armorSize == LARGE_ARMOR) {
-						for (int i : largeReinforcedIDs)
-						{
-							uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
-
-							if (!c->GetInv().HasItem(i, 1) && slot != 0) {
-								if (i == 2269)
-
-									c->SummonItem(i, 1, slot);
-
-								if (slot != 0) {
-									c->SummonItem(i, 1, slot);
-								}
-							}
-							else
-							{
-								c->SummonItem(i, 1, slot);
-							}
-						}
-					}
-
 				}
 
-				//Weapons:
-				//ID:  Weapon:
-				//6350 Fine Steel Warhammer
-				//6352 Fine Steel Great Staff
-				//6359 Stein of Moggok
-				//9002 Round Shield
-				//7352 Fine Steel Rapier
-				//7350 Fine Steel Dagger
-				switch (pClass)
-				{
-				case CLERIC:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-				case PALADIN:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+				if (armorSize == MEDIUM_ARMOR) {
+					for (int i : reinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
 
-				case SHAMAN:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-				case RANGER:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2245)
 
-				case SHADOWKNIGHT:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+								c->SummonItem(i, 1, slot);
 
-				case BARD:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-				case ROGUE:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				case WARRIOR:
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				case NECROMANCER:
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				case ENCHANTER:
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				case MAGICIAN:
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-
-				case WIZARD:
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
-				case DRUID:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
-				case BEASTLORD:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-				case MONK:
-					c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
-					c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
-
+							if (slot != 0) {
+								c->SummonItem(i, 1, slot);
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
 				}
-				c->SummonItem(6359, 1, c->GetInv().FindFreeSlot(0, 1));
-				c->AddMoneyToPP(0, 0, 0, 100 * level, true);
-				//Give Sow and Strength incase we're encumbered or too low agility.
-				c->SetGMSpellException(1);
-				c->SpellFinished(278, c); // Spirit of Wolf
-				c->SpellFinished(430, c); // Storm Strength
-				c->SetGMSpellException(0);
 
-				c->SetBetaBuffGearFlag(1);
+				if (armorSize == LARGE_ARMOR) {
+					for (int i : largeReinforcedIDs)
+					{
+						uint16 slot = c->GetInv().FindFreeSlot(0, 0) ? c->GetInv().FindFreeSlot(0, 0) : 0;
+
+						if (!c->GetInv().HasItem(i, 1) && slot != 0) {
+							if (i == 2269)
+
+								c->SummonItem(i, 1, slot);
+
+							if (slot != 0) {
+								c->SummonItem(i, 1, slot);
+							}
+						}
+						else
+						{
+							c->SummonItem(i, 1, slot);
+						}
+					}
+				}
+
 			}
-			//Pet Reagents
+
+			//Weapons:
+			//ID:  Weapon:
+			//6350 Fine Steel Warhammer
+			//6352 Fine Steel Great Staff
+			//6359 Stein of Moggok
+			//9002 Round Shield
+			//7352 Fine Steel Rapier
+			//7350 Fine Steel Dagger
 			switch (pClass)
 			{
+			case CLERIC:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case PALADIN:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case SHAMAN:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case RANGER:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case SHADOWKNIGHT:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case BARD:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case ROGUE:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case WARRIOR:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+
 			case NECROMANCER:
-				c->SummonItem(13073, 20);
-				break;
-			case MAGICIAN:
-				c->SummonItem(10015, 20);
-				break;
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
 			case ENCHANTER:
-				c->SummonItem(13080, 20);
-				break;
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case MAGICIAN:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+
+			case WIZARD:
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(7350, 1, c->GetInv().FindFreeSlot(0, 1));
+			case DRUID:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(9002, 1, c->GetInv().FindFreeSlot(0, 1));
+			case BEASTLORD:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+			case MONK:
+				c->SummonItem(6350, 1, c->GetInv().FindFreeSlot(0, 1));
+				c->SummonItem(6352, 1, c->GetInv().FindFreeSlot(0, 1));
+
 			}
-
+			c->SummonItem(6359, 1, c->GetInv().FindFreeSlot(0, 1));
 			c->AddMoneyToPP(0, 0, 0, 100 * level, true);
+			//Give Sow and Strength incase we're encumbered or too low agility.
+			c->SetGMSpellException(1);
+			c->SpellFinished(278, c); // Spirit of Wolf
+			c->SpellFinished(430, c); // Storm Strength
+			c->SetGMSpellException(0);
 
-			c->Save(1);
-
-			return;
+			c->SetBetaBuffGearFlag(1);
 		}
-		else
+		//Pet Reagents
+		switch (pClass)
 		{
-			c->Message(CC_Default, "Usage: #betabuff [level]");
+		case NECROMANCER:
+			c->SummonItem(13073, 20);
+			break;
+		case MAGICIAN:
+			c->SummonItem(10015, 20);
+			break;
+		case ENCHANTER:
+			c->SummonItem(13080, 20);
+			break;
 		}
+
+
+
+		c->Save(1);
+
+		return;
+	}
+	else
+	{
+		c->Message(CC_Default, "Usage: #betabuff [level]");
 	}
 }
 
 
-	void GetArmorSize(Client * c) {
-		int pRace = c->GetRace();
 
-		switch (pRace)
-		{
-		case WOOD_ELF:
-			armorSize = SMALL_ARMOR;
-			break;
-		case HIGH_ELF:
-			armorSize = SMALL_ARMOR;
-			break;
-		case DARK_ELF:
-			armorSize = SMALL_ARMOR;
-			break;
-		case DWARF:
-			armorSize = SMALL_ARMOR;
-			break;
-		case HALFLING:
-			armorSize = SMALL_ARMOR;
-			break;
-		case GNOME:
-			armorSize = SMALL_ARMOR;
-			break;
-		case BARBARIAN:
-			armorSize = MEDIUM_ARMOR;
-			break;
-		case ERUDITE:
-			armorSize = MEDIUM_ARMOR;
-			break;
-		case HALF_ELF:
-			armorSize = MEDIUM_ARMOR;
-			break;
-		case HUMAN:
-			armorSize = MEDIUM_ARMOR;
-			break;
-		case TROLL:
-			armorSize = LARGE_ARMOR;
-			break;
-		case OGRE:
-			armorSize = LARGE_ARMOR;
-			break;
-		}
-	}
+void GetArmorSize(Client* c) {
+	int pRace = c->GetRace();
 
-
-	//Please keep this at the bottom of command.cpp! Feel free to use this for temporary commands used in testing :)
-	void command_testcommand(Client * c, const Seperator * sep)
+	switch (pRace)
 	{
-		return;
+	case WOOD_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case HIGH_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case DARK_ELF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case DWARF:
+		armorSize = SMALL_ARMOR;
+		break;
+	case HALFLING:
+		armorSize = SMALL_ARMOR;
+		break;
+	case GNOME:
+		armorSize = SMALL_ARMOR;
+		break;
+	case BARBARIAN:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case ERUDITE:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case HALF_ELF:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case HUMAN:
+		armorSize = MEDIUM_ARMOR;
+		break;
+	case TROLL:
+		armorSize = LARGE_ARMOR;
+		break;
+	case OGRE:
+		armorSize = LARGE_ARMOR;
+		break;
 	}
+}
+
+
+//Please keep this at the bottom of command.cpp! Feel free to use this for temporary commands used in testing :)
+void command_testcommand(Client* c, const Seperator* sep)
+{
+	return;
+}
